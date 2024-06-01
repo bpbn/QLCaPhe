@@ -6,7 +6,7 @@ GO
 -- TABLE --
 CREATE TABLE NhaCungCap
 (
-	MaNhaCungCap int not null,
+	MaNhaCungCap varchar(10) not null,
 	TenNhaCungCap nvarchar(200),
 	SoDienThoai varchar(12),
 	Email varchar(100),
@@ -14,36 +14,39 @@ CREATE TABLE NhaCungCap
 )
 CREATE TABLE PhieuNhap
 (
-	MaPhieuNhap int not null,
+	MaPhieuNhap varchar(10) not null,
 	NgayNhap Date,
 	ThanhTien int,
-	MaNhaCungCap int,
-	MaNhanVien int
+	MaNhaCungCap varchar(10),
+	MaNhanVien varchar(10)
 )
 CREATE TABLE ChiTietPhieuNhap
 (
-	MaPhieuNhap int not null,
-	MaNguyenLieu int not null,
+	MaPhieuNhap varchar(10) not null,
+	MaNguyenLieu varchar(10) not null,
 	SoLuong int,
 	DonGia int,
 	GhiChu text
 )
+
 CREATE TABLE SanPham
 (
-	MaSanPham int not null,
+	MaSanPham varchar(10) not null,
 	TenSanPham nvarchar(200),
 	HinhAnh varchar(max),
 	GiaBan int,
 	MaLoai varchar(10)
 )
+
 CREATE TABLE LoaiSanPham
 (
 	MaLoai varchar(10) not null,
 	TenLoai nvarchar(100)
 )	
+
 CREATE TABLE NhanVien
 (
-	MaNhanVien int not null,
+	MaNhanVien varchar(10) not null,
 	TenNhanVien nvarchar(200),
 	NgaySinh Date,
 	GioiTinh bit,
@@ -52,40 +55,48 @@ CREATE TABLE NhanVien
 	NgayNghi Date,
 	MaChucVu varchar(10)
 )
+
 CREATE TABLE ChucVu
 (
 	MaChucVu varchar(10) not null,
 	TenChucVu nvarchar(20),
 	LuongCoBan int
 )
+
 CREATE TABLE CaLam
 (
-	MaCaLam int not null,
+	MaCaLam varchar(10) not null,
 	GioBatDau time,
 	GioKetThuc time,
-	LyDoHuy nvarchar(200),
-	MaNhanVien int not null
 )
+
+CREATE TABLE ChiTietCaLam
+(
+	MaCaLam varchar(10) not null,
+	NgayLam date,
+	MaNhanVien varchar(10) not null
+)
+
 CREATE TABLE TaiKhoan
 (
 	TenDangNhap varchar(50) not null,
 	MatKhau varchar(50),
-	MaNhanVien int
+	MaNhanVien varchar(10)
 )
 CREATE TABLE HoaDon
 (
-	MaHoaDon int not null,
+	MaHoaDon varchar(10) not null,
 	ThanhTien int,
 	ThoiGianLap DateTime,
 	ThoiGianThanhToan DateTime,
 	SoKhach int,
 	SoBan int,
-	MaNhanVien int
+	MaNhanVien varchar(10)
 )
 CREATE TABLE ChiTietHoaDon
 (
-	MaHoaDon int not null,
-	MaSanPham int not null,
+	MaHoaDon varchar(10) not null,
+	MaSanPham varchar(10) not null,
 	SoLuong int,
 	TongTien int,
 	GhiChu text
@@ -101,23 +112,16 @@ CREATE TABLE Ban
 )
 CREATE TABLE NguyenLieu
 (
-	MaNguyenLieu int not null,
+	MaNguyenLieu varchar(10) not null,
 	TenNguyenLieu nvarchar(100),
 	XuatXu nvarchar(30),
 	SoLuongTon int
 )
-CREATE TABLE PhieuXuat
-(
-	MaPhieuXuat int not null,
-	MaNguyenLieu int not null,
-	SoLuong int,
-	NgayXuat Date,
-	MaNhanVien int
-)
+
 CREATE TABLE BangLuong
 (
-	MaBangLuong int not null,
-	MaNhanVien int not null,
+	MaBangLuong varchar(10) not null,
+	MaNhanVien varchar(10) not null,
 	ThoiGianChamCong time,
 	ThoiGianTraLuong time,
 	PhuCap int
@@ -144,12 +148,12 @@ ALTER TABLE PhieuNhap
 ADD CONSTRAINT PK_PhieuNhap PRIMARY KEY (MaPhieuNhap)
 ALTER TABLE ChiTietPhieuNhap
 ADD CONSTRAINT PK_ChiTietPhieuNhap PRIMARY KEY (MaPhieuNhap, MaNguyenLieu)
+ALTER TABLE ChiTietCaLam
+ADD CONSTRAINT PK_ChiTietCaLam PRIMARY KEY (MaCaLam, MaNhanVien)
 ALTER TABLE TaiKhoan
 ADD CONSTRAINT PK_TaiKhoan PRIMARY KEY (TenDangNhap)
 ALTER TABLE NguyenLieu
 ADD CONSTRAINT PK_NguyenLieu PRIMARY KEY(MaNguyenLieu)
-ALTER TABLE PhieuXuat
-ADD CONSTRAINT PK_PhieuXuat PRIMARY KEY(MaPhieuXuat)
 ALTER TABLE CaLam
 ADD CONSTRAINT PK_CaLam PRIMARY KEY(MaCaLam)
 ALTER TABLE BangLuong
@@ -159,27 +163,32 @@ GO
 ALTER TABLE PhieuNhap
 ADD CONSTRAINT FK_PhieuNhap_NhaCungCap FOREIGN KEY (MaNhaCungCap) REFERENCES NhaCungCap(MaNhaCungCap),
 	CONSTRAINT FK_PhieuNhap_NhanVien FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
+
 ALTER TABLE ChiTietPhieuNhap
 ADD CONSTRAINT FK_ChiTietPhieuNhap_PhieuNhap FOREIGN KEY (MaPhieuNhap) REFERENCES PhieuNhap(MaPhieuNhap),
 	CONSTRAINT FK_ChiTietPhieuNhap_NguyenLieu FOREIGN KEY (MaNguyenLieu) REFERENCES NguyenLieu(MaNguyenLieu)
+
 ALTER TABLE SanPham
 ADD CONSTRAINT FK_SanPham_LoaiSanPham FOREIGN KEY (MaLoai) REFERENCES LoaiSanPham(MaLoai)
+
 ALTER TABLE HoaDon
 ADD CONSTRAINT FK_HoaDon_Ban FOREIGN KEY (SoBan) REFERENCES Ban(SoBan),
 	CONSTRAINT FK_HoaDon_NhanVien FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
+
 ALTER TABLE ChiTietHoaDon
 ADD CONSTRAINT FK_ChiTietHoaDon_HoaDon FOREIGN KEY (MaHoaDon) REFERENCES HoaDon(MaHoaDon),
 	CONSTRAINT FK_ChiTietHoaDon_SanPham FOREIGN KEY (MaSanPham) REFERENCES SanPham(MaSanPham)
+
+ALTER TABLE ChiTietCaLam
+ADD CONSTRAINT FK_ChiTietCaLam_CaLam FOREIGN KEY (MaCaLam) REFERENCES CaLam(MaCaLam),
+	CONSTRAINT FK_ChiTietCaLam_NhanVien FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
+
 ALTER TABLE NhanVien
 ADD CONSTRAINT FK_NhanVien_ChucVu FOREIGN KEY (MaChucVu) REFERENCES ChucVu(MaChucVu)
+
 ALTER TABLE TaiKhoan
 ADD CONSTRAINT FK_TaiKhoan_NhanVien FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
-ALTER TABLE PhieuXuat 
-ADD CONSTRAINT FK_PhieuXuat_NhanVien FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
-ALTER TABLE PhieuXuat 
-ADD CONSTRAINT FK_PhieuXuat_NguyenLieu FOREIGN KEY (MaNguyenLieu) REFERENCES NguyenLieu(MaNguyenLieu)
-ALTER TABLE CaLam
-ADD CONSTRAINT FK_CaLam_NhanVien FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
+
 ALTER TABLE BangLuong
 ADD CONSTRAINT FK_BangLuong_NhanVien FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
 GO
@@ -194,26 +203,25 @@ VALUES
 ('K', N'Nhân viên kho', 20)
 INSERT INTO NhanVien
 VALUES
-(1, N'Nguyễn Ngọc Thạch', '28/8/2002', 1, N'Thành phố Hồ Chí Minh', '20/1/2023', null, 'QL'),
-(2, N'Trần Ngọc Phi Tuyết', '21/7/2002', 0, N'Bình Thuận', '23/2/2023', null, 'BH'),
-(3, N'Nguyễn Đức Huy', '20/2/2002', 1, N'Tây Ninh', '25/2/2023', '20/4/2023', 'BH'),
-(4, N'Khúc Hồng Nhung', '11/2/2002', 0, N'Thành phố Hồ Chí Minh', '25/3/2023', null, 'BH'),
-(5, N'Đinh Anh Tuấn', '27/9/2002', 1, N'Hà Nội', '25/1/2023', null, 'K'),
-(6, N'Nguyễn Anh Tuấn', '21/10/2002', 1, N'Bình Phước', '6/4/2023', null, 'K')
+('NV001' , N'Nguyễn Quốc Thái', '28/8/2002', 1, N'Thành phố Hồ Chí Minh', '20/1/2023', null, 'QL'),
+('NV002' , N'TNguyễn Phương Bảo Ngân', '21/7/2002', 0, N'Bình Thuận', '23/2/2023', null, 'BH'),
+('NV003' , N'Nguyễn Phan Như Quỳnh', '20/2/2002', 1, N'Tây Ninh', '25/2/2023', '20/4/2023', 'BH'),
+('NV004' , N'Bùi Phan Bảo Ngọc', '11/2/2003', 0, N'Thành phố Hồ Chí Minh', '25/3/2023', null, 'BH')
+
 INSERT INTO TaiKhoan
 VALUES
-('ngocthach2808', '123', 1),
-('phituyet2107', '123', 2),
-('duchuy2002', '123', 3),
-('hongnhung1102', '123', 4),
-('anhtuan2709', '123', 5),
-('anhtuan2110', '123', 6)
+('ouoctiiai', '123', 1),
+('npbn', '123', 2),
+('win', '123', 3),
+('bpbn', '123', 4)
+
 INSERT INTO NhaCungCap
 VALUES
 (1, N'90S Coffee', '1800888906', 'info@90scoffee.vn', N'20 Đường số 3, Phường Trường Thọ, Thủ Đức, TPHCM'),
 (2, N'YOTAFOOD', '0931766351', 'hongtuan104@gmail.com', N'347/40 Lê Văn Thọ Phường 9 Thành phố Hồ Chí Minh'),
 (3, N'Buôn Mê Coffee', '0909555301', 'buonmecoffee@gmail.com', N'35/4A Ao Đôi, Bình Trị Đông A, Quận Bình Tân, Tp.HCM'),
 (4, N'Pinocchio', '0908528233', 'cungcapnguyenlieu@gmail.com', N'30 Bế Văn Đàn Phường 14 Q.Tân Bình,TP.HCM')
+
 INSERT INTO NguyenLieu
 VALUES
 (1, N'Cà Phê Arabica (500gr)', N'Việt Nam', 0),
@@ -856,21 +864,6 @@ as begin
 	end
 end
 --drop trigger TRG_NhapNguyenLieu
-go
--- Trigger xuat kho (so luong ton giam)
-Create Trigger TRG_XuatNguyenLieu ON PhieuXuat
-for insert, update, delete
-as begin
-	if exists(select * from inserted)
-		update NguyenLieu
-		set SoLuongTon = SoLuongTon - (select SoLuong from inserted)
-		where (select MaNguyenLieu from inserted)= NguyenLieu.MaNguyenLieu
-	if exists(select * from deleted)
-		update NguyenLieu
-		set SoLuongTon = SoLuongTon + (select SoLuong from deleted)
-		where (select MaNguyenLieu from deleted)= NguyenLieu.MaNguyenLieu
-end
---drop trigger TRG_XuatNguyenLieu
 go
 --==--==--==--==--==--==--==--==--==--==--==--==--==--==--
 --use master
