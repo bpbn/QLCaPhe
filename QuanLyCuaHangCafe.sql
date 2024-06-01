@@ -1,4 +1,3 @@
-
 CREATE DATABASE QuanLyCuaHangCafe
 GO
 USE QuanLyCuaHangCafe
@@ -35,7 +34,8 @@ CREATE TABLE SanPham
 	TenSanPham nvarchar(200),
 	HinhAnh varchar(max),
 	GiaBan int,
-	MaLoai varchar(10)
+	MaLoai varchar(10),
+	TrangThai nvarchar(20)
 )
 
 CREATE TABLE LoaiSanPham
@@ -74,7 +74,8 @@ CREATE TABLE ChiTietCaLam
 (
 	MaCaLam varchar(10) not null,
 	NgayLam date,
-	MaNhanVien varchar(10) not null
+	MaNhanVien varchar(10) not null,
+	LuongTheoCa int
 )
 
 CREATE TABLE TaiKhoan
@@ -107,14 +108,13 @@ CREATE TABLE Ban
 	SoBan int not null,
 	SoGhe int,
 	KhuVuc nvarchar(10),
-	ThoiGianBatDau Time,
 	TrangThai bit
 )
 CREATE TABLE NguyenLieu
 (
 	MaNguyenLieu varchar(10) not null,
 	TenNguyenLieu nvarchar(100),
-	XuatXu nvarchar(30),
+	DonViTinh nvarchar(20),
 	SoLuongTon int
 )
 
@@ -224,14 +224,13 @@ VALUES
 
 INSERT INTO NguyenLieu
 VALUES
-(1, N'Cà Phê Arabica (500gr)', N'Việt Nam', 0),
-(2, N'Cà Phê Robusta (500gr)', N'Việt Nam', 0),
-(3, N'Khô gà lá chanh (1kg)', N'Việt Nam', 0),
-(4, N'Bim Bim que đậu hà lan (500gr)', N'Việt Nam', 0),
-(5, N'Robusta Mộc Espresso (1kg)', N'', 0),
-(6, N'RT1', N'Việt Nam', 0),
-(7, N'Trà đen đặc biệt (1kg)', N'Việt Nam', 0),
-(8, N'Sữa Đặc LaRossé (1kg)', N'Việt Nam', 0)
+(1, N'Cà Phê Arabica', '500gr', 0),
+(2, N'Cà Phê Robusta', '500gr', 0),
+(3, N'Khô gà lá chanh', '1kg', 0),
+(4, N'Bim Bim que đậu hà lan', '500gr', 0),
+(5, N'Robusta Mộc Espresso', '1kg', 0),
+(6, N'Trà đen đặc biệt', '1kg', 0),
+(7, N'Sữa Đặc LaRossé', '1kg', 0)
 INSERT INTO PhieuNhap(MaPhieuNhap, NgayNhap, MaNhaCungCap, MaNhanVien)
 VALUES
 (1, '16/01/2023', 1,1),
