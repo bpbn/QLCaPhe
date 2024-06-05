@@ -1,4 +1,3 @@
-
 CREATE DATABASE QuanLyCuaHangCafe
 GO
 USE QuanLyCuaHangCafe
@@ -12,6 +11,7 @@ CREATE TABLE NhaCungCap
 	Email varchar(100),
 	DiaChi nvarchar(200)
 )
+
 CREATE TABLE PhieuNhap
 (
 	MaPhieuNhap varchar(10) not null,
@@ -20,6 +20,7 @@ CREATE TABLE PhieuNhap
 	MaNhaCungCap varchar(10),
 	MaNhanVien varchar(10)
 )
+
 CREATE TABLE ChiTietPhieuNhap
 (
 	MaPhieuNhap varchar(10) not null,
@@ -28,19 +29,22 @@ CREATE TABLE ChiTietPhieuNhap
 	DonGia int,
 	GhiChu text
 )
+
 CREATE TABLE SanPham
 (
 	MaSanPham varchar(10) not null,
 	TenSanPham nvarchar(200),
-	HinhAnh varchar(max),
 	GiaBan int,
-	MaLoai varchar(10)
+	MaLoai varchar(10),
+	TrangThai nvarchar(10)
 )
+
 CREATE TABLE LoaiSanPham
 (
 	MaLoai varchar(10) not null,
 	TenLoai nvarchar(100)
 )	
+
 CREATE TABLE NhanVien
 (
 	MaNhanVien varchar(10) not null,
@@ -52,12 +56,14 @@ CREATE TABLE NhanVien
 	NgayNghi Date,
 	MaChucVu varchar(10)
 )
+
 CREATE TABLE ChucVu
 (
 	MaChucVu varchar(10) not null,
 	TenChucVu nvarchar(20),
 	LuongCoBan int
 )
+
 CREATE TABLE CaLam
 (
 	MaCaLam varchar(10) not null,
@@ -66,12 +72,14 @@ CREATE TABLE CaLam
 	LyDoHuy nvarchar(200),
 	MaNhanVien varchar(10) not null
 )
+
 CREATE TABLE TaiKhoan
 (
 	TenDangNhap varchar(50) not null,
 	MatKhau varchar(50),
 	MaNhanVien varchar(10)
 )
+
 CREATE TABLE HoaDon
 (
 	MaHoaDon varchar(10) not null,
@@ -80,10 +88,10 @@ CREATE TABLE HoaDon
 	ThoiGianThanhToan DateTime,
 	TrangThaiHD varchar(20),
 	SoKhach int,
-	SoBan int,
 	MaNhanVien varchar(10), 
 	GhiChu varchar(100)
 )
+
 CREATE TABLE ChiTietHoaDon
 (
 	MaHoaDon varchar(10) not null,
@@ -93,14 +101,7 @@ CREATE TABLE ChiTietHoaDon
 	GhiChu text
 
 )
-CREATE TABLE Ban
-(
-	SoBan int not null,
-	SoGhe int,
-	KhuVuc nvarchar(10),
-	ThoiGianBatDau Time,
-	TrangThai bit
-)
+
 CREATE TABLE NguyenLieu
 (
 	MaNguyenLieu varchar(10) not null,
@@ -127,37 +128,64 @@ CREATE TABLE ChiTietCaLam
 
 GO
 -- PRIMARY KEY --
-ALTER TABLE NhaCungCap
-ADD CONSTRAINT PK_NhaCungCap PRIMARY KEY(MaNhaCungCap)
-ALTER TABLE ChucVu
-ADD CONSTRAINT PK_ChucVu PRIMARY KEY (MaChucVu)
-ALTER TABLE LoaiSanPham
-ADD CONSTRAINT PK_LoaiSanPham PRIMARY KEY (MaLoai)
-ALTER TABLE Ban
-ADD CONSTRAINT PK_Ban PRIMARY KEY (SoBan)
-ALTER TABLE NhanVien
-ADD CONSTRAINT PK_NhanVien PRIMARY KEY (MaNhanVien)
-ALTER TABLE HoaDon
-ADD CONSTRAINT PK_HoaDon PRIMARY KEY (MaHoaDon)
-ALTER TABLE SanPham
-ADD CONSTRAINT PK_SanPham PRIMARY KEY (MaSanPham)
-ALTER TABLE ChiTietHoaDon
-ADD CONSTRAINT PK_ChiTietHoaDon PRIMARY KEY (MaSanPham, MaHoaDon)
-ALTER TABLE PhieuNhap
-ADD CONSTRAINT PK_PhieuNhap PRIMARY KEY (MaPhieuNhap)
-ALTER TABLE ChiTietPhieuNhap
-ADD CONSTRAINT PK_ChiTietPhieuNhap PRIMARY KEY (MaPhieuNhap, MaNguyenLieu)
+ALTER TABLE NhaCungCap 
+	ADD CONSTRAINT PK_NhaCungCap 
+	PRIMARY KEY(MaNhaCungCap)
+
+ALTER TABLE ChucVu 
+	ADD CONSTRAINT PK_ChucVu 
+	PRIMARY KEY (MaChucVu)
+
+ALTER TABLE LoaiSanPham 
+	ADD CONSTRAINT PK_LoaiSanPham 
+	PRIMARY KEY (MaLoai)
+
+ALTER TABLE NhanVien 
+	ADD CONSTRAINT PK_NhanVien 
+	PRIMARY KEY (MaNhanVien)
+
+ALTER TABLE HoaDon 
+	ADD CONSTRAINT PK_HoaDon 
+	PRIMARY KEY (MaHoaDon)
+
+ALTER TABLE SanPham 
+	ADD CONSTRAINT PK_SanPham 
+	PRIMARY KEY (MaSanPham)
+
+ALTER TABLE ChiTietHoaDon 
+	ADD CONSTRAINT PK_ChiTietHoaDon 
+	PRIMARY KEY (MaSanPham, MaHoaDon)
+
+ALTER TABLE PhieuNhap 
+	ADD CONSTRAINT PK_PhieuNhap 
+	PRIMARY KEY (MaPhieuNhap)
+
+ALTER TABLE ChiTietPhieuNhap 
+	ADD CONSTRAINT PK_ChiTietPhieuNhap 
+	PRIMARY KEY (MaPhieuNhap, MaNguyenLieu)
+
 ALTER TABLE ChiTietCaLam
-ADD CONSTRAINT PK_ChiTietCaLam PRIMARY KEY (MaCaLam, MaNhanVien)
+	ADD CONSTRAINT PK_ChiTietCaLam 
+	PRIMARY KEY (MaCaLam, MaNhanVien)
+
 ALTER TABLE TaiKhoan
-ADD CONSTRAINT PK_TaiKhoan PRIMARY KEY (TenDangNhap)
-ALTER TABLE NguyenLieu
-ADD CONSTRAINT PK_NguyenLieu PRIMARY KEY(MaNguyenLieu)
-ALTER TABLE CaLam
-ADD CONSTRAINT PK_CaLam PRIMARY KEY(MaCaLam)
-ALTER TABLE BangLuong
-ADD CONSTRAINT PK_BangLuong PRIMARY KEY(MaBangLuong) 
+	ADD CONSTRAINT PK_TaiKhoan 
+	PRIMARY KEY (TenDangNhap)
+
+ALTER TABLE NguyenLieu 
+	ADD CONSTRAINT PK_NguyenLieu 
+	PRIMARY KEY(MaNguyenLieu)
+
+ALTER TABLE CaLam 
+	ADD CONSTRAINT PK_CaLam 
+	PRIMARY KEY(MaCaLam)
+
+ALTER TABLE BangLuong 
+	ADD CONSTRAINT PK_BangLuong 
+	PRIMARY KEY(MaBangLuong) 
+
 GO
+
 -- FOREIGN KEY --
 ALTER TABLE PhieuNhap
 ADD CONSTRAINT FK_PhieuNhap_NhaCungCap FOREIGN KEY (MaNhaCungCap) REFERENCES NhaCungCap(MaNhaCungCap),
@@ -171,8 +199,7 @@ ALTER TABLE SanPham
 ADD CONSTRAINT FK_SanPham_LoaiSanPham FOREIGN KEY (MaLoai) REFERENCES LoaiSanPham(MaLoai)
 
 ALTER TABLE HoaDon
-ADD CONSTRAINT FK_HoaDon_Ban FOREIGN KEY (SoBan) REFERENCES Ban(SoBan),
-	CONSTRAINT FK_HoaDon_NhanVien FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
+ADD CONSTRAINT FK_HoaDon_NhanVien FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
 
 ALTER TABLE ChiTietHoaDon
 ADD CONSTRAINT FK_ChiTietHoaDon_HoaDon FOREIGN KEY (MaHoaDon) REFERENCES HoaDon(MaHoaDon),
