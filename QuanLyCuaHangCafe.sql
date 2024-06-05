@@ -3,9 +3,16 @@ GO
 USE QuanLyCuaHangCafe
 GO
 -- TABLE --
+CREATE TABLE TaiKhoan
+(
+	TenDangNhap varchar(50) not null,
+	MatKhau varchar(50),
+	MaNhanVien varchar(10)
+)
+
 CREATE TABLE NhaCungCap
 (
-	MaNhaCungCap varchar(10) not null,
+	MaNhaCungCap varchar(10) not null default 'NCC000',
 	TenNhaCungCap nvarchar(200),
 	SoDienThoai varchar(12),
 	Email varchar(100),
@@ -14,9 +21,9 @@ CREATE TABLE NhaCungCap
 
 CREATE TABLE PhieuNhap
 (
-	MaPhieuNhap varchar(10) not null,
+	MaPhieuNhap varchar(10) not null default 'PN000',
 	NgayNhap Date,
-	ThanhTien int,
+	TongTien int default 0,
 	MaNhaCungCap varchar(10),
 	MaNhanVien varchar(10)
 )
@@ -25,18 +32,18 @@ CREATE TABLE ChiTietPhieuNhap
 (
 	MaPhieuNhap varchar(10) not null,
 	MaNguyenLieu varchar(10) not null,
-	SoLuong int,
+	SoLuong int default 1,
 	DonGia int,
+	ThanhTien int default 0,
 	GhiChu text
 )
 
-CREATE TABLE SanPham
+CREATE TABLE NguyenLieu
 (
-	MaSanPham varchar(10) not null,
-	TenSanPham nvarchar(200),
-	GiaBan int,
-	MaLoai varchar(10),
-	TrangThai nvarchar(10)
+	MaNguyenLieu varchar(10) not null default 'NL000',
+	TenNguyenLieu nvarchar(100),
+	XuatXu nvarchar(30),
+	SoLuongTon int
 )
 
 CREATE TABLE LoaiSanPham
@@ -45,9 +52,18 @@ CREATE TABLE LoaiSanPham
 	TenLoai nvarchar(100)
 )	
 
+CREATE TABLE SanPham
+(
+	MaSanPham varchar(10) not null default 'SP000',
+	TenSanPham nvarchar(200),
+	GiaBan int,
+	MaLoai varchar(10),
+	TrangThai nvarchar(10)
+)
+
 CREATE TABLE NhanVien
 (
-	MaNhanVien varchar(10) not null,
+	MaNhanVien varchar(10) not null default 'SP000',
 	TenNhanVien nvarchar(200),
 	NgaySinh Date,
 	GioiTinh bit,
@@ -57,37 +73,13 @@ CREATE TABLE NhanVien
 	MaChucVu varchar(10)
 )
 
-CREATE TABLE ChucVu
-(
-	MaChucVu varchar(10) not null,
-	TenChucVu nvarchar(20),
-	LuongCoBan int
-)
-
-CREATE TABLE CaLam
-(
-	MaCaLam varchar(10) not null,
-	GioBatDau time,
-	GioKetThuc time,
-	LyDoHuy nvarchar(200),
-	MaNhanVien varchar(10) not null
-)
-
-CREATE TABLE TaiKhoan
-(
-	TenDangNhap varchar(50) not null,
-	MatKhau varchar(50),
-	MaNhanVien varchar(10)
-)
-
 CREATE TABLE HoaDon
 (
-	MaHoaDon varchar(10) not null,
-	ThanhTien int,
+	MaHoaDon varchar(10) not null default 'HD000',
+	TongTien int default 0,
 	ThoiGianLap DateTime,
 	ThoiGianThanhToan DateTime,
 	TrangThaiHD varchar(20),
-	SoKhach int,
 	MaNhanVien varchar(10), 
 	GhiChu varchar(100)
 )
@@ -96,34 +88,43 @@ CREATE TABLE ChiTietHoaDon
 (
 	MaHoaDon varchar(10) not null,
 	MaSanPham varchar(10) not null,
-	SoLuong int,
-	TongTien int,
+	SoLuong int default 1,
+	ThanhTien int default 0,
 	GhiChu text
 
 )
 
-CREATE TABLE NguyenLieu
+CREATE TABLE ChucVu
 (
-	MaNguyenLieu varchar(10) not null,
-	TenNguyenLieu nvarchar(100),
-	XuatXu nvarchar(30),
-	SoLuongTon int
+	MaChucVu varchar(10) not null,
+	TenChucVu nvarchar(20),
+	LuongCoBan int
 )
+
 
 CREATE TABLE BangLuong
 (
-	MaBangLuong varchar(10) not null,
+	MaBangLuong varchar(10) not null default 'BL000',
 	MaNhanVien varchar(10) not null,
 	ThoiGianChamCong time,
 	ThoiGianTraLuong time,
-	PhuCap int
+	PhuCap int,
+	Luong int
 )
+
+CREATE TABLE CaLam
+(
+	MaCaLam varchar(10) not null default 'CL000',
+	GioBatDau time,
+	GioKetThuc time,
+)
+
 
 CREATE TABLE ChiTietCaLam
 (
 	MaCaLam varchar(10) not null,
-	NgayLam date,
-	MaNhanVien varchar(10) not null
+	MaNhanVien varchar(10) not null,
+	NgayLam date not null,
 )
 
 GO
@@ -166,7 +167,7 @@ ALTER TABLE ChiTietPhieuNhap
 
 ALTER TABLE ChiTietCaLam
 	ADD CONSTRAINT PK_ChiTietCaLam 
-	PRIMARY KEY (MaCaLam, MaNhanVien)
+	PRIMARY KEY (MaCaLam, MaNhanVien, NgayLam)
 
 ALTER TABLE TaiKhoan
 	ADD CONSTRAINT PK_TaiKhoan 
@@ -219,6 +220,309 @@ ALTER TABLE BangLuong
 ADD CONSTRAINT FK_BangLuong_NhanVien FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
 GO
 
+-----------------------------
+CREATE PROC pc_TimMaTiepTheo
+    @table VARCHAR(20),
+    @id VARCHAR(10) OUT
+ AS
+ BEGIN
+     DECLARE @index INT
+     SET @index = 1
+     IF @table = 'SanPham'
+         BEGIN 
+         SET @id = 'SP001'
+         
+         WHILE EXISTS(SELECT MaSanPham FROM SanPham WHERE MaSanPham = @id)
+         BEGIN
+             SET @index = @index + 1
+             SET @id = 'SP' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+         END
+     END
+
+	ELSE IF @table = 'NhaCungCap'
+    BEGIN
+        SET @id = 'NCC001'
+        
+        WHILE EXISTS(SELECT MaNhaCungCap FROM NhaCungCap WHERE MaNhaCungCap = @id)
+        BEGIN
+            SET @index = @index + 1
+            SET @id = 'NCC' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+        END
+    END
+ 
+ 	ELSE IF @table = 'NhanVien'
+         BEGIN 
+         SET @id = 'NV001'
+         
+         WHILE EXISTS(SELECT MaNhanVien  FROM NhanVien WHERE MaNhanVien = @id)
+         BEGIN
+             SET @index = @index + 1
+             SET @id = 'NV' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+         END
+     END
+
+	 ELSE IF @table = 'PhieuNhap'
+         BEGIN 
+         SET @id = 'PN001'
+         
+         WHILE EXISTS(SELECT MaPhieuNhap  FROM PhieuNhap WHERE MaPhieuNhap = @id)
+         BEGIN
+             SET @index = @index + 1
+             SET @id = 'PN' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+         END
+     END
+
+	 ELSE IF @table = 'HoaDon'
+         BEGIN 
+         SET @id = 'HD001'
+         
+         WHILE EXISTS(SELECT MaHoaDon  FROM HoaDon WHERE MaHoaDon = @id)
+         BEGIN
+             SET @index = @index + 1
+             SET @id = 'HD' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+         END
+     END
+
+	 ELSE IF @table = 'NguyenLieu'
+         BEGIN 
+         SET @id = 'NL001'
+         
+         WHILE EXISTS(SELECT MaNguyenLieu  FROM NguyenLieu WHERE MaNguyenLieu = @id)
+         BEGIN
+             SET @index = @index + 1
+             SET @id = 'NL' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+         END
+     END
+
+	 ELSE IF @table = 'CaLam'
+         BEGIN 
+         SET @id = 'CL001'
+         
+         WHILE EXISTS(SELECT MaCaLam  FROM CaLam WHERE MaCaLam = @id)
+         BEGIN
+             SET @index = @index + 1
+             SET @id = 'CL' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+         END
+     END
+
+	 ELSE IF @table = 'BangLuong'
+         BEGIN 
+         SET @id = 'BL001'
+         
+         WHILE EXISTS(SELECT MaBangLuong  FROM BangLuong WHERE MaBangLuong = @id)
+         BEGIN
+             SET @index = @index + 1
+             SET @id = 'BL' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+         END
+     END
+ 
+ END
+ GO
+
+ -------------------------------------------------
+ CREATE TRIGGER TRG_INSERT_SANPHAM
+      ON SanPham
+      FOR INSERT
+ AS
+ BEGIN
+     --set mã đơn hàng tự động
+     PRINT N'MÃ SẼ ĐƯỢC SET TỰ ĐỘNG'
+ 
+     DECLARE @result VARCHAR(10) 
+     EXEC pc_TimMaTiepTheo 'SanPham', @result OUT
+ 
+     UPDATE SanPham
+     SET MaSanPham = @result
+     FROM SanPham JOIN inserted
+     ON SanPham.MaSanPham = inserted.MaSanPham
+ END
+ GO
+
+ CREATE TRIGGER TRG_INSERT_NHACUNGCAP
+    ON NhaCungCap
+    FOR INSERT
+AS
+BEGIN
+    --set mã đơn hàng tự động
+    PRINT N'MÃ SẼ ĐƯỢC SET TỰ ĐỘNG'
+
+    DECLARE @result VARCHAR(10) 
+    EXEC pc_TimMaTiepTheo 'NhaCungCap', @result OUT
+
+    UPDATE NhaCungCap
+    SET MaNhaCungCap = @result
+    FROM NhaCungCap JOIN inserted
+    ON NhaCungCap.MaNhaCungCap = inserted.MaNhaCungCap
+END
+GO
+
+ CREATE TRIGGER TRG_INSERT_NHANVIEN
+      ON NhanVien
+      FOR INSERT
+ AS
+ BEGIN
+     --set mã đơn hàng tự động
+     PRINT N'MÃ SẼ ĐƯỢC SET TỰ ĐỘNG'
+ 
+     DECLARE @result VARCHAR(10) 
+     EXEC pc_TimMaTiepTheo 'NhanVien', @result OUT
+ 
+     UPDATE NhanVien
+     SET MaNhanVien = @result
+     FROM NhanVien JOIN inserted
+     ON NhanVien.MaNhanVien = inserted.MaNhanVien
+ END
+ GO
+
+
+CREATE TRIGGER TRG_INSERT_PHIEUNHAP
+      ON PhieuNhap
+      FOR INSERT
+ AS
+ BEGIN
+     --set mã đơn hàng tự động
+     PRINT N'MÃ SẼ ĐƯỢC SET TỰ ĐỘNG'
+ 
+     DECLARE @result VARCHAR(10) 
+     EXEC pc_TimMaTiepTheo 'PhieuNhap', @result OUT
+ 
+     UPDATE PhieuNhap
+     SET MaPhieuNhap = @result
+     FROM PhieuNhap JOIN inserted
+     ON PhieuNhap.MaPhieuNhap = inserted.MaPhieuNhap
+ END
+ GO
+
+ CREATE TRIGGER TRG_INSERT_HOADON
+    ON HoaDon
+    FOR INSERT
+AS
+BEGIN
+    --set mã đơn hàng tự động
+    PRINT N'MÃ SẼ ĐƯỢC SET TỰ ĐỘNG'
+
+    DECLARE @result VARCHAR(10) 
+    EXEC pc_TimMaTiepTheo 'HoaDon', @result OUT
+
+    UPDATE HoaDon
+    SET MaHoaDon = @result
+    FROM HoaDon JOIN inserted
+    ON HoaDon.MaHoaDon = inserted.MaHoaDon
+END
+GO
+
+ CREATE TRIGGER TRG_INSERT_NGUYENLIEU
+      ON NguyenLieu
+      FOR INSERT
+ AS
+ BEGIN
+     --set mã đơn hàng tự động
+     PRINT N'MÃ SẼ ĐƯỢC SET TỰ ĐỘNG'
+ 
+     DECLARE @result VARCHAR(10) 
+     EXEC pc_TimMaTiepTheo 'NguyenLieu', @result OUT
+ 
+     UPDATE NguyenLieu
+     SET MaNguyenLieu = @result
+     FROM NguyenLieu JOIN inserted
+     ON NguyenLieu.MaNguyenLieu = inserted.MaNguyenLieu
+ END
+ GO
+
+ CREATE TRIGGER TRG_INSERT_CALAM
+    ON CaLam
+    FOR INSERT
+AS
+BEGIN
+    --set mã đơn hàng tự động
+    PRINT N'MÃ SẼ ĐƯỢC SET TỰ ĐỘNG'
+
+    DECLARE @result VARCHAR(10) 
+    EXEC pc_TimMaTiepTheo 'CaLam', @result OUT
+
+    UPDATE CaLam
+    SET MaCaLam = @result
+    FROM CaLam JOIN inserted
+    ON CaLam.MaCaLam = inserted.MaCaLam
+END
+GO
+
+ CREATE TRIGGER TRG_INSERT_BANGLUONG
+    ON BangLuong
+    FOR INSERT
+AS
+BEGIN
+    --set mã đơn hàng tự động
+    PRINT N'MÃ SẼ ĐƯỢC SET TỰ ĐỘNG'
+
+    DECLARE @result VARCHAR(10) 
+    EXEC pc_TimMaTiepTheo 'BangLuong', @result OUT
+
+    UPDATE BangLuong
+    SET MaBangLuong = @result
+    FROM BangLuong JOIN inserted
+    ON BangLuong.MaBangLuong = inserted.MaBangLuong
+END
+GO
+
+CREATE TRIGGER TRG_INSERT_CTDN
+      ON ChiTietPhieuNhap
+      FOR INSERT
+AS
+BEGIN
+
+      --cập nhật dữ liệu cho thuộc tính thành tiền của bảng nhập thuốc
+      IF(SELECT ThanhTien FROM inserted)!= NULL
+      BEGIN
+            PRINT N'THÀNH TIỀN SẼ ĐƯỢC HỆ THỐNG TỰ ĐỘNG CẬP NHẬT THEO ĐƠN HÀNG'
+      END
+
+      UPDATE ChiTietPhieuNhap
+      SET ThanhTien = inserted.SoLuong * ChiTietPhieuNhap.DonGia
+      FROM ChiTietPhieuNhap, NguyenLieu nl, inserted
+      WHERE ChiTietPhieuNhap.MaPhieuNhap = inserted.MaPhieuNhap
+      AND ChiTietPhieuNhap.MaNguyenLieu = inserted.MaNguyenLieu
+      AND ChiTietPhieuNhap.MaNguyenLieu = nl.MaNguyenLieu
+
+      --cập nhật tổng tiền cho bảng đơn hàng nhập
+      UPDATE PhieuNhap
+      SET TongTien = TongTien + N.ThanhTien
+      FROM PhieuNhap, inserted, ChiTietPhieuNhap N
+      WHERE PhieuNhap.MaPhieuNhap = inserted.MaPhieuNhap
+      AND N.MaNguyenLieu = inserted.MaNguyenLieu
+      AND N.MaPhieuNhap = inserted.MaPhieuNhap
+END
+GO
+
+CREATE TRIGGER TRG_INSERT_CTHD
+      ON ChiTietHoaDon
+      FOR INSERT
+AS
+BEGIN
+
+      --cập nhật dữ liệu cho thuộc tính thành tiền của bảng nhập thuốc
+      IF(SELECT ThanhTien FROM inserted)!= NULL
+      BEGIN
+            PRINT N'THÀNH TIỀN SẼ ĐƯỢC HỆ THỐNG TỰ ĐỘNG CẬP NHẬT THEO ĐƠN HÀNG'
+      END
+
+      UPDATE ChiTietHoaDon
+      SET ThanhTien = inserted.SoLuong * sp.GiaBan
+      FROM ChiTietHoaDon, SanPham sp, inserted
+      WHERE ChiTietHoaDon.MaHoaDon = inserted.MaHoaDon
+      AND ChiTietHoaDon.MaSanPham = inserted.MaSanPham
+      AND ChiTietHoaDon.MaSanPham = sp.MaSanPham
+
+      --cập nhật tổng tiền cho bảng đơn hàng nhập
+      UPDATE HoaDon
+      SET TongTien = TongTien + N.ThanhTien
+      FROM HoaDon, inserted, ChiTietHoaDon N
+      WHERE HoaDon.MaHoaDon = inserted.MaHoaDon
+      AND N.MaSanPham = inserted.MaSanPham
+      AND N.MaHoaDon = inserted.MaHoaDon
+END
+GO
+
 -- INSERT --
 SET DATEFORMAT DMY
 
@@ -227,180 +531,92 @@ VALUES
 ('QL', N'Quản lý', 40),
 ('BH', N'Nhân viên bán hàng', 25),
 ('K', N'Nhân viên kho', 20)
-INSERT INTO NhanVien
-VALUES
-('NV001' , N'Nguyễn Quốc Thái', '28/8/2002', 1, N'Thành phố Hồ Chí Minh', '20/1/2023', null, 'QL'),
-('NV002' , N'TNguyễn Phương Bảo Ngân', '21/7/2002', 0, N'Bình Thuận', '23/2/2023', null, 'BH'),
-('NV003' , N'Nguyễn Phan Như Quỳnh', '20/2/2002', 1, N'Tây Ninh', '25/2/2023', '20/4/2023', 'BH'),
-('NV004' , N'Bùi Phan Bảo Ngọc', '11/2/2003', 0, N'Thành phố Hồ Chí Minh', '25/3/2023', null, 'K')
+
+INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Nguyễn Quốc Thái', '28/8/2002', 1, N'Thành phố Hồ Chí Minh', '29/04/2024', null, 'QL');
+INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'TNguyễn Phương Bảo Ngân', '04/02/2003', 0, N'Bình Thuận', '03/05/2024', null, 'BH');
+INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Nguyễn Phan Như Quỳnh', '20/2/2002', 1, N'Tây Ninh', '03/05/2024', null, 'BH');
+INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Bùi Phan Bảo Ngọc', '11/2/2003', 0, N'Thành phố Hồ Chí Minh', '29/04/2024', null, 'K');
 
 INSERT INTO TaiKhoan
 VALUES
-('ouoctiiai', '123', 1),
-('npbn', '123', 2),
-('win', '123', 3),
-('bpbn', '123', 4)
+('ouoctiiai', '123', 'NV001'),
+('npbn', '123', 'NV002'),
+('win', '123', 'NV003'),
+('bpbn', '123', 'NV004')
 GO
 
-INSERT INTO NhaCungCap
-VALUES
-(1, N'90S Coffee', '1800888906', 'info@90scoffee.vn', N'20 Đường số 3, Phường Trường Thọ, Thủ Đức, TPHCM'),
-(2, N'YOTAFOOD', '0931766351', 'hongtuan104@gmail.com', N'347/40 Lê Văn Thọ Phường 9 Thành phố Hồ Chí Minh'),
-(3, N'Buôn Mê Coffee', '0909555301', 'buonmecoffee@gmail.com', N'35/4A Ao Đôi, Bình Trị Đông A, Quận Bình Tân, Tp.HCM'),
-(4, N'Pinocchio', '0908528233', 'cungcapnguyenlieu@gmail.com', N'30 Bế Văn Đàn Phường 14 Q.Tân Bình,TP.HCM')
 
-INSERT INTO NguyenLieu
-VALUES
-(1, N'Cà Phê Arabica (500gr)', N'Việt Nam', 0),
-(2, N'Cà Phê Robusta (500gr)', N'Việt Nam', 0),
-(3, N'Khô gà lá chanh (1kg)', N'Việt Nam', 0),
-(4, N'Bim Bim que đậu hà lan (500gr)', N'Việt Nam', 0),
-(5, N'Robusta Mộc Espresso (1kg)', N'', 0),
-(6, N'RT1', N'Việt Nam', 0),
-(7, N'Trà đen đặc biệt (1kg)', N'Việt Nam', 0),
-(8, N'Sữa Đặc LaRossé (1kg)', N'Việt Nam', 0)
+INSERT INTO NhaCungCap(TenNhaCungCap, SoDienThoai, Email, DiaChi) VALUES(N'90S Coffee', '1800888906', 'info@90scoffee.vn', N'20 Đường số 3, Phường Trường Thọ, Thủ Đức, TPHCM');
+INSERT INTO NhaCungCap(TenNhaCungCap, SoDienThoai, Email, DiaChi) VALUES(N'YOTAFOOD', '0931766351', 'hongtuan104@gmail.com', N'347/40 Lê Văn Thọ Phường 9 Thành phố Hồ Chí Minh');
+INSERT INTO NhaCungCap(TenNhaCungCap, SoDienThoai, Email, DiaChi) VALUES(N'Buôn Mê Coffee', '0909555301', 'buonmecoffee@gmail.com', N'35/4A Ao Đôi, Bình Trị Đông A, Quận Bình Tân, Tp.HCM');
+INSERT INTO NhaCungCap(TenNhaCungCap, SoDienThoai, Email, DiaChi) VALUES(N'Pinocchio', '0908528233', 'cungcapnguyenlieu@gmail.com', N'30 Bế Văn Đàn Phường 14 Q.Tân Bình,TP.HCM');
 
-INSERT INTO PhieuNhap(MaPhieuNhap, NgayNhap, MaNhaCungCap, MaNhanVien)
-VALUES
-(1, '16/01/2023', 1,1),
-(2, '16/01/2023', 2,1),
-(3, '16/01/2023', 3,1),
-(4, '16/01/2023', 4,1),
-(5, '30/01/2023', 1,5),
-(6, '30/01/2023', 2,5),
-(7, '30/01/2023', 3,5),
-(8, '30/01/2023', 4,5),
-(9, '13/02/2023', 1,6),
-(10, '13/02/2023', 2,6),
-(11, '13/02/2023', 3,6),
-(12, '13/02/2023', 4,6),
-(13, '27/02/2023', 1,1),
-(14, '27/02/2023', 2,1),
-(15, '27/02/2023', 3,1),
-(16, '27/02/2023', 4,1),
-(17, '13/03/2023', 1,5),
-(18, '13/03/2023', 2,5),
-(19, '13/03/2023', 3,5),
-(20, '13/03/2023', 4,5),
-(21, '27/03/2023', 1,6),
-(22, '27/03/2023', 2,6),
-(23, '27/03/2023', 3,6),
-(24, '27/03/2023', 4,6),
-(25, '10/04/2023', 1,1),
-(26, '10/04/2023', 2,1),
-(27, '10/04/2023', 3,1),
-(28, '10/04/2023', 4,1),
-(29, '24/04/2023', 1,5),
-(30, '24/04/2023', 2,5),
-(31, '24/04/2023', 3,5),
-(32, '24/04/2023', 4,5),
-(33, '08/05/2023', 1,6),
-(34, '08/05/2023', 2,6),
-(35, '08/05/2023', 3,6),
-(36, '08/05/2023', 4,6),
-(37, '22/05/2023', 1,1),
-(38, '22/05/2023', 2,1),
-(39, '22/05/2023', 3,1),
-(40, '22/05/2023', 4,1)
 
-INSERT INTO ChiTietPhieuNhap
-VALUES
-(1, 1, 15, 120000, null),
-(1, 2, 10, 96000, null),
-(2, 3, 3, 119000, null),
-(2, 4, 3, 29000, null),
-(3, 5, 10, 100000, null),
-(3, 6, 5, 100000, null),
-(4, 7, 4, 110000, null),
-(4, 8, 4, 44000, null),
-(1, 1, 15, 120000, null),
-(1, 2, 10, 96000, null),
-(2, 3, 3, 119000, null),
-(2, 4, 3, 29000, null),
-(3, 5, 10, 100000, null),
-(3, 6, 5, 100000, null),
-(4, 7, 4, 110000, null),
-(4, 8, 4, 44000, null),
-(1, 1, 15, 120000, null),
-(1, 2, 10, 96000, null),
-(2, 3, 3, 119000, null),
-(2, 4, 3, 29000, null),
-(3, 5, 10, 100000, null),
-(3, 6, 5, 100000, null),
-(4, 7, 4, 110000, null),
-(4, 8, 4, 44000, null),
-(1, 1, 15, 120000, null),
-(1, 2, 10, 96000, null),
-(2, 3, 3, 119000, null),
-(2, 4, 3, 29000, null),
-(3, 5, 10, 100000, null),
-(3, 6, 5, 100000, null),
-(4, 7, 4, 110000, null),
-(4, 8, 4, 44000, null),
-(1, 1, 15, 120000, null),
-(1, 2, 10, 96000, null),
-(2, 3, 3, 119000, null),
-(2, 4, 3, 29000, null),
-(3, 5, 10, 100000, null),
-(3, 6, 5, 100000, null),
-(4, 7, 4, 110000, null),
-(4, 8, 4, 44000, null),
-(1, 1, 15, 120000, null),
-(1, 2, 10, 96000, null),
-(2, 3, 3, 119000, null),
-(2, 4, 3, 29000, null),
-(3, 5, 10, 100000, null),
-(3, 6, 5, 100000, null),
-(4, 7, 4, 110000, null),
-(4, 8, 4, 44000, null),
-(1, 1, 15, 120000, null),
-(1, 2, 10, 96000, null),
-(2, 3, 3, 119000, null),
-(2, 4, 3, 29000, null),
-(3, 5, 10, 100000, null),
-(3, 6, 5, 100000, null),
-(4, 7, 4, 110000, null),
-(4, 8, 4, 44000, null),
-(1, 1, 15, 120000, null),
-(1, 2, 10, 96000, null),
-(2, 3, 3, 119000, null),
-(2, 4, 3, 29000, null),
-(3, 5, 10, 100000, null),
-(3, 6, 5, 100000, null),
-(4, 7, 4, 110000, null),
-(4, 8, 4, 44000, null),
-(1, 1, 15, 120000, null),
-(1, 2, 10, 96000, null),
-(2, 3, 3, 119000, null),
-(2, 4, 3, 29000, null),
-(3, 5, 10, 100000, null),
-(3, 6, 5, 100000, null),
-(4, 7, 4, 110000, null),
-(4, 8, 4, 44000, null),
-(1, 1, 15, 120000, null),
-(1, 2, 10, 96000, null),
-(2, 3, 3, 119000, null),
-(2, 4, 3, 29000, null),
-(3, 5, 10, 100000, null),
-(3, 6, 5, 100000, null),
-(4, 7, 4, 110000, null),
-(4, 8, 4, 44000, null)
+INSERT INTO NguyenLieu (TenNguyenLieu, XuatXu, SoLuongTon) VALUES(N'Cà Phê Arabica (500gr)', N'Việt Nam', 0);
+INSERT INTO NguyenLieu (TenNguyenLieu, XuatXu, SoLuongTon) VALUES(N'Cà Phê Robusta (500gr)', N'Việt Nam', 0);
+INSERT INTO NguyenLieu (TenNguyenLieu, XuatXu, SoLuongTon) VALUES(N'Khô gà lá chanh (1kg)', N'Việt Nam', 0);
+INSERT INTO NguyenLieu (TenNguyenLieu, XuatXu, SoLuongTon) VALUES(N'Bim Bim que đậu hà lan (500gr)', N'Việt Nam', 0);
+INSERT INTO NguyenLieu (TenNguyenLieu, XuatXu, SoLuongTon) VALUES(N'Robusta Mộc Espresso (1kg)', N'', 0);
+INSERT INTO NguyenLieu (TenNguyenLieu, XuatXu, SoLuongTon) VALUES(N'RT1', N'Việt Nam', 0);
+INSERT INTO NguyenLieu (TenNguyenLieu, XuatXu, SoLuongTon) VALUES(N'Trà đen đặc biệt (1kg)', N'Việt Nam', 0);
+INSERT INTO NguyenLieu (TenNguyenLieu, XuatXu, SoLuongTon) VALUES(N'Sữa Đặc LaRossé (1kg)', N'Việt Nam', 0);
 
-INSERT INTO Ban(SoBan, SoGhe, KhuVuc, TrangThai)
+
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('29/04/2024', 'NCC002','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('29/04/2024', 'NCC003','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('29/04/2024', 'NCC004','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('29/04/2024', 'NCC001','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('05/05/2024', 'NCC002','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('05/05/2024', 'NCC003','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('05/05/2024', 'NCC004','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('12/05/2024', 'NCC004','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('12/05/2024', 'NCC003','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('12/05/2024', 'NCC001','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('12/05/2024', 'NCC002','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('20/05/2024', 'NCC003','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('20/05/2024', 'NCC004','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('27/05/2024', 'NCC001','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('27/05/2024', 'NCC002','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('27/05/2024', 'NCC003','NV004');
+INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('27/05/2024', 'NCC004','NV004');
+
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu)
 VALUES
-(0, 0, N'Mang về', 1),
-(1, 4, N'Khu A', 0),
-(2, 6, N'Khu A', 0),
-(3, 4, N'Khu A', 0),
-(4, 4, N'Khu A', 0),
-(5, 4, N'Khu A', 0),
-(6, 6, N'Khu A', 0),
-(7, 4, N'Khu B', 0),
-(8, 2, N'Khu B', 0),
-(9, 2, N'Khu B', 0),
-(10, 4, N'Khu B', 0),
-(11, 2, N'Khu B', 0),
-(12, 4, N'Khu B', 0)
+('PN001', 'NL001', 15, 120000, null),
+('PN001', 'NL002', 10, 96000, null),
+('PN002', 'NL003', 3, 119000, null),
+('PN002', 'NL004', 3, 29000, null),
+('PN003', 'NL005', 10, 100000, null),
+('PN003', 'NL006', 5, 100000, null),
+('PN004', 'NL007', 4, 110000, null),
+('PN004', 'NL008', 4, 44000, null),
+('PN005', 'NL001', 15, 120000, null),
+('PN005', 'NL002', 10, 96000, null),
+('PN006', 'NL003', 3, 119000, null),
+('PN006', 'NL004', 3, 29000, null),
+('PN007', 'NL005', 10, 100000, null),
+('PN007', 'NL006', 5, 100000, null),
+('PN008', 'NL007', 4, 110000, null),
+('PN008', 'NL008', 4, 44000, null),
+('PN009', 'NL001', 15, 120000, null),
+('PN009', 'NL002', 10, 96000, null),
+('PN010', 'NL003', 3, 119000, null),
+('PN010', 'NL004', 3, 29000, null),
+('PN011', 'NL005', 10, 100000, null),
+('PN011', 'NL006', 5, 100000, null),
+('PN012', 'NL007', 4, 110000, null),
+('PN012', 'NL008', 4, 44000, null),
+('PN013', 'NL001', 15, 120000, null),
+('PN013', 'NL002', 10, 96000, null),
+('PN014', 'NL003', 3, 119000, null),
+('PN014', 'NL004', 3, 29000, null),
+('PN015', 'NL005', 10, 100000, null),
+('PN015', 'NL006', 5, 100000, null),
+('PN016', 'NL007', 4, 110000, null),
+('PN016', 'NL008', 4, 44000, null),
+('PN017', 'NL001', 15, 120000, null),
+('PN017', 'NL002', 10, 96000, null);
+
 INSERT INTO LoaiSanPham
 VALUES
 ('Cold',N'Đá xay'),
@@ -409,494 +625,427 @@ VALUES
 ('Cake',N'Bánh ngọt'),
 ('Tea',N'Trà'),
 ('MilkTea',N'Trà sữa')
-INSERT INTO SanPham
-VALUES
-(1,N'Trà ô long dừa','PL_1.png',55000,'Tea'),
-(2,N'Nhãn đá xay','PL_2.png',65000,'Cold'),
-(3,N'Trà ô long mãng cầu','PL_3.png',55000,'Tea'),
-(4,N'Hồng trà chanh','PL_4.png',55000,'Tea'),
-(5,N'Trà sữa matcha','PL_5.png',55000,'MilkTea'),
-(6,N'Hồng trà đào sữa','PL_6.png',55000,'MilkTea'),
-(7,N'Chanh đá xay','PL_7.png',65000,'Cold'),
-(8,N'Matcha đá xay','PL_8.png',65000,'Cold'),
-(9,N'Oreo cà phê sữa đá xay','PL_9.png',65000,'Cold'),
-(10,N'Cà phê đá xay','PL_10.png',65000,'Cold'),
-(11,N'Trà sữa berry berry','PL_11.png',55000,'MilkTea'),
-(12,N'Trà đào đá xay','PL_12.png',65000,'Cold'),
-(13,N'Sữa chua phúc bồn tử đác cam','PL_13.png',65000,'Cold'),
-(14,N'Sữa chua xoài đác thơm','PL_14.png',65000,'Cold'),
-(15,N'Cappuchino','PL_15.png',45000,'Coffee'),
-(16,N'Hồng trà đá cam đá xay','PL_16.png',55000,'Tea'),
-(17,N'Hoa tuyết Berry Berry','PL_17.png',55000,'MilkTea'),
-(18,N'Latte','PL_18.png',45000,'Coffee'),
-(19,N'Kafo de lakto','PL_19.png',45000,'Coffee'),
-(20,N'Trà lài đác thơm','PL_20.png',55000,'Tea'),
-(21,N'Trà nhãn sen','PL_21.png',55000,'Tea'),
-(22,N'Trà vải lài','PL_22.png',55000,'Tea'),
-(23,N'Lucky tea','PL_23.png',55000,'Tea'),
-(24,N'Hồng trà sữa','PL_24.png',55000,'MilkTea'),
-(25,N'Vanilla latte','PL_25.png',45000,'Coffee'),
-(26,N'Hồng trà đào','PL_26.png',55000,'Tea'),
-(27,N'Trà sữa phúc long','PL_27.png',55000,'MilkTea'),
-(28,N'Trà ô long dâu','PL_28.png',55000,'Tea'),
-(29,N'trà ô long sữa','PL_29.png',55000,'MilkTea'),
-(30,N'Phin choco','Choco.png',45000,'Coffee'),
-(31,N'Bạc xĩu','Bacxiu.png',45000,'Coffee'),
-(32,N'Caramel macchiato','EA.png',45000,'Coffee'),
-(33,N'Matcha đậu đỏ','GT.png',55000,'MilkTea'),
-(34,N'Phindi hạnh nhân','HanhNhan.png',55000,'PhinDi'),
-(35,N'Freeze kem sữa','KemSua.png',55000,'PhinDi'),
-(36,N'Mocha macchiato','Mocha.png',45000,'Coffee'),
-(37,N'Bánh mì pate','Pate.png',35000,'Cake'),
-(38,N'Bánh phô mai chanh dây','PF.png',35000,'Cake'),
-(39,N'Phin đen đá','PhinDenDa.png',55000,'PhinDi'),
-(40,N'Phin sữa đá','PhinSuaDa.png',55000,'PhinDi'),
-(41,N'Bánh mouse đào','PM.png',35000,'Cake')
 
-INSERT INTO HoaDon(MaHoaDon, ThoiGianLap, ThoiGianThanhToan, SoKhach, SoBan) VALUES
-(1, '01/02/2023 11:35:44', '01/02/2023 13:04:26', 2, 4),
-(2, '01/02/2023 17:59:21', '01/02/2023 19:58:35', 4, 3),
-(3, '03/02/2023 13:44:43', '03/02/2023 16:08:36', 4, 1),
-(4, '05/02/2023 8:34:24', '05/02/2023 10:08:24', 1, 8),
-(5, '06/02/2023 16:57:25', '06/02/2023 19:16:44', 5, 12),
-(6, '07/02/2023 15:56:13', '07/02/2023 17:31:02', 3, 5),
-(7, '08/02/2023 16:57:34', '08/02/2023 19:10:33', 4, 12),
-(8, '10/02/2023 9:11:37', '10/02/2023 10:19:21', 1, 7),
-(9, '10/02/2023 10:57:33', '10/02/2023 11:57:56', 2, 10),
-(10, '11/02/2023 9:49:19', '11/02/2023 12:05:36', 1, 4),
-(11, '13/02/2023 16:42:52', '13/02/2023 17:46:24', 1, 12),
-(12, '15/02/2023 12:12:53', '15/02/2023 13:20:16', 5, 7),
-(13, '16/02/2023 11:31:32', '16/02/2023 13:47:38', 2, 4),
-(14, '17/02/2023 14:06:48', '17/02/2023 16:10:11', 3, 4),
-(15, '17/02/2023 16:47:05', '17/02/2023 18:17:27', 2, 6),
-(16, '17/02/2023 19:55:53', '17/02/2023 22:22:01', 1, 9),
-(17, '18/02/2023 8:52:59', '18/02/2023 9:59:30', 3, 6),
-(18, '20/02/2023 10:46:03', '20/02/2023 11:53:51', 4, 12),
-(19, '21/02/2023 19:01:23', '21/02/2023 20:01:36', 2, 3),
-(20, '23/02/2023 15:26:44', '23/02/2023 17:07:00', 1, 2),
-(21, '27/02/2023 9:26:56', '27/02/2023 10:27:19', 3, 4),
-(22, '28/02/2023 9:22:11', '28/02/2023 11:35:08', 5, 3),
-(23, '28/02/2023 12:04:31', '28/02/2023 13:12:59', 5, 3),
-(24, '03/03/2023 12:11:56', '03/03/2023 13:13:34', 3, 9),
-(25, '04/03/2023 13:04:32', '04/03/2023 15:27:23', 4, 2),
-(26, '06/03/2023 8:37:45', '06/03/2023 10:45:08', 5, 9),
-(27, '06/03/2023 8:40:00', '06/03/2023 10:51:22', 5, 10),
-(28, '09/03/2023 14:37:01', '09/03/2023 15:37:49', 5, 1),
-(29, '10/03/2023 9:32:48', '10/03/2023 11:58:59', 4, 7),
-(30, '11/03/2023 14:39:43', '11/03/2023 16:13:58', 5, 10),
-(31, '13/03/2023 14:01:57', '13/03/2023 15:24:14', 2, 6),
-(32, '14/03/2023 12:42:39', '14/03/2023 13:49:25', 1, 7),
-(33, '14/03/2023 15:02:33', '14/03/2023 17:02:54', 3, 9),
-(34, '15/03/2023 11:35:43', '15/03/2023 13:57:56', 2, 9),
-(35, '17/03/2023 17:21:36', '17/03/2023 18:36:25', 4, 12),
-(36, '17/03/2023 18:14:46', '17/03/2023 19:26:31', 1, 3),
-(37, '18/03/2023 8:07:31', '18/03/2023 10:10:28', 2, 5),
-(38, '20/03/2023 14:08:30', '20/03/2023 16:34:26', 2, 7),
-(39, '20/03/2023 15:20:48', '20/03/2023 16:43:38', 2, 7),
-(40, '21/03/2023 15:16:43', '21/03/2023 16:46:59', 5, 6),
-(41, '21/03/2023 18:57:45', '21/03/2023 21:18:47', 5, 3),
-(42, '22/03/2023 9:12:03', '22/03/2023 10:48:19', 3, 8),
-(43, '24/03/2023 17:44:28', '24/03/2023 20:08:26', 1, 3),
-(44, '25/03/2023 11:04:38', '25/03/2023 12:47:30', 2, 4),
-(45, '26/03/2023 12:33:01', '26/03/2023 14:43:35', 1, 4),
-(46, '30/03/2023 10:08:43', '30/03/2023 12:12:56', 2, 4),
-(47, '31/03/2023 14:15:11', '31/03/2023 16:37:40', 1, 5),
-(48, '01/04/2023 12:11:55', '01/04/2023 14:19:20', 2, 2),
-(49, '04/04/2023 8:14:48', '04/04/2023 10:06:04', 1, 12),
-(50, '05/04/2023 16:04:47', '05/04/2023 17:46:34', 3, 3),
-(51, '05/04/2023 16:15:13', '05/04/2023 17:57:36', 2, 10),
-(52, '10/04/2023 17:44:14', '10/04/2023 20:05:16', 2, 1),
-(53, '12/04/2023 17:51:18', '12/04/2023 19:17:36', 4, 2),
-(54, '13/04/2023 11:50:16', '13/04/2023 13:38:39', 1, 10),
-(55, '13/04/2023 17:15:28', '13/04/2023 18:54:46', 3, 7),
-(56, '13/04/2023 17:49:05', '13/04/2023 19:49:09', 4, 7),
-(57, '14/04/2023 14:23:40', '14/04/2023 16:11:34', 4, 12),
-(58, '18/04/2023 11:10:11', '18/04/2023 13:33:02', 1, 9),
-(59, '20/04/2023 8:52:22', '20/04/2023 10:29:30', 1, 3),
-(60, '23/04/2023 15:58:37', '23/04/2023 18:26:04', 1, 7),
-(61, '24/04/2023 13:34:41', '24/04/2023 16:01:21', 3, 1),
-(62, '25/04/2023 11:19:56', '25/04/2023 13:32:31', 3, 12),
-(63, '25/04/2023 13:41:37', '25/04/2023 15:18:10', 3, 1),
-(64, '26/04/2023 13:27:19', '26/04/2023 15:12:28', 2, 6),
-(65, '26/04/2023 16:42:14', '26/04/2023 17:58:49', 2, 5),
-(66, '27/04/2023 11:57:05', '27/04/2023 13:52:56', 3, 2),
-(67, '28/04/2023 17:20:16', '28/04/2023 18:28:30', 5, 6),
-(68, '30/04/2023 9:05:03', '30/04/2023 11:02:39', 1, 1),
-(69, '03/05/2023 11:51:17', '03/05/2023 13:17:11', 1, 7),
-(70, '03/05/2023 18:08:32', '03/05/2023 19:55:10', 1, 7),
-(71, '05/05/2023 16:42:24', '05/05/2023 18:25:41', 5, 4),
-(72, '07/05/2023 12:58:55', '07/05/2023 14:00:00', 4, 6),
-(73, '08/05/2023 17:49:53', '08/05/2023 19:41:10', 5, 9),
-(74, '10/05/2023 11:59:01', '10/05/2023 13:30:46', 4, 9),
-(75, '10/05/2023 15:31:03', '10/05/2023 17:46:40', 5, 9),
-(76, '10/05/2023 17:28:03', '10/05/2023 18:46:25', 5, 4),
-(77, '11/05/2023 9:31:35', '11/05/2023 11:41:38', 5, 5),
-(78, '11/05/2023 11:57:55', '11/05/2023 14:11:34', 2, 2),
-(79, '13/05/2023 13:26:25', '13/05/2023 15:50:46', 1, 12),
-(80, '15/05/2023 10:51:02', '15/05/2023 12:36:12', 1, 5),
-(81, '16/05/2023 13:08:05', '16/05/2023 14:32:00', 1, 5),
-(82, '17/05/2023 11:20:18', '17/05/2023 13:41:33', 4, 11),
-(83, '17/05/2023 11:58:37', '17/05/2023 14:14:06', 3, 3),
-(84, '18/05/2023 14:24:07', '18/05/2023 16:31:27', 5, 7),
-(85, '19/05/2023 13:34:36', '19/05/2023 14:51:20', 1, 6),
-(86, '21/05/2023 17:30:31', '21/05/2023 19:04:38', 3, 3),
-(87, '22/05/2023 17:37:05', '22/05/2023 19:58:57', 2, 5),
-(88, '24/05/2023 10:15:42', '24/05/2023 11:52:36', 3, 12),
-(89, '25/05/2023 12:08:37', '25/05/2023 13:32:10', 2, 4),
-(90, '25/05/2023 16:37:17', '25/05/2023 18:01:43', 4, 6),
-(91, '28/05/2023 8:28:59', '28/05/2023 10:47:13', 4, 8),
-(92, '28/05/2023 17:12:54', '28/05/2023 19:22:12', 1, 3),
-(93, '30/05/2023 19:41:30', '30/05/2023 22:06:34', 2, 10),
-(94, '31/05/2023 16:26:14', '31/05/2023 17:27:49', 5, 8),
-(95, '31/05/2023 17:40:59', '31/05/2023 19:48:03', 4, 11)
+
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà ô long dừa',55000,'Tea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Nhãn đá xay',65000,'Cold');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà ô long mãng cầu',55000,'Tea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Hồng trà chanh',55000,'Tea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà sữa matcha',55000,'MilkTea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Hồng trà đào sữa',55000,'MilkTea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Chanh đá xay',65000,'Cold');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Matcha đá xay',65000,'Cold');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Oreo cà phê sữa đá xay',65000,'Cold');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Cà phê đá xay',65000,'Cold');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà sữa berry berry',55000,'MilkTea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà đào đá xay',65000,'Cold');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Sữa chua phúc bồn tử đác cam',65000,'Cold');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Sữa chua xoài đác thơm',65000,'Cold');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Cappuchino',45000,'Coffee');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Hồng trà đá cam đá xay',55000,'Tea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Hoa tuyết Berry Berry',55000,'MilkTea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Latte',45000,'Coffee');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Kafo de lakto',45000,'Coffee');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà lài đác thơm',55000,'Tea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà nhãn sen',55000,'Tea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà vải lài',55000,'Tea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Lucky tea',55000,'Tea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Hồng trà sữa',55000,'MilkTea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Vanilla latte',45000,'Coffee');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Hồng trà đào',55000,'Tea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà sữa phúc long',55000,'MilkTea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà ô long dâu',55000,'Tea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'trà ô long sữa',55000,'MilkTea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Phin choco',45000,'Coffee');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Bạc xĩu',45000,'Coffee');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Caramel macchiato',45000,'Coffee');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Matcha đậu đỏ',55000,'MilkTea');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Phindi hạnh nhân',55000,'PhinDi');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Freeze kem sữa',55000,'PhinDi');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Mocha macchiato',45000,'Coffee');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Bánh mì pate',35000,'Cake');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Bánh phô mai chanh dây',35000,'Cake');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Phin đen đá',55000,'PhinDi');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Phin sữa đá',55000,'PhinDi');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Bánh mouse đào',35000,'Cake');
+
+
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('03/05/2024 12:11:56', '03/05/2024 13:13:34','NV002');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('04/05/2024 13:04:32', '04/05/2024 15:27:23','NV003');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('06/05/2024 8:37:45', '06/05/2024 10:45:08','NV003');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('06/05/2024 8:40:00', '06/05/2024 10:51:22','NV003');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('09/05/2024 14:37:01', '09/05/2024 15:37:49','NV002');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('10/05/2024 9:32:48', '10/05/2024 11:58:59','NV002');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('11/05/2024 14:39:43', '11/05/2024 16:13:58','NV003');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('13/05/2024 14:01:57', '13/05/2024 15:24:14','NV003');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('14/05/2024 12:42:39', '14/05/2024 13:49:25','NV002');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('14/05/2024 15:02:33', '14/05/2024 17:02:54','NV003');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('15/05/2024 11:35:43', '15/05/2024 13:57:56','NV002');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('17/05/2024 17:21:36', '17/05/2024 18:36:25','NV002');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('17/05/2024 18:14:46', '17/05/2024 19:26:31','NV003');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('18/05/2024 8:07:31', '18/05/2024 10:10:28','NV003');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('20/05/2024 14:08:30', '20/05/2024 16:34:26','NV002');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('20/05/2024 15:20:48', '20/05/2024 16:43:38','NV003');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('21/05/2024 15:16:43', '21/05/2024 16:46:59','NV002');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('23/05/2024 15:26:44', '23/05/2024 17:07:00','NV003');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('25/05/2024 14:26:44', '23/05/2024 15:07:00','NV002');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('27/05/2024 9:26:56', '27/05/2024 10:27:19','NV003');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('28/05/2024 9:22:11', '28/05/2024 11:35:08','NV003');
+INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('28/05/2024 12:04:31', '28/05/2024 13:12:59','NV002');
 
 INSERT INTO ChiTietHoaDon(MaHoaDon, MaSanPham, SoLuong) VALUES
-(1,40,3),
-(1,37,2),
-(1,12,2),
-(1,35,2),
-(2,24,2),
-(2,36,2),
-(2,32,2),
-(2,16,3),
-(3,8,1),
-(3,38,2),
-(3,40,3),
-(4,27,2),
-(4,35,3),
-(4,36,1),
-(4,32,1),
-(5,20,3),
-(5,17,2),
-(5,31,1),
-(6,12,2),
-(6,26,3),
-(7,15,2),
-(7,2,1),
-(7,20,3),
-(7,10,3),
-(7,34,1),
-(8,34,2),
-(8,36,3),
-(8,13,2),
-(8,31,2),
-(8,29,2),
-(9,11,2),
-(9,12,1),
-(9,18,2),
-(9,17,1),
-(9,21,2),
-(9,34,3),
-(10,40,3),
-(10,24,1),
-(10,21,1),
-(10,8,2),
-(10,41,3),
-(11,14,3),
-(11,26,3),
-(11,15,2),
-(12,24,3),
-(12,29,3),
-(13,31,2),
-(13,29,1),
-(13,41,3),
-(13,26,3),
-(14,28,3),
-(14,17,2),
-(14,23,2),
-(15,3,3),
-(15,41,1),
-(15,14,3),
-(15,8,3),
-(15,1,1),
-(16,31,1),
-(16,23,2),
-(16,4,2),
-(16,5,2),
-(17,41,2),
-(17,33,3),
-(17,10,3),
-(18,12,2),
-(18,25,1),
-(18,37,2),
-(18,5,2),
-(19,40,2),
-(19,19,3),
-(19,30,2),
-(19,20,2),
-(20,31,2),
-(20,17,2),
-(20,13,3),
-(21,40,3),
-(21,32,2),
-(21,34,2),
-(21,9,3),
-(22,20,1),
-(22,33,1),
-(22,37,1),
-(22,41,3),
-(23,17,1),
-(23,41,2),
-(23,6,3),
-(24,28,3),
-(24,39,2),
-(25,31,1),
-(26,23,2),
-(26,26,3),
-(27,27,2),
-(27,21,1),
-(28,14,1),
-(28,25,3),
-(29,12,2),
-(29,4,1),
-(29,9,3),
-(29,16,2),
-(30,36,2),
-(30,25,2),
-(30,39,1),
-(30,18,2),
-(30,10,1),
-(31,12,1),
-(31,24,1),
-(31,2,1),
-(31,17,3),
-(32,18,2),
-(32,26,2),
-(32,32,2),
-(32,1,1),
-(33,29,2),
-(33,19,2),
-(33,39,1),
-(33,33,1),
-(33,24,2),
-(34,2,3),
-(34,26,1),
-(35,14,1),
-(35,17,1),
-(35,21,3),
-(35,2,1),
-(36,32,3),
-(37,41,2),
-(37,27,1),
-(38,16,2),
-(38,21,2),
-(39,41,3),
-(40,32,2),
-(40,39,3),
-(40,15,2),
-(40,19,3),
-(41,22,1),
-(41,18,2),
-(42,35,3),
-(42,12,3),
-(43,28,2),
-(43,35,2),
-(43,24,1),
-(43,32,3),
-(43,11,3),
-(44,38,1),
-(44,33,3),
-(44,18,1),
-(45,18,3),
-(45,36,1),
-(46,31,3),
-(46,16,1),
-(46,12,3),
-(47,4,3),
-(47,32,2),
-(47,17,1),
-(48,14,2),
-(48,32,1),
-(49,7,2),
-(49,39,3),
-(49,31,3),
-(50,33,2),
-(50,26,3),
-(50,15,1),
-(51,36,3),
-(52,38,1),
-(52,29,2),
-(52,4,1),
-(53,10,2),
-(53,12,2),
-(53,21,3),
-(53,32,2),
-(54,32,2),
-(54,22,3),
-(55,26,3),
-(55,13,1),
-(56,6,1),
-(56,32,2),
-(56,40,1),
-(57,18,2),
-(57,29,3),
-(58,27,3),
-(58,20,2),
-(59,40,2),
-(59,17,1),
-(59,1,3),
-(60,6,2),
-(60,2,3),
-(60,9,2),
-(60,15,3),
-(61,2,2),
-(61,9,1),
-(61,19,1),
-(62,6,3),
-(63,26,1),
-(63,19,3),
-(64,26,2),
-(64,3,2),
-(65,32,1),
-(65,26,2),
-(65,29,1),
-(65,41,2),
-(66,31,2),
-(66,2,2),
-(66,38,3),
-(67,15,3),
-(67,4,1),
-(67,17,3),
-(68,39,2),
-(68,31,1),
-(69,36,2),
-(69,39,2),
-(70,21,3),
-(70,19,3),
-(71,36,1),
-(71,28,2),
-(71,39,2),
-(72,18,2),
-(73,41,3),
-(74,20,2),
-(75,5,1),
-(75,41,1),
-(76,32,3),
-(76,36,3),
-(76,41,2),
-(76,26,3),
-(77,23,2),
-(77,14,3),
-(77,41,2),
-(78,35,2),
-(78,41,1),
-(78,36,2),
-(78,6,2),
-(79,15,3),
-(79,3,2),
-(79,11,1),
-(80,3,2),
-(80,26,2),
-(80,38,2),
-(81,10,2),
-(81,33,3),
-(81,9,1),
-(82,26,1),
-(83,5,3),
-(83,2,1),
-(83,31,1),
-(83,11,2),
-(84,10,2),
-(84,32,1),
-(85,9,2),
-(85,12,1),
-(86,32,3),
-(87,27,1),
-(87,18,2),
-(88,27,2),
-(88,14,3),
-(89,30,2),
-(89,7,2),
-(89,15,1),
-(90,24,3),
-(90,39,3),
-(90,6,1),
-(91,17,3),
-(91,36,3),
-(92,29,2),
-(92,1,1),
-(93,39,1),
-(93,18,3),
-(94,25,3),
-(94,31,2),
-(94,36,3),
-(94,13,1),
-(95,16,2),
-(95,11,3),
-(95,40,1)
+('HD001','SP040',3),
+('HD001','SP037',2),
+('HD001','SP012',2),
+('HD001','SP035',2),
+('HD002','SP024',2),
+('HD002','SP025',2),
+('HD002','SP032',2),
+('HD002','SP016',3),
+('HD003','SP008',1),
+('HD003','SP038',2),
+('HD003','SP040',3),
+('HD004','SP027',2),
+('HD004','SP025',3),
+('HD004','SP036',1),
+('HD004','SP032',1),
+('HD005','SP020',3),
+('HD005','SP017',2),
+('HD005','SP031',1),
+('HD006','SP012',2),
+('HD006','SP019',3),
+('HD007','SP015',2),
+('HD007','SP002',1),
+('HD007','SP020',3),
+('HD007','SP010',3),
+('HD007','SP034',1),
+('HD008','SP034',2),
+('HD008','SP036',3),
+('HD008','SP013',2),
+('HD008','SP031',2),
+('HD008','SP029',2),
+('HD009','SP011',2),
+('HD009','SP012',1),
+('HD009','SP018',2),
+('HD009','SP017',1),
+('HD009','SP021',2),
+('HD009','SP034',3),
+('HD010','SP001',3),
+('HD010','SP024',1),
+('HD010','SP021',1),
+('HD010','SP008',2),
+('HD010','SP041',3),
+('HD011','SP014',3),
+('HD011','SP026',3),
+('HD011','SP015',2),
+('HD012','SP024',3),
+('HD012','SP029',3),
+('HD013','SP031',2),
+('HD013','SP029',1),
+('HD013','SP041',3),
+('HD013','SP026',3),
+('HD014','SP028',3),
+('HD014','SP017',2),
+('HD014','SP023',2),
+('HD015','SP003',3),
+('HD015','SP041',1),
+('HD015','SP014',3),
+('HD015','SP008',3),
+('HD015','SP001',1),
+('HD016','SP031',1),
+('HD016','SP023',2),
+('HD016','SP004',2),
+('HD016','SP005',2),
+('HD017','SP041',2),
+('HD017','SP033',3),
+('HD017','SP010',3),
+('HD018','SP012',2),
+('HD018','SP025',1),
+('HD018','SP037',2),
+('HD018','SP005',2),
+('HD019','SP040',2),
+('HD019','SP019',3),
+('HD019','SP030',2),
+('HD019','SP020',2),
+('HD020','SP031',2),
+('HD020','SP029',2),
+('HD020','SP013',3),
+('HD021','SP040',3),
+('HD021','SP032',2),
+('HD021','SP034',2),
+('HD021','SP009',3),
+('HD022','SP009',2),
+('HD022','SP013',1),
+('HD022','SP040',1);
 go
 
+INSERT INTO CaLam (GioBatDau, GioKetThuc) VALUES('8:00', '12:00' );
+INSERT INTO CaLam (GioBatDau, GioKetThuc) VALUES('12:00', '18:00');
+INSERT INTO CaLam (GioBatDau, GioKetThuc) VALUES('18:00', '22:00');
 
-update PhieuNhap
-	set ThanhTien = (Select sum(dongia * SoLuong)
-				From ChiTietPhieuNhap
-				where PhieuNhap.MaPhieuNhap = ChiTietPhieuNhap.MaPhieuNhap
-				group by ChiTietPhieuNhap.MaPhieuNhap)
-go
-update HoaDon
-set ThanhTien = (Select sum(cthd.TongTien)
-			from ChiTietHoaDon cthd
-			where HoaDon.MaHoaDon = cthd.MaHoaDon)
-go
-update NguyenLieu
-set SoLuongTon = (SELECT SUM(SoLuong) FROM ChiTietPhieuNhap CTPN WHERE CTPN.MaNguyenLieu = NguyenLieu.MaNguyenLieu)
-SELECT * FROM ChiTietPhieuNhap
-SELECT SUM(SOLUONG) FROM ChiTietPhieuNhap GROUP BY MaNguyenLieu
-go
--- TRIGGER --
--- Trigger cap nhat phieu nhap
-Create trigger TRG_CapNhatThanhTienPhieuNhap on ChiTietPhieuNhap
-after insert, update, delete
-as begin
-	update PhieuNhap
-	set ThanhTien = (Select sum(dongia * SoLuong)
-				From ChiTietPhieuNhap
-				where PhieuNhap.MaPhieuNhap = ChiTietPhieuNhap.MaPhieuNhap
-				group by ChiTietPhieuNhap.MaPhieuNhap)
-end
-go
---drop trigger TRG_CapNhatThanhTienPhieuNhap
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '29/04/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '29/04/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV004', '29/04/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '29/04/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '29/04/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '03/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '03/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '03/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '03/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '03/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '03/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '04/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '04/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '04/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '04/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV002', '04/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV003', '04/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '04/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '04/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '05/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '05/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '05/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV002', '05/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV003', '05/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '05/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV004', '05/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '05/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '06/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '06/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '06/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '06/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '06/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '06/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV004', '06/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '07/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '07/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '07/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV002', '07/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV003', '07/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV004', '07/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '08/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '08/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '08/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '08/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '08/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '08/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '08/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '09/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '09/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '09/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV002', '09/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '09/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '09/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '10/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '10/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '10/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '10/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '10/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '10/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '10/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '10/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '11/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '11/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '11/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '11/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '11/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '11/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '12/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '12/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV003', '12/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '12/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '12/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '12/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '12/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '13/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '13/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '13/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV003', '13/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '13/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV004', '13/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '13/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '14/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '14/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '14/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV002', '14/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV003', '14/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '14/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '14/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '15/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '15/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '15/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '15/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '15/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV004', '15/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '16/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '16/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '16/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV002', '16/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV003', '16/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '16/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '16/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '16/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '17/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '17/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '17/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '17/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '17/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '17/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '17/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV004', '17/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '17/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '18/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '18/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV002', '18/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV003', '18/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '18/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '18/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '18/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '19/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '19/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '19/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '19/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV003', '19/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '19/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '19/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '20/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '20/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '20/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV002', '20/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV003', '20/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '20/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '20/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '20/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '21/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '21/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '21/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '21/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '21/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '21/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '21/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '22/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '22/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '22/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '22/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '22/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV004', '22/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '22/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '23/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '23/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '23/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV003', '23/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '23/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '23/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '23/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '24/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '24/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '24/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '24/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '24/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '24/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '24/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV004', '24/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '25/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '25/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '25/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '25/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '25/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '25/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '25/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '26/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '26/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '26/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '26/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '26/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '26/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '26/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '26/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '27/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '27/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '27/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '27/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV002', '27/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV003', '27/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV004', '27/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '27/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV004', '27/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '28/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV001', '28/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL001', 'NV002', '28/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '28/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '28/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '28/05/2024');
+INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '28/05/2024');
 
--- Trigger cap nhat thanh tien hoa don
-Create trigger TRG_CapNhatThanhTienHoaDon on ChiTietHoaDon
-for insert, update, delete
-as begin
-	update HoaDon
-	set ThanhTien = (Select sum(cthd.TongTien)
-				from ChiTietHoaDon cthd
-				where HoaDon.MaHoaDon = cthd.MaHoaDon)
-end
-go
---drop trigger TRG_CapNhatThanhTienHoaDon
--- Trigger nhap kho (so luong ton tang)
-Create Trigger TRG_NhapNguyenLieu ON chiTietPhieuNhap
-for insert, update, delete
-as begin
-	if exists(select * from inserted)
-	begin
-		update NguyenLieu
-		set SoLuongTon = SoLuongTon + (select inserted.SoLuong from inserted)
-		where (select MaNguyenLieu from inserted) = NguyenLieu.MaNguyenLieu
-		update PhieuNhap
-		set ThanhTien = ThanhTien + (select (SoLuong * DonGia) from inserted)
-		where PhieuNhap.MaPhieuNhap = (select MaPhieuNhap from inserted)
-	end
-	if exists(select * from deleted)
-	begin
-		update NguyenLieu
-		set SoLuongTon = SoLuongTon - (select deleted.SoLuong from deleted)
-		where (select MaNguyenLieu from deleted)= NguyenLieu.MaNguyenLieu
-		update PhieuNhap
-		set ThanhTien = ThanhTien - (select (SoLuong * DonGia) from inserted)
-		where PhieuNhap.MaPhieuNhap = (select MaPhieuNhap from inserted)
-	end
-end
---drop trigger TRG_NhapNguyenLieu
-go
+--update PhieuNhap
+--	set ThanhTien = (Select sum(dongia * SoLuong)
+--				From ChiTietPhieuNhap
+--				where PhieuNhap.MaPhieuNhap = ChiTietPhieuNhap.MaPhieuNhap
+--				group by ChiTietPhieuNhap.MaPhieuNhap)
+--go
+--update HoaDon
+--set ThanhTien = (Select sum(cthd.TongTien)
+--			from ChiTietHoaDon cthd
+--			where HoaDon.MaHoaDon = cthd.MaHoaDon)
+--go
+--update NguyenLieu
+--set SoLuongTon = (SELECT SUM(SoLuong) FROM ChiTietPhieuNhap CTPN WHERE CTPN.MaNguyenLieu = NguyenLieu.MaNguyenLieu)
+--SELECT * FROM ChiTietPhieuNhap
+--SELECT SUM(SOLUONG) FROM ChiTietPhieuNhap GROUP BY MaNguyenLieu
+--go
+---- TRIGGER --
+---- Trigger cap nhat phieu nhap
+--Create trigger TRG_CapNhatThanhTienPhieuNhap on ChiTietPhieuNhap
+--after insert, update, delete
+--as begin
+--	update PhieuNhap
+--	set ThanhTien = (Select sum(dongia * SoLuong)
+--				From ChiTietPhieuNhap
+--				where PhieuNhap.MaPhieuNhap = ChiTietPhieuNhap.MaPhieuNhap
+--				group by ChiTietPhieuNhap.MaPhieuNhap)
+--end
+--go
+----drop trigger TRG_CapNhatThanhTienPhieuNhap
+--
+---- Trigger cap nhat thanh tien hoa don
+--Create trigger TRG_CapNhatThanhTienHoaDon on ChiTietHoaDon
+--for insert, update, delete
+--as begin
+--	update HoaDon
+--	set ThanhTien = (Select sum(cthd.TongTien)
+--				from ChiTietHoaDon cthd
+--				where HoaDon.MaHoaDon = cthd.MaHoaDon)
+--end
+--go
+----drop trigger TRG_CapNhatThanhTienHoaDon
+---- Trigger nhap kho (so luong ton tang)
+--Create Trigger TRG_NhapNguyenLieu ON chiTietPhieuNhap
+--for insert, update, delete
+--as begin
+--	if exists(select * from inserted)
+--	begin
+--		update NguyenLieu
+--		set SoLuongTon = SoLuongTon + (select inserted.SoLuong from inserted)
+--		where (select MaNguyenLieu from inserted) = NguyenLieu.MaNguyenLieu
+--		update PhieuNhap
+--		set ThanhTien = ThanhTien + (select (SoLuong * DonGia) from inserted)
+--		where PhieuNhap.MaPhieuNhap = (select MaPhieuNhap from inserted)
+--	end
+--	if exists(select * from deleted)
+--	begin
+--		update NguyenLieu
+--		set SoLuongTon = SoLuongTon - (select deleted.SoLuong from deleted)
+--		where (select MaNguyenLieu from deleted)= NguyenLieu.MaNguyenLieu
+--		update PhieuNhap
+--		set ThanhTien = ThanhTien - (select (SoLuong * DonGia) from inserted)
+--		where PhieuNhap.MaPhieuNhap = (select MaPhieuNhap from inserted)
+--	end
+--end
+----drop trigger TRG_NhapNguyenLieu
+--go
 
 --==--==--==--==--==--==--==--==--==--==--==--==--==--==--
 --use master
 --go
---drop database QuanLyCuaHangCafe
-
-
+--ALTER DATABASE QuanLyCuaHangCafe SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+--DROP DATABASE QuanLyCuaHangCafe
