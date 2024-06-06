@@ -78,8 +78,6 @@ CREATE TABLE HoaDon
 	MaHoaDon varchar(10) not null default 'HD000',
 	TongTien int default 0,
 	ThoiGianLap DateTime,
-	ThoiGianThanhToan DateTime,
-	TrangThaiHD varchar(20),
 	MaNhanVien varchar(10), 
 	GhiChu varchar(100)
 )
@@ -670,28 +668,28 @@ INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Phin sữa đá',55000,
 INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Bánh mouse đào',35000,'Cake');
 
 
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('03/05/2024 12:11:56', '03/05/2024 13:13:34','NV002');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('04/05/2024 13:04:32', '04/05/2024 15:27:23','NV003');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('06/05/2024 8:37:45', '06/05/2024 10:45:08','NV003');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('06/05/2024 8:40:00', '06/05/2024 10:51:22','NV003');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('09/05/2024 14:37:01', '09/05/2024 15:37:49','NV002');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('10/05/2024 9:32:48', '10/05/2024 11:58:59','NV002');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('11/05/2024 14:39:43', '11/05/2024 16:13:58','NV003');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('13/05/2024 14:01:57', '13/05/2024 15:24:14','NV003');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('14/05/2024 12:42:39', '14/05/2024 13:49:25','NV002');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('14/05/2024 15:02:33', '14/05/2024 17:02:54','NV003');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('15/05/2024 11:35:43', '15/05/2024 13:57:56','NV002');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('17/05/2024 17:21:36', '17/05/2024 18:36:25','NV002');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('17/05/2024 18:14:46', '17/05/2024 19:26:31','NV003');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('18/05/2024 8:07:31', '18/05/2024 10:10:28','NV003');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('20/05/2024 14:08:30', '20/05/2024 16:34:26','NV002');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('20/05/2024 15:20:48', '20/05/2024 16:43:38','NV003');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('21/05/2024 15:16:43', '21/05/2024 16:46:59','NV002');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('23/05/2024 15:26:44', '23/05/2024 17:07:00','NV003');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('25/05/2024 14:26:44', '23/05/2024 15:07:00','NV002');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('27/05/2024 9:26:56', '27/05/2024 10:27:19','NV003');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('28/05/2024 9:22:11', '28/05/2024 11:35:08','NV003');
-INSERT INTO HoaDon(ThoiGianLap, ThoiGianThanhToan, MaNhanVien) VALUES('28/05/2024 12:04:31', '28/05/2024 13:12:59','NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('03/05/2024 12:11:56','NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/05/2024 13:04:32','NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('06/05/2024 8:37:45','NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('06/05/2024 8:40:00','NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('09/05/2024 14:37:01','NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('10/05/2024 9:32:48','NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('11/05/2024 14:39:43','NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('13/05/2024 14:01:57','NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('14/05/2024 12:42:39','NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('14/05/2024 15:02:33','NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('15/05/2024 11:35:43','NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('17/05/2024 17:21:36','NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('17/05/2024 18:14:46','NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('18/05/2024 8:07:31','NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('20/05/2024 14:08:30','NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('20/05/2024 15:20:48','NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('21/05/2024 15:16:43','NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('23/05/2024 15:26:44','NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('25/05/2024 14:26:44','NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('27/05/2024 9:26:56', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('28/05/2024 9:22:11','NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('28/05/2024 12:04:31','NV002');
 
 INSERT INTO ChiTietHoaDon(MaHoaDon, MaSanPham, SoLuong) VALUES
 ('HD001','SP040',3),
@@ -977,74 +975,10 @@ INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '28/05/2024');
 INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '28/05/2024');
 INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '28/05/2024');
 
---update PhieuNhap
---	set ThanhTien = (Select sum(dongia * SoLuong)
---				From ChiTietPhieuNhap
---				where PhieuNhap.MaPhieuNhap = ChiTietPhieuNhap.MaPhieuNhap
---				group by ChiTietPhieuNhap.MaPhieuNhap)
---go
---update HoaDon
---set ThanhTien = (Select sum(cthd.TongTien)
---			from ChiTietHoaDon cthd
---			where HoaDon.MaHoaDon = cthd.MaHoaDon)
---go
---update NguyenLieu
---set SoLuongTon = (SELECT SUM(SoLuong) FROM ChiTietPhieuNhap CTPN WHERE CTPN.MaNguyenLieu = NguyenLieu.MaNguyenLieu)
---SELECT * FROM ChiTietPhieuNhap
---SELECT SUM(SOLUONG) FROM ChiTietPhieuNhap GROUP BY MaNguyenLieu
---go
----- TRIGGER --
----- Trigger cap nhat phieu nhap
---Create trigger TRG_CapNhatThanhTienPhieuNhap on ChiTietPhieuNhap
---after insert, update, delete
---as begin
---	update PhieuNhap
---	set ThanhTien = (Select sum(dongia * SoLuong)
---				From ChiTietPhieuNhap
---				where PhieuNhap.MaPhieuNhap = ChiTietPhieuNhap.MaPhieuNhap
---				group by ChiTietPhieuNhap.MaPhieuNhap)
---end
---go
-----drop trigger TRG_CapNhatThanhTienPhieuNhap
---
----- Trigger cap nhat thanh tien hoa don
---Create trigger TRG_CapNhatThanhTienHoaDon on ChiTietHoaDon
---for insert, update, delete
---as begin
---	update HoaDon
---	set ThanhTien = (Select sum(cthd.TongTien)
---				from ChiTietHoaDon cthd
---				where HoaDon.MaHoaDon = cthd.MaHoaDon)
---end
---go
-----drop trigger TRG_CapNhatThanhTienHoaDon
----- Trigger nhap kho (so luong ton tang)
---Create Trigger TRG_NhapNguyenLieu ON chiTietPhieuNhap
---for insert, update, delete
---as begin
---	if exists(select * from inserted)
---	begin
---		update NguyenLieu
---		set SoLuongTon = SoLuongTon + (select inserted.SoLuong from inserted)
---		where (select MaNguyenLieu from inserted) = NguyenLieu.MaNguyenLieu
---		update PhieuNhap
---		set ThanhTien = ThanhTien + (select (SoLuong * DonGia) from inserted)
---		where PhieuNhap.MaPhieuNhap = (select MaPhieuNhap from inserted)
---	end
---	if exists(select * from deleted)
---	begin
---		update NguyenLieu
---		set SoLuongTon = SoLuongTon - (select deleted.SoLuong from deleted)
---		where (select MaNguyenLieu from deleted)= NguyenLieu.MaNguyenLieu
---		update PhieuNhap
---		set ThanhTien = ThanhTien - (select (SoLuong * DonGia) from inserted)
---		where PhieuNhap.MaPhieuNhap = (select MaPhieuNhap from inserted)
---	end
---end
-----drop trigger TRG_NhapNguyenLieu
---go
 
---==--==--==--==--==--==--==--==--==--==--==--==--==--==--
+select * from HoaDon
+select * from ChiTietHoaDon order by MaHoaDon
+-----------------------------------
 --use master
 --go
 --ALTER DATABASE QuanLyCuaHangCafe SET SINGLE_USER WITH ROLLBACK IMMEDIATE;

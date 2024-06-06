@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\ChiTietDonHangDAO.cs" />
     <Compile Include="DAO\DBConnect.cs" />
+    <Compile Include="DAO\DonHangDAO.cs" />
     <Compile Include="DAO\NhaCungCapDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
     <Compile Include="GUI\frmBanHang.cs">
