@@ -23,3 +23,12 @@ C:\Users\MY DELL\Desktop\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.pdb
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\QL_CaPhe.exe.config
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.exe
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.pdb
+D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\QL_CaPhe.exe
+D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\QL_CaPhe.pdb
+D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.csproj.AssemblyReference.cache
+D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmBanHang.resources
+D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmDashboard.resources
+D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.frmTrangChu.resources
+D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.Properties.Resources.resources
+D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.csproj.GenerateResource.cache
+D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.csproj.CoreCompileInputs.cache
