@@ -16,7 +16,5 @@ namespace QL_CaPhe.GUI
         {
             InitializeComponent();
         }
-
-
     }
 }
