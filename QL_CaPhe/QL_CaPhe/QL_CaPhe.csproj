@@ -69,6 +69,12 @@
     <Compile Include="GUI\frmDashboard.Designer.cs">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\frmDN_DK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmDN_DK.Designer.cs">
+      <DependentUpon>frmDN_DK.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmTinhLuong.cs">
       <SubType>Form</SubType>
     </Compile>
