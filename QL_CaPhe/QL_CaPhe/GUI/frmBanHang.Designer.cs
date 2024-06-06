@@ -44,13 +44,13 @@
             this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgv_SanPham = new System.Windows.Forms.DataGridView();
+            this.MaSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboNCC = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTim = new System.Windows.Forms.Button();
             this.txtSanPham = new System.Windows.Forms.TextBox();
-            this.MaSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pn_BanHang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCTHD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SanPham)).BeginInit();
@@ -73,7 +73,7 @@
             this.pn_BanHang.Controls.Add(this.label1);
             this.pn_BanHang.Controls.Add(this.btnTim);
             this.pn_BanHang.Controls.Add(this.txtSanPham);
-            this.pn_BanHang.Location = new System.Drawing.Point(16, 17);
+            this.pn_BanHang.Location = new System.Drawing.Point(14, 14);
             this.pn_BanHang.Margin = new System.Windows.Forms.Padding(5);
             this.pn_BanHang.Name = "pn_BanHang";
             this.pn_BanHang.Size = new System.Drawing.Size(1022, 548);
@@ -102,7 +102,7 @@
             this.lbTongSoLuong.AutoSize = true;
             this.lbTongSoLuong.Location = new System.Drawing.Point(953, 540);
             this.lbTongSoLuong.Name = "lbTongSoLuong";
-            this.lbTongSoLuong.Size = new System.Drawing.Size(0, 29);
+            this.lbTongSoLuong.Size = new System.Drawing.Size(0, 20);
             this.lbTongSoLuong.TabIndex = 12;
             // 
             // lbTongTien
@@ -110,7 +110,7 @@
             this.lbTongTien.AutoSize = true;
             this.lbTongTien.Location = new System.Drawing.Point(953, 487);
             this.lbTongTien.Name = "lbTongTien";
-            this.lbTongTien.Size = new System.Drawing.Size(0, 29);
+            this.lbTongTien.Size = new System.Drawing.Size(0, 20);
             this.lbTongTien.TabIndex = 11;
             // 
             // label4
@@ -118,7 +118,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(513, 381);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(163, 29);
+            this.label4.Size = new System.Drawing.Size(114, 20);
             this.label4.TabIndex = 10;
             this.label4.Text = "Tổng số lượng";
             // 
@@ -127,7 +127,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(513, 328);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 29);
+            this.label3.Size = new System.Drawing.Size(82, 20);
             this.label3.TabIndex = 9;
             this.label3.Text = "Tổng tiền:";
             // 
@@ -185,7 +185,7 @@
             // 
             this.txtSoLuong.Location = new System.Drawing.Point(102, 466);
             this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(150, 37);
+            this.txtSoLuong.Size = new System.Drawing.Size(150, 27);
             this.txtSoLuong.TabIndex = 6;
             // 
             // label2
@@ -193,7 +193,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(5, 471);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 29);
+            this.label2.Size = new System.Drawing.Size(74, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Số lượng";
             // 
@@ -215,43 +215,6 @@
             this.dgv_SanPham.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_SanPham.Size = new System.Drawing.Size(487, 294);
             this.dgv_SanPham.TabIndex = 4;
-            // 
-            // cboNCC
-            // 
-            this.cboNCC.FormattingEnabled = true;
-            this.cboNCC.Location = new System.Drawing.Point(150, 67);
-            this.cboNCC.Margin = new System.Windows.Forms.Padding(5);
-            this.cboNCC.Name = "cboNCC";
-            this.cboNCC.Size = new System.Drawing.Size(344, 37);
-            this.cboNCC.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 69);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 29);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Nhà cung cấp";
-            // 
-            // btnTim
-            // 
-            this.btnTim.Location = new System.Drawing.Point(375, 3);
-            this.btnTim.Margin = new System.Windows.Forms.Padding(5);
-            this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(119, 41);
-            this.btnTim.TabIndex = 1;
-            this.btnTim.Text = "Tìm";
-            this.btnTim.UseVisualStyleBackColor = true;
-            // 
-            // txtSanPham
-            // 
-            this.txtSanPham.Location = new System.Drawing.Point(7, 9);
-            this.txtSanPham.Margin = new System.Windows.Forms.Padding(5);
-            this.txtSanPham.Name = "txtSanPham";
-            this.txtSanPham.Size = new System.Drawing.Size(345, 37);
-            this.txtSanPham.TabIndex = 0;
             // 
             // MaSanPham
             // 
@@ -278,9 +241,46 @@
             this.GiaBan.Name = "GiaBan";
             this.GiaBan.ReadOnly = true;
             // 
+            // cboNCC
+            // 
+            this.cboNCC.FormattingEnabled = true;
+            this.cboNCC.Location = new System.Drawing.Point(150, 67);
+            this.cboNCC.Margin = new System.Windows.Forms.Padding(5);
+            this.cboNCC.Name = "cboNCC";
+            this.cboNCC.Size = new System.Drawing.Size(344, 27);
+            this.cboNCC.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(2, 69);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Nhà cung cấp";
+            // 
+            // btnTim
+            // 
+            this.btnTim.Location = new System.Drawing.Point(375, 3);
+            this.btnTim.Margin = new System.Windows.Forms.Padding(5);
+            this.btnTim.Name = "btnTim";
+            this.btnTim.Size = new System.Drawing.Size(119, 41);
+            this.btnTim.TabIndex = 1;
+            this.btnTim.Text = "Tìm";
+            this.btnTim.UseVisualStyleBackColor = true;
+            // 
+            // txtSanPham
+            // 
+            this.txtSanPham.Location = new System.Drawing.Point(7, 9);
+            this.txtSanPham.Margin = new System.Windows.Forms.Padding(5);
+            this.txtSanPham.Name = "txtSanPham";
+            this.txtSanPham.Size = new System.Drawing.Size(345, 27);
+            this.txtSanPham.TabIndex = 0;
+            // 
             // frmBanHang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1057, 576);
             this.Controls.Add(this.pn_BanHang);
