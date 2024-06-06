@@ -1,7 +1,7 @@
 ﻿
 namespace QL_CaPhe.GUI
 {
-    partial class frm_DN_DK
+    partial class Frm_DangNhap
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@ namespace QL_CaPhe.GUI
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "frm_DN_DK";
+            this.Text = "Frm_DangNhap";
         }
 
         #endregion
