@@ -33,16 +33,16 @@
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTinhLuong = new System.Windows.Forms.Button();
-            this.btnNhapHang = new System.Windows.Forms.Button();
+            this.btnKho = new System.Windows.Forms.Button();
             this.btnBanHang = new System.Windows.Forms.Button();
             this.btnChamCong = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pn_TrangChu
             // 
-            this.pn_TrangChu.Location = new System.Drawing.Point(228, 12);
+            this.pn_TrangChu.Location = new System.Drawing.Point(228, 3);
             this.pn_TrangChu.Name = "pn_TrangChu";
-            this.pn_TrangChu.Size = new System.Drawing.Size(1025, 568);
+            this.pn_TrangChu.Size = new System.Drawing.Size(1025, 590);
             this.pn_TrangChu.TabIndex = 0;
             // 
             // btnThongKe
@@ -70,7 +70,7 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(13, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(185, 39);
+            this.label1.Size = new System.Drawing.Size(209, 46);
             this.label1.TabIndex = 2;
             this.label1.Text = "Lazy Coffee";
             // 
@@ -83,14 +83,15 @@
             this.btnTinhLuong.Text = "Tính lương";
             this.btnTinhLuong.UseVisualStyleBackColor = true;
             // 
-            // btnNhapHang
+            // btnKho
             // 
-            this.btnNhapHang.Location = new System.Drawing.Point(28, 259);
-            this.btnNhapHang.Name = "btnNhapHang";
-            this.btnNhapHang.Size = new System.Drawing.Size(169, 58);
-            this.btnNhapHang.TabIndex = 1;
-            this.btnNhapHang.Text = "Nhập hàng";
-            this.btnNhapHang.UseVisualStyleBackColor = true;
+            this.btnKho.Location = new System.Drawing.Point(28, 259);
+            this.btnKho.Name = "btnKho";
+            this.btnKho.Size = new System.Drawing.Size(169, 58);
+            this.btnKho.TabIndex = 1;
+            this.btnKho.Text = "Kho";
+            this.btnKho.UseVisualStyleBackColor = true;
+            this.btnKho.Click += new System.EventHandler(this.btnKho_Click);
             // 
             // btnBanHang
             // 
@@ -113,7 +114,7 @@
             // 
             // frmTrangChu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1265, 592);
             this.Controls.Add(this.btnChamCong);
@@ -121,7 +122,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDangXuat);
             this.Controls.Add(this.btnThongKe);
-            this.Controls.Add(this.btnNhapHang);
+            this.Controls.Add(this.btnKho);
             this.Controls.Add(this.btnBanHang);
             this.Controls.Add(this.pn_TrangChu);
             this.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -140,7 +141,7 @@
         private System.Windows.Forms.Button btnDangXuat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTinhLuong;
-        private System.Windows.Forms.Button btnNhapHang;
+        private System.Windows.Forms.Button btnKho;
         private System.Windows.Forms.Button btnBanHang;
         private System.Windows.Forms.Button btnChamCong;
     }

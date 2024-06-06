@@ -32,3 +32,10 @@ D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.Properties.Resources.resources
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.csproj.GenerateResource.cache
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.csproj.CoreCompileInputs.cache
+D:\DoAn\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmDashboard.resources
+D:\DoAn\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmKho.resources
+D:\DoAn\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmTinhLuong.resources
+D:\DoAn\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\GUI\frmKho.resx
+D:\DoAn\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\GUI\frmKho.cs
+D:\DoAn\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\GUI\frmKho.Designer.cs
+D:\DoAn\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmNhapHang.resources

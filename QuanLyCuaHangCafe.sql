@@ -2,6 +2,8 @@ CREATE DATABASE QuanLyCuaHangCafe
 GO
 USE QuanLyCuaHangCafe
 GO
+
+
 -- TABLE --
 CREATE TABLE TaiKhoan
 (
