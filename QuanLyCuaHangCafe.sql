@@ -104,8 +104,7 @@ CREATE TABLE BangLuong
 (
 	MaBangLuong varchar(10) not null default 'BL000',
 	MaNhanVien varchar(10) not null,
-	ThoiGianChamCong time,
-	ThoiGianTraLuong time,
+	ThoiGianTraLuong Date,
 	PhuCap int,
 	Luong int
 )
@@ -115,6 +114,7 @@ CREATE TABLE CaLam
 	MaCaLam varchar(10) not null default 'CL000',
 	GioBatDau time,
 	GioKetThuc time,
+	TongGio int,
 )
 
 
@@ -521,6 +521,8 @@ BEGIN
 END
 GO
 
+
+
 -- INSERT --
 SET DATEFORMAT DMY
 
@@ -533,7 +535,7 @@ VALUES
 INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Nguyễn Quốc Thái', '28/8/2002', 1, N'Thành phố Hồ Chí Minh', '29/04/2024', null, 'QL');
 INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'TNguyễn Phương Bảo Ngân', '04/02/2003', 0, N'Bình Thuận', '03/05/2024', null, 'BH');
 INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Nguyễn Phan Như Quỳnh', '20/2/2002', 1, N'Tây Ninh', '03/05/2024', null, 'BH');
-INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Bùi Phan Bảo Ngọc', '11/2/2003', 0, N'Thành phố Hồ Chí Minh', '29/04/2024', null, 'K');
+INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Bùi Phan Bảo Ngọc', '11/2/2003', 0, N'Bình Phước', '29/04/2024', null, 'K');
 
 INSERT INTO TaiKhoan
 VALUES
@@ -777,9 +779,9 @@ INSERT INTO ChiTietHoaDon(MaHoaDon, MaSanPham, SoLuong) VALUES
 ('HD022','SP040',1);
 go
 
-INSERT INTO CaLam (GioBatDau, GioKetThuc) VALUES('8:00', '12:00' );
-INSERT INTO CaLam (GioBatDau, GioKetThuc) VALUES('12:00', '18:00');
-INSERT INTO CaLam (GioBatDau, GioKetThuc) VALUES('18:00', '22:00');
+INSERT INTO CaLam (GioBatDau, GioKetThuc, TongGio) VALUES('8:00', '12:00', '4');
+INSERT INTO CaLam (GioBatDau, GioKetThuc, TongGio) VALUES('12:00', '18:00', '6');
+INSERT INTO CaLam (GioBatDau, GioKetThuc, TongGio) VALUES('18:00', '22:00', '4');
 
 INSERT INTO ChiTietCaLam VALUES('CL001', 'NV001', '29/04/2024');
 INSERT INTO ChiTietCaLam VALUES('CL002', 'NV001', '29/04/2024');

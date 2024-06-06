@@ -15,5 +15,11 @@ namespace QL_CaPhe.DAO
             string sql = "SELECT MaSanPham, TenSanPham, GiaBan FROM SanPham";
             return db.getTable(sql);
         }
+
+        public static DataTable timSanPham(string tenSP) {
+            DBConnect db = new DBConnect();
+            string sql = "SELECT MaSanPham, TenSanPham, GiaBan FROM SanPham where TenSanPham like N'%" + tenSP + "%'";
+            return db.getTable(sql);
+        }
     }
 }
