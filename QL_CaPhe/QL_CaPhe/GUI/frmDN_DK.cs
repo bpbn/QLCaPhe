@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QL_CaPhe.GUI
 {
-    public partial class frmTinhLuong : Form
+    public partial class frmDN_DK : Form
     {
-        public frmTinhLuong()
+        public frmDN_DK()
         {
             InitializeComponent();
         }
