@@ -5,7 +5,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using QL_CaPhe.POJO;
 using static QL_CaPhe.POJO.Dashboard;
 
 
@@ -20,7 +19,7 @@ namespace QL_CaPhe.DAO
         public int SoNCC { get; private set; }
         public int SoSanPham { get; private set; }
         public List<KeyValuePair<String, int>> ListTopSP { get; private set; }
-        public List<KeyValuePair<String, int>> ListSPSapHetHang { get; private set; }
+        public List<KeyValuePair<String, int>> ListNLSapHetHang { get; private set; }
         public List<DoanhThuTheoNgay> ListDoanhThu { get; private set; }
         public List<ChiTieuTheoNgay> ListChiTien { get; private set; }
         public int SoDH { get; private set; }
@@ -57,7 +56,7 @@ namespace QL_CaPhe.DAO
                     SoDH = (int)command.ExecuteScalar();
 
                     //Lấy tổng số đơn xuất
-                    command.CommandText = @"SELECT Count(*) FROM PhieuNhap WHERE ThoiGianLap BETWEEN @fromDate AND @toDate";
+                    command.CommandText = @"SELECT Count(*) FROM PhieuNhap WHERE NgayNhap BETWEEN @fromDate AND @toDate";
                     SoPN = (int)command.ExecuteScalar();
 
                 }
@@ -148,7 +147,7 @@ namespace QL_CaPhe.DAO
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = @"SELECT ThoiGianLap, SUM(TongTien) from PhieuNhap WHERE ThoiGianLap BETWEEN @fromDate AND @toDate GROUP BY ThoiGianLap";
+                    command.CommandText = @"SELECT NgayNhap, SUM(TongTien) from PhieuNhap WHERE NgayNhap BETWEEN @fromDate AND @toDate GROUP BY NgayNhap";
                     command.Parameters.Add("@fromDate", System.Data.SqlDbType.DateTime).Value = NgayBD;
                     command.Parameters.Add("@toDate", System.Data.SqlDbType.DateTime).Value = NgayKT;
                     var reader = command.ExecuteReader();
@@ -215,7 +214,7 @@ namespace QL_CaPhe.DAO
         private void GetGoodsAnalisys()
         {
             ListTopSP = new List<KeyValuePair<string, int>>();
-            ListSPSapHetHang = new List<KeyValuePair<string, int>>();
+            ListNLSapHetHang = new List<KeyValuePair<string, int>>();
             using (var connection = GetConnection())
             {
                 connection.Open();
@@ -223,8 +222,46 @@ namespace QL_CaPhe.DAO
                 {
                     SqlDataReader reader;
                     command.Connection = connection;
-                    command.CommandText = @"select TOP 5 "
+                    command.CommandText = @"select TOP 5 SP.TenSanPham, SUM(CTHD.SoLuong) as SL from ChiTietHoaDon CTHD join SanPham SP on CTHD.MaSanPham = SP.MaSanPham join HoaDon HD on CTHD.MaHoaDon = HD.MaHoaDon where ThoiGianLap between @fromDate and @toDate group by SP.TenSanPham order by SL DESC";
+                    command.Parameters.Add("@fromDate", System.Data.SqlDbType.DateTime).Value = NgayBD;
+                    command.Parameters.Add("@toDate", System.Data.SqlDbType.DateTime).Value = NgayKT;
+                    reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ListTopSP.Add(new KeyValuePair<string, int>(reader[0].ToString(), (int)reader[1]));
+                    }
+                    reader.Close();
+
+                    command.CommandText = @"select TenNguyenLieu, SoLuongTon from NguyenLieu where SoLuongTon <= 10";
+                    reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ListNLSapHetHang.Add(new KeyValuePair<string, int>(reader[0].ToString(), (int)reader[1]));
+                    }
+                    reader.Close();
                 }
+            }
+        }
+
+        public bool LoadData(DateTime NgayBD, DateTime NgayKT)
+        {
+            NgayKT = new DateTime(NgayKT.Year, NgayKT.Month, NgayKT.Day);
+            if(NgayBD != this.NgayBD || NgayKT != this.NgayKT)
+            {
+                this.NgayBD = NgayBD;
+                this.NgayKT = NgayKT;
+                this.SoNgay = (NgayKT - NgayBD).Days;
+
+                GetNumberItems();
+                GetOrderAnalisys();
+                GetGoodsAnalisys();
+                GetGoodsImportAnalisys();
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     } 

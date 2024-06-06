@@ -26,5 +26,11 @@ namespace QL_CaPhe
             pn_TrangChu.Controls.Add(f.pn_BanHang);
             f.Show();
         }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            frmDashboard f = new frmDashboard();
+            f.Show();
+        }
     }
 }
