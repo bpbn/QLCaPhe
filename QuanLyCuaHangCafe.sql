@@ -1,3 +1,7 @@
+--use master
+--go 
+--drop database QuanLyCuaHangCafe
+
 CREATE DATABASE QuanLyCuaHangCafe
 GO
 USE QuanLyCuaHangCafe
@@ -667,13 +671,61 @@ INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Phin đen đá',55000,'
 INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Phin sữa đá',55000,'PhinDi');
 INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Bánh mouse đào',35000,'Cake');
 
-
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('03/04/2024 12:11:56', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('03/04/2024 13:10:25', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('03/04/2024 13:20:36', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('03/04/2024 13:45:10', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('03/04/2024 15:25:15', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/04/2024 07:25:15', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/04/2024 07:30:45', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/04/2024 07:35:40', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/04/2024 07:45:25', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/04/2024 10:25:00', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/04/2024 11:20:00', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/04/2024 11:30:00', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/04/2024 12:35:10', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/04/2024 13:25:47', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/04/2024 15:56:21', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/04/2024 18:25:42', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/04/2024 20:20:13', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('05/04/2024 09:15:17', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('05/04/2024 10:23:54', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('05/04/2024 13:25:54', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('05/04/2024 15:30:17', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('05/04/2024 16:47:53', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('05/04/2024 19:23:35', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('06/04/2024 09:59:34', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('06/04/2024 10:25:37', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('06/04/2024 12:20:45', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('06/04/2024 15:37:11', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('06/04/2024 17:35:12', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('06/04/2024 18:20:45', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('06/04/2024 20:00:11', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('07/04/2024 12:24:32', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('07/04/2024 13:20:00', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('07/04/2024 15:21:10', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('08/04/2024 08:23:21', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('08/04/2024 09:20:10', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('08/04/2024 15:12:58', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('08/04/2024 16:10:23', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('08/04/2024 20:10:30', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('09/04/2024 10:22:33', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('09/04/2024 11:23:45', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('09/04/2024 13:20:40', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('09/04/2024 17:30:20', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('09/04/2024 19:32:34', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('10/04/2024 07:32:34', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('10/04/2024 09:30:54', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('10/04/2024 09:32:48', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('11/04/2024 14:39:43', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('13/04/2024 14:01:57', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('15/05/2024 11:35:43', 'NV002');
 INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('03/05/2024 12:11:56', 'NV002');
 INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('04/05/2024 13:04:32', 'NV003');
-INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('06/05/2024 8:37:45', 'NV003');
-INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('06/05/2024 8:40:00', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('06/05/2024 08:37:45', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('06/05/2024 08:40:00', 'NV003');
 INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('09/05/2024 14:37:01', 'NV002');
-INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('10/05/2024 9:32:48', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('10/05/2024 09:32:48', 'NV002');
 INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('11/05/2024 14:39:43', 'NV003');
 INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('13/05/2024 14:01:57', 'NV003');
 INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('14/05/2024 12:42:39', 'NV002');
@@ -690,6 +742,33 @@ INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('25/05/2024 14:26:44', 'NV002
 INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('27/05/2024 9:26:56', 'NV003');
 INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('28/05/2024 9:22:11', 'NV003');
 INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('28/05/2024 12:04:31', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('28/05/2024 14:10:00', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('29/05/2024 07:10:56', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('29/05/2024 09:20:10', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('29/05/2024 10:30:15', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('29/05/2024 12:56:00', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('30/05/2024 08:15:20', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('30/05/2024 10:20:30', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('30/05/2024 11:25:00', 'NV001');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('30/05/2024 11:30:50', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('30/05/2024 12:10:30', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('30/05/2024 14:25:15', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('30/05/2024 14:30:40', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('30/05/2024 15:10:25', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('30/05/2024 15:20:30', 'NV002');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('31/05/2024 07:20:12', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('31/05/2024 08:30:00', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('31/05/2024 10:15:12', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('31/05/2024 10:35:46', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('31/05/2024 10:45:57', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('31/05/2024 11:15:02', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('31/05/2024 11:20:03', 'NV003');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('31/05/2024 13:00:03', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('31/05/2024 14:12:45', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('31/05/2024 15:21:32', 'NV004');
+INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('31/05/2024 15:26:24', 'NV004');
+
+
 
 INSERT INTO ChiTietHoaDon(MaHoaDon, MaSanPham, SoLuong) VALUES
 ('HD001','SP040',3),
@@ -774,7 +853,35 @@ INSERT INTO ChiTietHoaDon(MaHoaDon, MaSanPham, SoLuong) VALUES
 ('HD021','SP009',3),
 ('HD022','SP009',2),
 ('HD022','SP013',1),
-('HD022','SP040',1);
+('HD022','SP040',1),
+('HD023','SP011',3),
+('HD023','SP020',4),
+('HD024','SP010',1),
+('HD024','SP021',2),
+('HD025','SP001',3),
+('HD025','SP005',2),
+('HD025','SP012',1),
+('HD025','SP013',2),
+('HD026','SP020',3),
+('HD026','SP021',1),
+('HD026','SP030',2),
+('HD027','SP021',2),
+('HD027','SP022',1),
+('HD027','SP012',3),
+('HD028','SP013',1),
+('HD028','SP010',1),
+('HD029','SP005',2),
+('HD030','SP014',3),
+('HD031','SP023',1),
+('HD031','SP025',1),
+('HD031','SP030',2),
+('HD032','SP006',1),
+('HD033','SP002',5),
+('HD034','SP005',8),
+('HD034','SP012',1),
+('HD035','SP012',5),
+('HD036','SP027',3),
+('HD036','SP028',1),
 go
 
 INSERT INTO CaLam (GioBatDau, GioKetThuc, TongGio) VALUES('8:00', '12:00', '4');
