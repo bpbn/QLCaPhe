@@ -32,3 +32,11 @@ D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.Properties.Resources.resources
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.csproj.GenerateResource.cache
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.csproj.CoreCompileInputs.cache
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.csproj.AssemblyReference.cache
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmBanHang.resources
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmDashboard.resources
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmTinhLuong.resources
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.frmTrangChu.resources
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.csproj.GenerateResource.cache
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.exe
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.pdb
