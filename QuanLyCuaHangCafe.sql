@@ -7,7 +7,7 @@ CREATE TABLE TaiKhoan
 (
 	TenDangNhap varchar(50) not null,
 	MatKhau varchar(50),
-	MaNhanVien varchar(10)
+	MaChucVu varchar(10)
 )
 
 CREATE TABLE NhaCungCap
@@ -89,7 +89,6 @@ CREATE TABLE ChiTietHoaDon
 	SoLuong int default 1,
 	ThanhTien int default 0,
 	GhiChu text
-
 )
 
 CREATE TABLE ChucVu
@@ -212,7 +211,7 @@ ALTER TABLE NhanVien
 ADD CONSTRAINT FK_NhanVien_ChucVu FOREIGN KEY (MaChucVu) REFERENCES ChucVu(MaChucVu)
 
 ALTER TABLE TaiKhoan
-ADD CONSTRAINT FK_TaiKhoan_NhanVien FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
+ADD CONSTRAINT FK_TaiKhoan_NhanVien FOREIGN KEY (MaChucVu) REFERENCES ChucVu(MaChucVu)
 
 ALTER TABLE BangLuong
 ADD CONSTRAINT FK_BangLuong_NhanVien FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
@@ -539,10 +538,9 @@ INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayN
 
 INSERT INTO TaiKhoan
 VALUES
-('ouoctiiai', '123', 'NV001'),
-('npbn', '123', 'NV002'),
-('win', '123', 'NV003'),
-('bpbn', '123', 'NV004')
+('ouoctiiai', '123', 'QL'),
+('npbn', '123', 'BH'),
+('win', '123', 'K')
 GO
 
 
