@@ -74,5 +74,14 @@ namespace QL_CaPhe
             pn_TrangChu.Controls.Add(f.pn_Kho);
             f.Show();
         }
+
+        private void btnTinhLuong_Click(object sender, EventArgs e)
+        {
+            frmTinhLuong f = new frmTinhLuong();
+            f.TopLevel = false;
+            pn_TrangChu.Controls.Clear();
+            pn_TrangChu.Controls.Add(f.pnTinhLuong);
+            f.Show();
+        }
     }
 }

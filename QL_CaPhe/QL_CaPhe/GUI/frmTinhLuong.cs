@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QL_CaPhe.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace QL_CaPhe.GUI
 {
     public partial class frmTinhLuong : Form
     {
+        public Panel pnTimhLuong
         public frmTinhLuong()
         {
             InitializeComponent();
@@ -21,5 +23,16 @@ namespace QL_CaPhe.GUI
         {
 
         }
+
+        private void loadNhanVien()
+        {
+            DataTable dt = NhanVienDAO.layDSNhanVien();
+
+            cboMaNV.DataSource = dt;
+            cboMaNV.DisplayMember = "TenNhanVien" +
+                "";
+            cboMaNV.ValueMember = "MaNhanVien";
+        }
+
     }
 }

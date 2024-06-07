@@ -71,7 +71,7 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(13, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 46);
+            this.label1.Size = new System.Drawing.Size(185, 39);
             this.label1.TabIndex = 2;
             this.label1.Text = "Lazy Coffee";
             // 
@@ -83,6 +83,7 @@
             this.btnTinhLuong.TabIndex = 3;
             this.btnTinhLuong.Text = "Tính lương";
             this.btnTinhLuong.UseVisualStyleBackColor = true;
+            this.btnTinhLuong.Click += new System.EventHandler(this.btnTinhLuong_Click);
             // 
             // btnKho
             // 
@@ -115,7 +116,7 @@
             // 
             // frmTrangChu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1265, 592);
             this.Controls.Add(this.btnChamCong);

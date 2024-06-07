@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace QL_CaPhe.DAO
 {
-    public class NhanVienDAO
+    class NhanVienDAO
     {
+        public static DataTable layDSNhanVien()
+        {
+            DBConnect db = new DBConnect();
+            string sql = "SELECT * FROM NhanVien";
+            return db.getTable(sql);
+        }
+
         public static DataTable layDSNhanVienBH()
         {
             DBConnect db = new DBConnect();
