@@ -55,6 +55,7 @@
     <Compile Include="DAO\NhanVienDAO.cs" />
     <Compile Include="DAO\PhieuNhapDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
+    <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="GUI\frmBanHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +123,9 @@
     <EmbeddedResource Include="GUI\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmDN_DK.resx">
+      <DependentUpon>frmDN_DK.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmKho.resx">
       <DependentUpon>frmKho.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -161,9 +165,13 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\9f79aae2c21daae7fdff49873ee838-unscreen.gif" />
+    <Content Include="Resources\hide.png" />
+    <Content Include="Resources\view.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

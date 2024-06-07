@@ -17,6 +17,9 @@ namespace QL_CaPhe.GUI
             InitializeComponent();
         }
 
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
