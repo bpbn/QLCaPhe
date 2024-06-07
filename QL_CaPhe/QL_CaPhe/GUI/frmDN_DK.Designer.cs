@@ -126,7 +126,6 @@ namespace QL_CaPhe.GUI
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::QL_CaPhe.Properties.Resources.view;
             this.pictureBox1.Location = new System.Drawing.Point(399, 101);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 24);
@@ -192,7 +191,6 @@ namespace QL_CaPhe.GUI
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::QL_CaPhe.Properties.Resources._9f79aae2c21daae7fdff49873ee838_unscreen;
             this.pictureBox2.Location = new System.Drawing.Point(40, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(411, 286);

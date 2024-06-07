@@ -19,21 +19,21 @@ namespace QL_CaPhe
             if (Properties.Settings.Default.LoaiTK == "BH")
             {
                 btnThongKe.Enabled = false;
-                btnNhapHang.Enabled = false;
+                btnKho.Enabled = false;
                 btnTinhLuong.Enabled = false;
                 btnBanHang.Enabled = true;
             }
             else if (Properties.Settings.Default.LoaiTK == "K")
             {
                 btnThongKe.Enabled = false;
-                btnNhapHang.Enabled = true;
+                btnKho.Enabled = true;
                 btnTinhLuong.Enabled = false;
                 btnBanHang.Enabled = false;
             }
             else if (Properties.Settings.Default.LoaiTK == "QL")
             {
                 btnThongKe.Enabled = true;
-                btnNhapHang.Enabled = false;
+                btnKho.Enabled = false;
                 btnTinhLuong.Enabled = true;
                 btnBanHang.Enabled = false;
             }

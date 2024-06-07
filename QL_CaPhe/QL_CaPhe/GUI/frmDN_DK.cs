@@ -171,12 +171,12 @@ namespace QL_CaPhe.GUI
             if (txt_Password.UseSystemPasswordChar)
             {
                 txt_Password.UseSystemPasswordChar = false;
-                pictureBox1.Image = Properties.Resources.hide;
+                //pictureBox1.Image = Properties.Resources.hide;
             }
             else
             {
                 txt_Password.UseSystemPasswordChar = true;
-                pictureBox1.Image = Properties.Resources.view;
+                //pictureBox1.Image = Properties.Resources.view;
             }
         } 
     }
