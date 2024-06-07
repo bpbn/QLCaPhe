@@ -15,19 +15,14 @@ namespace QL_CaPhe.GUI
 {
     public partial class frmDN_DK : Form
     {
+        private TaiKhoanDAO tk = new TaiKhoanDAO();
+
         public frmDN_DK()
         {
             InitializeComponent();
         }
 
         DBConnect db = new DBConnect();
-
-        private void clearInfo()
-        {
-            txt_TenTK.Clear();
-            txt_Password.Clear();
-            txt_ConfirmPassword.Clear();
-        }
 
         private void LoadData()
         {
@@ -46,19 +41,6 @@ namespace QL_CaPhe.GUI
             panel2.Visible = false;
         }
 
-        private bool IsEmail(string email)
-        {
-            string pattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
-            return Regex.IsMatch(email, pattern);
-        }
-
-        private bool checkInfoDangKy()
-        {
-            if (txt_TenTK.Text == string.Empty || txt_Password.Text == string.Empty)
-                return false;
-            return true;
-        }
-
         private bool checkInfoDangNhap()
         {
             if (txt_TenTK.Text == string.Empty || txt_Password.Text == string.Empty)
@@ -66,87 +48,32 @@ namespace QL_CaPhe.GUI
             return true;
         }
 
-        private bool CheckPrimaryKey(string primaryKey)
-        {
-            using (SqlConnection con = new SqlConnection(DBConnect.conStr))
-            {
-                con.Open();
-                string sql = "SELECT MATKHAU FROM TAIKHOAN WHERE TENDANGNHAP = '" + primaryKey + "'";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.CommandType = CommandType.Text;
-                string pass = Convert.ToString(cmd.ExecuteScalar());
-                int affectedRows = cmd.ExecuteNonQuery();
-                if (pass != "")
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
+
         private void btn_Submit_Click(object sender, EventArgs e)
         {
-            using (var connection = db.GetConnection())
+            if (!checkInfoDangNhap())
             {
-                connection.Open();
-                using (var command = new SqlCommand())
-                {
-                    if (!checkInfoDangNhap())
-                    {
-                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    if (!CheckPrimaryKey(txt_TenTK.Text))
-                    {
-                        MessageBox.Show("Tài khoản không tồn tại!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-
-                    using (SqlConnection con = new SqlConnection(DBConnect.conStr))
-                    {
-                        con.Open();
-                        string sql = "SELECT MATKHAU, MaChucVu FROM TAIKHOAN WHERE TenDangNhap = @username AND MATKHAU = @password";
-                        SqlCommand cmd = new SqlCommand(sql, con);
-                        cmd.CommandType = CommandType.Text;
-
-                        cmd.Parameters.Add(new SqlParameter("@username", txt_TenTK.Text));
-                        cmd.Parameters.Add(new SqlParameter("@password", txt_Password.Text));
-
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                reader.Read();
-                                string password = reader.GetString(0); 
-                                string MaChucVu = reader.GetString(1); 
-
-                                if (password == txt_Password.Text) 
-                                {
-                                    Properties.Settings.Default.LoaiTK = MaChucVu;
-                                    Properties.Settings.Default.Save();
-                                    this.Hide();
-                                    frmTrangChu f = new frmTrangChu();
-                                    f.Show();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Sai mật khẩu!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Tài khoản không tồn tại!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                        }
-                    }
-                }
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            if (!tk.CheckPrimaryKey(txt_TenTK.Text))
+            {
+                MessageBox.Show("Tài khoản không tồn tại!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(tk.checkDangNhapHople(txt_TenTK.Text, txt_Password.Text))
+            {
+                this.Hide();
+                frmTrangChu f = new frmTrangChu();
+                f.Show();
+            }    
+            else
+            {
+                MessageBox.Show("Thông tin đăng nhập không hợp lệ", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }   
         }
 
         private void ck_RememberMe_CheckedChanged(object sender, EventArgs e)
@@ -171,12 +98,12 @@ namespace QL_CaPhe.GUI
             if (txt_Password.UseSystemPasswordChar)
             {
                 txt_Password.UseSystemPasswordChar = false;
-                //pictureBox1.Image = Properties.Resources.hide;
+                pictureBox1.Image = Properties.Resources.hide;
             }
             else
             {
                 txt_Password.UseSystemPasswordChar = true;
-                //pictureBox1.Image = Properties.Resources.view;
+                pictureBox1.Image = Properties.Resources.view;
             }
         } 
     }

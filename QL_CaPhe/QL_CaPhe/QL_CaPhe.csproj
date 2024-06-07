@@ -51,6 +51,7 @@
     <Compile Include="DAO\DonHangDAO.cs" />
     <Compile Include="DAO\NhaCungCapDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
+    <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="GUI\frmBanHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,13 +153,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\9f79aae2c21daae7fdff49873ee838-unscreen.gif" />
-    <Content Include="Resources\hide.png" />
-    <Content Include="Resources\logo.jpg" />
-    <Content Include="Resources\view.png" />
+    <None Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\back.png" />
+    <Content Include="Resources\9f79aae2c21daae7fdff49873ee838-unscreen.gif" />
+    <Content Include="Resources\hide.png" />
+    <Content Include="Resources\view.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
