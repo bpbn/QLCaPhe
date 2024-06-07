@@ -39,3 +39,4 @@ D:\DoAn\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\GUI\frmKho.resx
 D:\DoAn\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\GUI\frmKho.cs
 D:\DoAn\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\GUI\frmKho.Designer.cs
 D:\DoAn\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmNhapHang.resources
+D:\DoAn\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmNguyenLieu.resources

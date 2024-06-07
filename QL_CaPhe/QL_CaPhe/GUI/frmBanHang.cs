@@ -19,16 +19,17 @@ namespace QL_CaPhe.GUI
         {
             InitializeComponent();
             loadSanPham();
+            loadNhanVien();
         }
 
-        //private void loadNhaCungCap()
-        //{
-        //    DataTable dt = NhaCungCapDAO.layDSNhaCungCap();
+        private void loadNhanVien()
+        {
+            DataTable dt = NhanVienDAO.layDSNhanVienBH();
 
-        //    cboNCC.DataSource = dt;
-        //    cboNCC.DisplayMember = "TenNhaCungCap";
-        //    cboNCC.ValueMember = "MaNhaCungCap";
-        //}
+            cboNhanVien.DataSource = dt;
+            cboNhanVien.DisplayMember = "TenNhanVien";
+            cboNhanVien.ValueMember = "MaNhanVien";
+        }
 
         private void loadSanPham()
         {
@@ -182,7 +183,7 @@ namespace QL_CaPhe.GUI
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có muốn nhập đơn hàng có thông tin: \n Nhân viên: " + "NV002" +  " \n Tổng Tiền: " + lbTongTien.Text + " \n Tổng Số lượng: " + lbTongSoLuong.Text, "Xuất hóa đơn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Bạn có muốn xuất hóa đơn có thông tin: \n Nhân viên: " + cboNhanVien.Text +  " \n Tổng Tiền: " + lbTongTien.Text + " \n Tổng Số lượng: " + lbTongSoLuong.Text, "Xuất hóa đơn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 luuDonHang();
@@ -195,7 +196,7 @@ namespace QL_CaPhe.GUI
 
         private void luuDonHang()
         {
-            string maNV = "NV002";
+            string maNV = cboNhanVien.SelectedValue.ToString();
 
             int isSaved = DonHangDAO.luuDonHang(maNV);
 
