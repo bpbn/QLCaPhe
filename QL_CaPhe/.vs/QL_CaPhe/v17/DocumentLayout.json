@@ -1,33 +1,41 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\",
+  "WorkspaceRootPath": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|d:\\doan\\qlcaphe\\ql_caphe\\ql_caphe\\gui\\frmtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|d:\\study\\project group\\th pttkhttt\\qlcaphe\\ql_caphe\\ql_caphe\\properties\\resources.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|solutionrelative:ql_caphe\\properties\\resources.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|d:\\study\\project group\\th pttkhttt\\qlcaphe\\ql_caphe\\ql_caphe\\gui\\frmtinhluong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|solutionrelative:ql_caphe\\gui\\frmtinhluong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\ql_caphe\\gui\\frmtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|solutionrelative:ql_caphe\\gui\\frmtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\DoAn\\QLCaPhe\\QL_CaPhe\\ql_caphe\\dao\\dashboarddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\ql_caphe\\dao\\dashboarddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|solutionrelative:ql_caphe\\dao\\dashboarddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\DoAn\\QLCaPhe\\QL_CaPhe\\ql_caphe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\ql_caphe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|solutionrelative:ql_caphe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\DoAn\\QLCaPhe\\QL_CaPhe\\ql_caphe\\gui\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\ql_caphe\\gui\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|solutionrelative:ql_caphe\\gui\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\DoAn\\QLCaPhe\\QL_CaPhe\\ql_caphe\\gui\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\ql_caphe\\gui\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|solutionrelative:ql_caphe\\gui\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\DoAn\\QLCaPhe\\QL_CaPhe\\ql_caphe\\gui\\frmtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\ql_caphe\\gui\\frmtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|solutionrelative:ql_caphe\\gui\\frmtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\DoAn\\QLCaPhe\\QL_CaPhe\\ql_caphe\\pojo\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\ql_caphe\\pojo\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|solutionrelative:ql_caphe\\pojo\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -41,12 +49,41 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "Resources.resx",
+              "DocumentMoniker": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\Properties\\Resources.resx",
+              "RelativeDocumentMoniker": "QL_CaPhe\\Properties\\Resources.resx",
+              "ToolTip": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\Properties\\Resources.resx",
+              "RelativeToolTip": "QL_CaPhe\\Properties\\Resources.resx",
+              "ViewState": "AQIAAGYAAAAAAAAAAAApwHsAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2024-06-06T23:16:06.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmTinhLuong.cs [Design]",
+              "DocumentMoniker": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTinhLuong.cs",
+              "RelativeDocumentMoniker": "QL_CaPhe\\GUI\\frmTinhLuong.cs",
+              "ToolTip": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTinhLuong.cs [Design]",
+              "RelativeToolTip": "QL_CaPhe\\GUI\\frmTinhLuong.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T22:57:02.917Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\Program.cs",
+              "DocumentMoniker": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\Program.cs",
               "RelativeDocumentMoniker": "QL_CaPhe\\Program.cs",
-              "ToolTip": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\Program.cs",
+              "ToolTip": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\Program.cs",
               "RelativeToolTip": "QL_CaPhe\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -54,46 +91,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "frmTrangChu.cs",
-              "DocumentMoniker": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTrangChu.cs",
+              "DocumentMoniker": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTrangChu.cs",
               "RelativeDocumentMoniker": "QL_CaPhe\\GUI\\frmTrangChu.cs",
-              "ToolTip": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTrangChu.cs",
+              "ToolTip": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTrangChu.cs",
               "RelativeToolTip": "QL_CaPhe\\GUI\\frmTrangChu.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T21:06:37.565Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T21:06:37.565Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "frmTrangChu.cs [Design]",
-              "DocumentMoniker": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTrangChu.cs",
+              "DocumentMoniker": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTrangChu.cs",
               "RelativeDocumentMoniker": "QL_CaPhe\\GUI\\frmTrangChu.cs",
               "ToolTip": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTrangChu.cs [Design]",
-              "RelativeToolTip": "..\\..\\..\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTrangChu.cs [Design]",
+              "RelativeToolTip": "QL_CaPhe\\GUI\\frmTrangChu.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
               "WhenOpened": "2024-06-06T21:06:37.634Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "frmDashboard.cs [Design]",
-              "DocumentMoniker": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmDashboard.cs",
+              "DocumentMoniker": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmDashboard.cs",
               "RelativeDocumentMoniker": "QL_CaPhe\\GUI\\frmDashboard.cs",
               "ToolTip": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmDashboard.cs [Design]",
-              "RelativeToolTip": "..\\..\\..\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmDashboard.cs [Design]",
+              "RelativeToolTip": "QL_CaPhe\\GUI\\frmDashboard.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
               "WhenOpened": "2024-06-06T21:06:37.636Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "frmDashboard.cs",
-              "DocumentMoniker": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmDashboard.cs",
+              "DocumentMoniker": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmDashboard.cs",
               "RelativeDocumentMoniker": "QL_CaPhe\\GUI\\frmDashboard.cs",
-              "ToolTip": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmDashboard.cs",
+              "ToolTip": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmDashboard.cs",
               "RelativeToolTip": "QL_CaPhe\\GUI\\frmDashboard.cs",
               "ViewState": "AQIAAJwAAAAAAAAAAAAgwLAAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
@@ -101,11 +137,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "DashboardDAO.cs",
-              "DocumentMoniker": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\DAO\\DashboardDAO.cs",
+              "DocumentMoniker": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\DAO\\DashboardDAO.cs",
               "RelativeDocumentMoniker": "QL_CaPhe\\DAO\\DashboardDAO.cs",
-              "ToolTip": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\DAO\\DashboardDAO.cs",
+              "ToolTip": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\DAO\\DashboardDAO.cs",
               "RelativeToolTip": "QL_CaPhe\\DAO\\DashboardDAO.cs",
               "ViewState": "AQIAAIMAAAAAAAAAAAAwwJUAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -113,11 +149,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Dashboard.cs",
-              "DocumentMoniker": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\POJO\\Dashboard.cs",
+              "DocumentMoniker": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\POJO\\Dashboard.cs",
               "RelativeDocumentMoniker": "QL_CaPhe\\POJO\\Dashboard.cs",
-              "ToolTip": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\POJO\\Dashboard.cs",
+              "ToolTip": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\POJO\\Dashboard.cs",
               "RelativeToolTip": "QL_CaPhe\\POJO\\Dashboard.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAAABEAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

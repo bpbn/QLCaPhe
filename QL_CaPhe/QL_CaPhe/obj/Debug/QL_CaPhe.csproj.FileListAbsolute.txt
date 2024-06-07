@@ -40,3 +40,4 @@ D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.frmTrangChu.resour
 D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.csproj.GenerateResource.cache
 D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.exe
 D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.pdb
+D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmTinhLuong.resources
