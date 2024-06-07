@@ -3,6 +3,7 @@ GO
 USE QuanLyCuaHangCafe
 GO
 
+--DROP DATABASE QuanLyCuaHangCafe
 
 -- TABLE --
 CREATE TABLE TaiKhoan
@@ -976,3 +977,65 @@ INSERT INTO ChiTietCaLam VALUES('CL002', 'NV002', '28/05/2024');
 INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '28/05/2024');
 INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '28/05/2024');
 INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '28/05/2024');
+
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV002', '28/04/2024');
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV002', '10/05/2024');
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV001', '28/04/2024');
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV001', '10/05/2024');
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV003', '28/04/2024');
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV003', '10/05/2024');
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV004', '28/04/2024');
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV004', '10/05/2024');
+
+
+CREATE PROCEDURE PROC_TINHTONGSOGIOLAM
+    @MANHANVIEN VARCHAR(10),
+	@TongGioLam INT OUTPUT
+AS
+BEGIN
+    DECLARE @LatestPaymentDate DATE;
+
+    SELECT @LatestPaymentDate = MAX(THOIGIANTRALUONG)
+    FROM BANGLUONG
+    WHERE MANHANVIEN = @MaNhanVien;
+
+    SELECT 
+        @TongGioLam = SUM(TONGGIO)
+    FROM CHITIETCALAM CT
+    JOIN CALAM C ON CT.MACALAM = C.MACALAM
+    WHERE CT.MANHANVIEN = @MaNhanVien
+        AND CT.NGAYLAM > @LatestPaymentDate;
+END;
+GO
+
+DECLARE @TongGioLam INT;
+EXEC PROC_TINHTONGSOGIOLAM @MANHANVIEN = 'NV001', @TongGioLam
+
+DROP PROC PROC_TINHTONGSOGIOLAM
+Go
+
+
+CREATE PROCEDURE PROC_TinhTongLuongNhanVien
+    @MaNhanVien VARCHAR(10)
+AS
+BEGIN
+
+    DECLARE @TongGioLam	INT;
+    DECLARE @LuongCoBan	INT;
+    DECLARE @TongLuong	INT;
+
+    EXEC PROC_TINHTONGSOGIOLAM @MaNhanVien, @TongGioLam OUTPUT;
+
+    SELECT @LuongCoBan = CV.LUONGCOBAN
+    FROM NHANVIEN NV
+    JOIN CHUCVU CV ON NV.MACHUCVU = CV.MACHUCVU
+    WHERE NV.MANHANVIEN = @MaNhanVien;
+
+    SET @TongLuong = @TongGioLam * @LuongCoBan;
+
+    SELECT @MaNhanVien AS MANHANVIEN, @TongLuong AS TongLuong;
+END;
+
+EXEC PROC_TinhTongLuongNhanVien @MANHANVIEN = 'NV001'
+
+DROP PROC PROC_TinhTongLuongNhanVien
