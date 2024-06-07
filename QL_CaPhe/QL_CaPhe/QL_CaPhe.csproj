@@ -98,6 +98,9 @@
     <EmbeddedResource Include="GUI\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmDN_DK.resx">
+      <DependentUpon>frmDN_DK.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmTinhLuong.resx">
       <DependentUpon>frmTinhLuong.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,18 +109,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -127,7 +130,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\9f79aae2c21daae7fdff49873ee838-unscreen.gif" />
+    <Content Include="Resources\hide.png" />
+    <Content Include="Resources\logo.jpg" />
+    <Content Include="Resources\view.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\back.png" />
   </ItemGroup>
