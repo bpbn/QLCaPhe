@@ -10,16 +10,12 @@ using System.Windows.Forms;
 
 namespace QL_CaPhe.GUI
 {
-    public partial class frmTinhLuong : Form
+    public partial class frmNhapHang : Form
     {
-        public frmTinhLuong()
+        public Panel pnNhapHang;
+        public frmNhapHang()
         {
             InitializeComponent();
-        }
-
-        private void btnThanhToan_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

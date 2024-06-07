@@ -65,5 +65,14 @@ namespace QL_CaPhe
             frmDN_DK f = new frmDN_DK();
             f.Show();
         }
+
+        private void btnKho_Click(object sender, EventArgs e)
+        {
+            frmKho f = new frmKho();
+            f.TopLevel = false;
+            pn_TrangChu.Controls.Clear();
+            pn_TrangChu.Controls.Add(f.pn_Kho);
+            f.Show();
+        }
     }
 }
