@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -97,7 +97,7 @@
               "RelativeDocumentMoniker": "QL_CaPhe\\GUI\\frmTrangChu.cs",
               "ToolTip": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTrangChu.cs",
               "RelativeToolTip": "QL_CaPhe\\GUI\\frmTrangChu.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAFAAAA",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-06T21:06:37.565Z"
             },
@@ -132,8 +132,9 @@
               "ToolTip": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmDashboard.cs",
               "RelativeToolTip": "QL_CaPhe\\GUI\\frmDashboard.cs",
               "ViewState": "AQIAAJwAAAAAAAAAAAAgwLAAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
-              "WhenOpened": "2024-06-06T21:06:37.639Z"
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T21:06:37.639Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -145,7 +146,8 @@
               "RelativeToolTip": "QL_CaPhe\\DAO\\DashboardDAO.cs",
               "ViewState": "AQIAAIMAAAAAAAAAAAAwwJUAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T21:06:37.641Z"
+              "WhenOpened": "2024-06-06T21:06:37.641Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -157,7 +159,8 @@
               "RelativeToolTip": "QL_CaPhe\\POJO\\Dashboard.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAAABEAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T21:06:37.644Z"
+              "WhenOpened": "2024-06-06T21:06:37.644Z",
+              "EditorCaption": ""
             }
           ]
         }

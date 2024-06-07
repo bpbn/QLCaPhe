@@ -32,5 +32,14 @@ namespace QL_CaPhe
             frmDashboard f = new frmDashboard();
             f.Show();
         }
+
+        private void btnKho_Click(object sender, EventArgs e)
+        {
+            frmKho f = new frmKho();
+            f.TopLevel = false;
+            pn_TrangChu.Controls.Clear();
+            pn_TrangChu.Controls.Add(f.pn_Kho);
+            f.Show();
+        }
     }
 }
