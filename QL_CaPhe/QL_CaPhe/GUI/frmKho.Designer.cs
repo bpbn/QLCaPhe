@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.pn_Kho = new System.Windows.Forms.Panel();
+            this.pnKho = new System.Windows.Forms.Panel();
             this.btnUpdateNL = new System.Windows.Forms.Button();
             this.btnNhapHang = new System.Windows.Forms.Button();
-            this.pnKho = new System.Windows.Forms.Panel();
             this.pn_Kho.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,6 +45,13 @@
             this.pn_Kho.Size = new System.Drawing.Size(1052, 564);
             this.pn_Kho.TabIndex = 0;
             // 
+            // pnKho
+            // 
+            this.pnKho.Location = new System.Drawing.Point(3, 64);
+            this.pnKho.Name = "pnKho";
+            this.pnKho.Size = new System.Drawing.Size(1046, 497);
+            this.pnKho.TabIndex = 1;
+            // 
             // btnUpdateNL
             // 
             this.btnUpdateNL.Location = new System.Drawing.Point(515, 5);
@@ -53,6 +60,7 @@
             this.btnUpdateNL.TabIndex = 0;
             this.btnUpdateNL.Text = "Nguyên liệu";
             this.btnUpdateNL.UseVisualStyleBackColor = true;
+            this.btnUpdateNL.Click += new System.EventHandler(this.btnUpdateNL_Click);
             // 
             // btnNhapHang
             // 
@@ -63,13 +71,6 @@
             this.btnNhapHang.Text = "Nhập kho";
             this.btnNhapHang.UseVisualStyleBackColor = true;
             this.btnNhapHang.Click += new System.EventHandler(this.btnNhapHang_Click);
-            // 
-            // pnKho
-            // 
-            this.pnKho.Location = new System.Drawing.Point(3, 64);
-            this.pnKho.Name = "pnKho";
-            this.pnKho.Size = new System.Drawing.Size(1046, 497);
-            this.pnKho.TabIndex = 1;
             // 
             // frmKho
             // 

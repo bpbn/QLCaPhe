@@ -63,6 +63,7 @@
             this.btnDangXuat.TabIndex = 1;
             this.btnDangXuat.Text = "Đăng xuất";
             this.btnDangXuat.UseVisualStyleBackColor = true;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // label1
             // 
@@ -129,6 +130,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmTrangChu";
             this.Text = "Trang chủ";
+            this.Load += new System.EventHandler(this.frmTrangChu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

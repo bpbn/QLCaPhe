@@ -26,5 +26,14 @@ namespace QL_CaPhe.GUI
             pnKho.Controls.Add(f.pnNhapHang);
             f.Show();
         }
+
+        private void btnUpdateNL_Click(object sender, EventArgs e)
+        {
+            frmNguyenLieu f = new frmNguyenLieu();
+            f.TopLevel = false;
+            pnKho.Controls.Clear();
+            pnKho.Controls.Add(f.pn_NguyenLieu);
+            f.Show();
+        }
     }
 }

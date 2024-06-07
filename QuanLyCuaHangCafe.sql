@@ -188,7 +188,6 @@ ALTER TABLE CaLam
 ALTER TABLE BangLuong 
 	ADD CONSTRAINT PK_BangLuong 
 	PRIMARY KEY(MaBangLuong) 
-
 GO
 
 -- FOREIGN KEY --
@@ -495,6 +494,11 @@ BEGIN
       WHERE PhieuNhap.MaPhieuNhap = inserted.MaPhieuNhap
       AND N.MaNguyenLieu = inserted.MaNguyenLieu
       AND N.MaPhieuNhap = inserted.MaPhieuNhap
+
+	  --cập nhật số lượng tồn cho bảng nguyên liệu
+		UPDATE NguyenLieu
+		SET SoLuongTon = SoLuongTon + (select inserted.SoLuong from inserted)
+		WHERE (select MaNguyenLieu from inserted) = NguyenLieu.MaNguyenLieu
 END
 GO
 
@@ -529,6 +533,30 @@ GO
 
 
 
+---- Trigger nhap kho (so luong ton tang)
+--Create Trigger TRG_NhapNguyenLieu ON chiTietPhieuNhap
+--for insert, update, delete
+--as begin
+--	if exists(select * from inserted)
+--	begin
+--		update NguyenLieu
+--		set SoLuongTon = SoLuongTon + (select inserted.SoLuong from inserted)
+--		where (select MaNguyenLieu from inserted) = NguyenLieu.MaNguyenLieu
+--		update PhieuNhap
+--		set ThanhTien = ThanhTien + (select (SoLuong * DonGia) from inserted)
+--		where PhieuNhap.MaPhieuNhap = (select MaPhieuNhap from inserted)
+--	end
+--	if exists(select * from deleted)
+--	begin
+--		update NguyenLieu
+--		set SoLuongTon = SoLuongTon - (select deleted.SoLuong from deleted)
+--		where (select MaNguyenLieu from deleted)= NguyenLieu.MaNguyenLieu
+--		update PhieuNhap
+--		set ThanhTien = ThanhTien - (select (SoLuong * DonGia) from inserted)
+--		where PhieuNhap.MaPhieuNhap = (select MaPhieuNhap from inserted)
+--	end
+--end
+
 -- INSERT --
 SET DATEFORMAT DMY
 
@@ -539,7 +567,7 @@ VALUES
 ('K', N'Nhân viên kho', 20)
 
 INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Nguyễn Quốc Thái', '28/8/2002', 1, N'Thành phố Hồ Chí Minh', '29/04/2024', null, 'QL');
-INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'TNguyễn Phương Bảo Ngân', '04/02/2003', 0, N'Bình Thuận', '03/05/2024', null, 'BH');
+INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Nguyễn Phương Bảo Ngân', '04/02/2003', 0, N'Bình Thuận', '03/05/2024', null, 'BH');
 INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Nguyễn Phan Như Quỳnh', '20/2/2002', 1, N'Tây Ninh', '03/05/2024', null, 'BH');
 INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Bùi Phan Bảo Ngọc', '11/2/2003', 0, N'Bình Phước', '29/04/2024', null, 'K');
 
@@ -1175,7 +1203,7 @@ INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV003', '28/04/2024'
 INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV003', '10/05/2024');
 INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV004', '28/04/2024');
 INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV004', '10/05/2024');
-
+go
 
 CREATE PROCEDURE PROC_TINHTONGSOGIOLAM
     @MANHANVIEN VARCHAR(10),
@@ -1204,6 +1232,48 @@ DROP PROC PROC_TINHTONGSOGIOLAM
 Go
 
 
+CREATE PROCEDURE PROC_TINHPHUCAP_THEOGIOLAM (
+  @MANHANVIEN VARCHAR(10),
+  @Phucap INT OUTPUT
+)
+AS
+BEGIN
+  DECLARE @LatestPaymentDate DATE;
+  DECLARE @TongGioLam INT;
+
+  SELECT TOP 1 @LatestPaymentDate = THOIGIANTRALUONG
+  FROM BANGLUONG
+  WHERE MANHANVIEN = @MaNhanVien
+  ORDER BY THOIGIANTRALUONG DESC;
+
+  IF @@ROWCOUNT = 0
+  BEGIN
+    SET @Phucap = -1;
+    RETURN;
+  END;
+
+  SELECT @TongGioLam = ISNULL(SUM(TONGGIO), 0)
+  FROM CHITIETCALAM CT
+  JOIN CALAM C ON CT.MACALAM = C.MACALAM
+  WHERE CT.MANHANVIEN = @MaNhanVien
+    AND CT.NGAYLAM > @LatestPaymentDate;
+
+  SET @Phucap = 
+    CASE 
+      WHEN @TongGioLam > 50 THEN 200000
+      WHEN @TongGioLam > 20 THEN 100000
+      ELSE 0
+    END;
+
+END;
+GO
+
+DECLARE @Phucap INT;
+EXEC PROC_TINHPHUCAP_THEOGIOLAM 'NV001', @Phucap OUTPUT;
+
+SELECT @Phucap AS Phucap;
+GO
+
 CREATE PROCEDURE PROC_TinhTongLuongNhanVien
     @MaNhanVien VARCHAR(10)
 AS
@@ -1212,15 +1282,15 @@ BEGIN
     DECLARE @TongGioLam	INT;
     DECLARE @LuongCoBan	INT;
     DECLARE @TongLuong	INT;
-
+	DECLARE @PhuCap	INT;
     EXEC PROC_TINHTONGSOGIOLAM @MaNhanVien, @TongGioLam OUTPUT;
-
+	EXEC PROC_TINHPHUCAP_THEOGIOLAM @MaNhanVien, @Phucap OUTPUT;
     SELECT @LuongCoBan = CV.LUONGCOBAN
     FROM NHANVIEN NV
     JOIN CHUCVU CV ON NV.MACHUCVU = CV.MACHUCVU
     WHERE NV.MANHANVIEN = @MaNhanVien;
 
-    SET @TongLuong = @TongGioLam * @LuongCoBan;
+    SET @TongLuong = @TongGioLam * @LuongCoBan + @PhuCap;
 
     SELECT @MaNhanVien AS MANHANVIEN, @TongLuong AS TongLuong;
 END;

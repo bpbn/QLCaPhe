@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QL_CaPhe.GUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace QL_CaPhe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTrangChu());
+            Application.Run(new frmDN_DK());
         }
     }
 }
