@@ -18,8 +18,18 @@ namespace QL_CaPhe.GUI
         {
             InitializeComponent();
             loadNhanVien();
-            //loadBangLuong();
-            loadCTCL();
+            loadBangLuong();
+            //cboMaNV.SelectedIndexChanged += cboMaNV_SelectedIndexChanged;
+        }
+
+        private void cboMaNV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboMaNV.SelectedIndex >= 0)
+            {
+                string maNV = cboMaNV.SelectedValue.ToString();
+                loadCTCL(maNV);
+                loadNhanVienDetails(maNV);
+            }
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
@@ -31,28 +41,51 @@ namespace QL_CaPhe.GUI
         {
             DataTable dt = NhanVienDAO.layDSNhanVien();
 
-            cboMaNV.DataSource = dt;
             cboMaNV.DisplayMember = "MaNhanVien";
             cboMaNV.ValueMember = "MaNhanVien";
+            cboMaNV.DataSource = dt;
+
         }
 
-        private void loadCTCL()
+        private void loadNhanVienDetails(string maNV)
         {
-            DataTable dt = ChiTietCaLamDAO.layDSCTCL();
+            string phuCap = BangLuongDAO.layTongPhuCap(maNV);
+            lbPhuCap.Text = phuCap;
+
+            string tongGioLam = BangLuongDAO.layTongGioLam(maNV);
+            lbTongGio.Text = tongGioLam;
+
+            string tenNhanVien = NhanVienDAO.layTenNhanVien(maNV);
+            lbTenNV.Text = tenNhanVien;
+
+            // Lấy và hiển thị chức vụ
+            string chucVu = NhanVienDAO.layChucVu(maNV);
+            lbChucVu.Text = chucVu;
+
+            // Lấy và hiển thị ngày trả lương gần nhất
+            DateTime ngayTraLuongGanNhat = BangLuongDAO.layNgayTraLuongGanNhat(maNV);
+            lbTuNgay.Text = ngayTraLuongGanNhat.ToString("dd-MM-yyyy");
+
+            // Lấy và hiển thị ngày hiện tại
+            lbDenNgay.Text = DateTime.Now.ToString("dd-MM-yyyy");
+        }
+
+
+        private void loadCTCL(string maNV)
+        {
+            DataTable dt = ChiTietCaLamDAO.layDSCTCL(maNV);
 
             dgvCaLam.DataSource = dt;
         }
 
 
-        //private void loadBangLuong()
-        //{
-        //    DataTable dt = BangLuongDAO.layDSBangLuong();
+        private void loadBangLuong()
+        {
+            DataTable dt = BangLuongDAO.layDSBangLuong();
 
-        //    DataColumn[] key = new DataColumn[1];
-        //    key[0] = dt.Columns[0];
-        //    dt.PrimaryKey = key;
-        //    dgvTinhLuong.DataSource = dt;
-        //}
-
+            dgvTinhLuong.DataSource = dt;
+        }
+        
+        
     }
 }

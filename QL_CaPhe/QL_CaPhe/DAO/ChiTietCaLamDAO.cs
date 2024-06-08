@@ -9,10 +9,10 @@ namespace QL_CaPhe.DAO
 {
     class ChiTietCaLamDAO
     {
-        public static DataTable layDSCTCL()
+        public static DataTable layDSCTCL(string maNV)
         {
             DBConnect db = new DBConnect();
-            string sql = "SELECT MaCaLam, NgayLam FROM ChiTietCaLam";
+            string sql = "SELECT MaCaLam, NgayLam FROM ChiTietCaLam WHERE MaNhanVien = '" + maNV + "'";
             return db.getTable(sql);
         }
     }
