@@ -66,3 +66,5 @@ D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\GUI\frmKh
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmDN_DK.resources
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmKho.resources
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmNhapHang.resources
+D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmDanhMuc.resources
+D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmNguyenLieu.resources
