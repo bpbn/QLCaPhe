@@ -1195,14 +1195,14 @@ INSERT INTO ChiTietCaLam VALUES('CL002', 'NV003', '28/05/2024');
 INSERT INTO ChiTietCaLam VALUES('CL003', 'NV003', '28/05/2024');
 INSERT INTO ChiTietCaLam VALUES('CL002', 'NV004', '28/05/2024');
 
-INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV002', '28/04/2024');
-INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV002', '10/05/2024');
-INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV001', '28/04/2024');
-INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV001', '10/05/2024');
-INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV003', '28/04/2024');
-INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV003', '10/05/2024');
-INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV004', '28/04/2024');
-INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong) VALUES('NV004', '10/05/2024');
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong, PhuCap, Luong) VALUES('NV002', '28/04/2024', 0, 0);
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong, PhuCap, Luong) VALUES('NV002', '10/05/2024', 200000, 3560000);
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong, PhuCap, Luong) VALUES('NV001', '28/04/2024', 0, 0);
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong, PhuCap, Luong) VALUES('NV001', '10/05/2024', 200000, 1800000);
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong, PhuCap, Luong) VALUES('NV003', '28/04/2024', 0, 0);
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong, PhuCap, Luong) VALUES('NV003', '10/05/2024', 200000, 1500000);
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong, PhuCap, Luong) VALUES('NV004', '28/04/2024', 0, 0);
+INSERT INTO BangLuong(MaNhanVien, ThoiGianTraLuong, PhuCap, Luong) VALUES('NV004', '10/05/2024', 200000, 1080000);
 go
 
 CREATE PROCEDURE PROC_TINHTONGSOGIOLAM
@@ -1225,10 +1225,10 @@ BEGIN
 END;
 GO
 
-DECLARE @TongGioLam INT;
-EXEC PROC_TINHTONGSOGIOLAM @MANHANVIEN = 'NV001', @TongGioLam
+--DECLARE @TongGioLam INT;
+--EXEC PROC_TINHTONGSOGIOLAM @MANHANVIEN = 'NV001', @TongGioLam
 
-DROP PROC PROC_TINHTONGSOGIOLAM
+--DROP PROC PROC_TINHTONGSOGIOLAM
 Go
 
 
@@ -1274,7 +1274,7 @@ EXEC PROC_TINHPHUCAP_THEOGIOLAM 'NV001', @Phucap OUTPUT;
 SELECT @Phucap AS Phucap;
 GO
 
-CREATE PROCEDURE PROC_TinhTongLuongNhanVien
+--CREATE PROCEDURE PROC_TinhTongLuongNhanVien
     @MaNhanVien VARCHAR(10),
     @Luong INT OUTPUT
 AS
@@ -1299,7 +1299,7 @@ BEGIN
 END;
 
 
-DECLARE @LuongNV INT;
-EXEC PROC_TinhTongLuongNhanVien @MANHANVIEN = 'NV001', @Luong = @LuongNV OUTPUT;
+--DECLARE @LuongNV INT;
+--EXEC PROC_TinhTongLuongNhanVien @MANHANVIEN = 'NV001', @Luong = @LuongNV OUTPUT;
 
-DROP PROC PROC_TinhTongLuongNhanVien
+--DROP PROC PROC_TinhTongLuongNhanVien
