@@ -15,8 +15,8 @@
       "RelativeMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|solutionrelative:ql_caphe\\dao\\dashboarddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|d:\\study\\project group\\th pttkhttt\\qlcaphe\\ql_caphe\\ql_caphe\\gui\\frmtinhluong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|solutionrelative:ql_caphe\\gui\\frmtinhluong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|d:\\doan\\qlcaphe\\ql_caphe\\ql_caphe\\dao\\nguyenlieudao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|solutionrelative:ql_caphe\\dao\\nguyenlieudao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{177A4667-F497-4F9C-B9F5-96DDC13CFA6B}|QL_CaPhe\\QL_CaPhe.csproj|D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\ql_caphe\\properties\\resources.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -53,10 +53,6 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DBConnect.cs",
@@ -78,8 +74,8 @@
               "ToolTip": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTinhLuong.cs [Design]",
               "RelativeToolTip": "QL_CaPhe\\GUI\\frmTinhLuong.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T22:57:02.917Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-06-07T14:48:14.987Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -91,7 +87,21 @@
               "RelativeToolTip": "QL_CaPhe\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T21:06:37.348Z"
+              "WhenOpened": "2024-06-07T12:53:32.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DBConnect.cs",
+              "DocumentMoniker": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\DAO\\DBConnect.cs",
+              "RelativeDocumentMoniker": "QL_CaPhe\\DAO\\DBConnect.cs",
+              "ToolTip": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\DAO\\DBConnect.cs",
+              "RelativeToolTip": "QL_CaPhe\\DAO\\DBConnect.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAWwC4AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T22:30:41.673Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -111,10 +121,12 @@
               "Title": "frmTrangChu.cs [Design]",
               "DocumentMoniker": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTrangChu.cs",
               "RelativeDocumentMoniker": "QL_CaPhe\\GUI\\frmTrangChu.cs",
-              "ToolTip": "D:\\STUDY\\Project Group\\TH PTTKHTTT\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTrangChu.cs [Design]",
-              "RelativeToolTip": "QL_CaPhe\\GUI\\frmTrangChu.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
-              "WhenOpened": "2024-06-06T21:06:37.634Z"
+              "ToolTip": "D:\\DoAn\\QLCaPhe\\QL_CaPhe\\QL_CaPhe\\GUI\\frmTrangChu.cs",
+              "RelativeToolTip": "QL_CaPhe\\GUI\\frmTrangChu.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAuwBkAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T21:06:37.565Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -138,8 +150,7 @@
               "RelativeToolTip": "QL_CaPhe\\GUI\\frmDashboard.cs",
               "ViewState": "AQIAAJwAAAAAAAAAAAAgwLAAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T21:06:37.639Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T21:06:37.639Z"
             },
             {
               "$type": "Document",
@@ -151,8 +162,7 @@
               "RelativeToolTip": "QL_CaPhe\\DAO\\DashboardDAO.cs",
               "ViewState": "AQIAAIMAAAAAAAAAAAAwwJUAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T21:06:37.641Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T21:06:37.641Z"
             },
             {
               "$type": "Document",

@@ -494,6 +494,11 @@ BEGIN
       WHERE PhieuNhap.MaPhieuNhap = inserted.MaPhieuNhap
       AND N.MaNguyenLieu = inserted.MaNguyenLieu
       AND N.MaPhieuNhap = inserted.MaPhieuNhap
+
+	  --cập nhật số lượng tồn cho bảng nguyên liệu
+		UPDATE NguyenLieu
+		SET SoLuongTon = SoLuongTon + (select inserted.SoLuong from inserted)
+		WHERE (select MaNguyenLieu from inserted) = NguyenLieu.MaNguyenLieu
 END
 GO
 
@@ -528,6 +533,30 @@ GO
 
 
 
+---- Trigger nhap kho (so luong ton tang)
+--Create Trigger TRG_NhapNguyenLieu ON chiTietPhieuNhap
+--for insert, update, delete
+--as begin
+--	if exists(select * from inserted)
+--	begin
+--		update NguyenLieu
+--		set SoLuongTon = SoLuongTon + (select inserted.SoLuong from inserted)
+--		where (select MaNguyenLieu from inserted) = NguyenLieu.MaNguyenLieu
+--		update PhieuNhap
+--		set ThanhTien = ThanhTien + (select (SoLuong * DonGia) from inserted)
+--		where PhieuNhap.MaPhieuNhap = (select MaPhieuNhap from inserted)
+--	end
+--	if exists(select * from deleted)
+--	begin
+--		update NguyenLieu
+--		set SoLuongTon = SoLuongTon - (select deleted.SoLuong from deleted)
+--		where (select MaNguyenLieu from deleted)= NguyenLieu.MaNguyenLieu
+--		update PhieuNhap
+--		set ThanhTien = ThanhTien - (select (SoLuong * DonGia) from inserted)
+--		where PhieuNhap.MaPhieuNhap = (select MaPhieuNhap from inserted)
+--	end
+--end
+
 -- INSERT --
 SET DATEFORMAT DMY
 
@@ -538,7 +567,7 @@ VALUES
 ('K', N'Nhân viên kho', 20)
 
 INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Nguyễn Quốc Thái', '28/8/2002', 1, N'Thành phố Hồ Chí Minh', '29/04/2024', null, 'QL');
-INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'TNguyễn Phương Bảo Ngân', '04/02/2003', 0, N'Bình Thuận', '03/05/2024', null, 'BH');
+INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Nguyễn Phương Bảo Ngân', '04/02/2003', 0, N'Bình Thuận', '03/05/2024', null, 'BH');
 INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Nguyễn Phan Như Quỳnh', '20/2/2002', 1, N'Tây Ninh', '03/05/2024', null, 'BH');
 INSERT INTO NhanVien (TenNhanVien, NgaySinh, GioiTinh, DiaChi, NgayVaoLam, NgayNghi, MaChucVu) VALUES (N'Bùi Phan Bảo Ngọc', '11/2/2003', 0, N'Bình Phước', '29/04/2024', null, 'K');
 

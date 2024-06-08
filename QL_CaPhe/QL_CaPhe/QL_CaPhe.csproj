@@ -46,10 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\ChiTietDonHangDAO.cs" />
+    <Compile Include="DAO\ChiTietPhieuNhapDAO.cs" />
     <Compile Include="DAO\DashboardDAO.cs" />
     <Compile Include="DAO\DBConnect.cs" />
     <Compile Include="DAO\DonHangDAO.cs" />
+    <Compile Include="DAO\NguyenLieuDAO.cs" />
     <Compile Include="DAO\NhaCungCapDAO.cs" />
+    <Compile Include="DAO\NhanVienDAO.cs" />
+    <Compile Include="DAO\PhieuNhapDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
     <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="GUI\frmBanHang.cs">
@@ -83,6 +87,12 @@
     <Compile Include="GUI\frmKho.Designer.cs">
       <DependentUpon>frmKho.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="GUI\frmNguyenLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmNguyenLieu.Designer.cs">
+      <DependentUpon>frmNguyenLieu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\frmNhapHang.cs">
       <SubType>Form</SubType>
@@ -119,6 +129,9 @@
     <EmbeddedResource Include="GUI\frmKho.resx">
       <DependentUpon>frmKho.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmNguyenLieu.resx">
+      <DependentUpon>frmNguyenLieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmNhapHang.resx">
       <DependentUpon>frmNhapHang.cs</DependentUpon>
