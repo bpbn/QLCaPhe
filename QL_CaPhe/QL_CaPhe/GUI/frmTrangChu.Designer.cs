@@ -84,6 +84,7 @@
             this.btnTinhLuong.TabIndex = 3;
             this.btnTinhLuong.Text = "Tính lương";
             this.btnTinhLuong.UseVisualStyleBackColor = true;
+            this.btnTinhLuong.Click += new System.EventHandler(this.btnTinhLuong_Click);
             // 
             // btnKho
             // 

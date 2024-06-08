@@ -75,5 +75,17 @@ namespace QL_CaPhe
             pn_TrangChu.Controls.Add(f.pn_Kho);
             f.Show();
         }
+
+        private void btnTinhLuong_Click(object sender, EventArgs e)
+        {
+            frmTinhLuong f = new frmTinhLuong();
+            f.TopLevel = false;
+            f.FormBorderStyle = FormBorderStyle.None;
+            f.Dock = DockStyle.Fill;
+            pn_TrangChu.Controls.Clear();
+            pn_TrangChu.Controls.Add(f);
+            f.BringToFront();
+            f.Show();
+        }
     }
 }
