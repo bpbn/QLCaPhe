@@ -12,8 +12,7 @@ namespace QL_CaPhe.DAO
         public static DataTable layDSBangLuong()
         {
             DBConnect db = new DBConnect();
-            string sql = "SELECT * FROM BangLuong" +
-                "";
+            string sql = "SELECT * FROM BangLuong";
             return db.getTable(sql);
         }
     }

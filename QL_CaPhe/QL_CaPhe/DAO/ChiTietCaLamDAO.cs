@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace QL_CaPhe.DAO
 {
-    class ChiTietCaLam
+    class ChiTietCaLamDAO
     {
         public static DataTable layDSCTCL()
         {
             DBConnect db = new DBConnect();
-            string sql = "SELECT * FROM ChiTietCaLam";
+            string sql = "SELECT MaCaLam, NgayLam FROM ChiTietCaLam";
             return db.getTable(sql);
         }
     }

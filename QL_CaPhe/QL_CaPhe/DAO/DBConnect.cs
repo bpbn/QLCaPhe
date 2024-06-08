@@ -12,8 +12,8 @@ namespace QL_CaPhe.DAO
     {
         private readonly string connectionString;
         //public static string conStr = "Data Source=DESKTOP-QVIL76U;Initial Catalog=QuanLyCuaHangCafe;Integrated Security=True";
-        //public static string conStr = @"Data Source=bpbn\sqlexpress;Initial Catalog=QuanLyCuaHangCafe;Integrated Security=True";
-        public static string conStr = @"Data Source=DESKTOP-QKV3AJV\SQLEXPRESS;Initial Catalog=QuanLyCuaHangCafe;Integrated Security=True";
+        public static string conStr = @"Data Source=bpbn\sqlexpress;Initial Catalog=QuanLyCuaHangCafe;Integrated Security=True";
+        //public static string conStr = @"Data Source=DESKTOP-QKV3AJV\SQLEXPRESS;Initial Catalog=QuanLyCuaHangCafe;Integrated Security=True";
         //public static string conStr = "Data Source=DESKTOP-8U4DADL;Initial Catalog=QuanLyCuaHangCafe;Integrated Security=True";
         public SqlConnection GetConnection()
         {

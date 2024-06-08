@@ -13,10 +13,13 @@ namespace QL_CaPhe.GUI
 {
     public partial class frmTinhLuong : Form
     {
-        public Panel pnTimhLuong
+        public Panel pn_TinhLuong;
         public frmTinhLuong()
         {
             InitializeComponent();
+            loadNhanVien();
+            //loadBangLuong();
+            loadCTCL();
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
@@ -29,10 +32,27 @@ namespace QL_CaPhe.GUI
             DataTable dt = NhanVienDAO.layDSNhanVien();
 
             cboMaNV.DataSource = dt;
-            cboMaNV.DisplayMember = "TenNhanVien" +
-                "";
+            cboMaNV.DisplayMember = "MaNhanVien";
             cboMaNV.ValueMember = "MaNhanVien";
         }
+
+        private void loadCTCL()
+        {
+            DataTable dt = ChiTietCaLamDAO.layDSCTCL();
+
+            dgvCaLam.DataSource = dt;
+        }
+
+
+        //private void loadBangLuong()
+        //{
+        //    DataTable dt = BangLuongDAO.layDSBangLuong();
+
+        //    DataColumn[] key = new DataColumn[1];
+        //    key[0] = dt.Columns[0];
+        //    dt.PrimaryKey = key;
+        //    dgvTinhLuong.DataSource = dt;
+        //}
 
     }
 }
