@@ -36,6 +36,7 @@ namespace QL_CaPhe
                 btnKho.Enabled = false;
                 btnTinhLuong.Enabled = true;
                 btnBanHang.Enabled = false;
+                btnQuanLi.Enabled = true;
             }
         }
 
