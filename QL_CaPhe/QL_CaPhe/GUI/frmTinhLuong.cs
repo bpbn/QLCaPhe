@@ -20,6 +20,7 @@ namespace QL_CaPhe.GUI
             loadNhanVien();
             loadBangLuong();
             //cboMaNV.SelectedIndexChanged += cboMaNV_SelectedIndexChanged;
+            //btnThanhToan.Click += btnThanhToan_Click;
         }
 
         private void cboMaNV_SelectedIndexChanged(object sender, EventArgs e)
@@ -34,7 +35,28 @@ namespace QL_CaPhe.GUI
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            if (cboMaNV.SelectedIndex >= 0)
+            {
+                string maNV = cboMaNV.SelectedValue.ToString();
 
+                // Lấy các giá trị cần thiết từ các label hoặc từ các biến
+                int luong = int.Parse(lbTienLuong.Text);
+                int phuCap = int.Parse(lbPhuCap.Text);
+                DateTime ngayTraLuong = DateTime.Now; // Hoặc lấy từ một điều khiển datetime picker nếu có
+
+                // Lưu thông tin vào bảng BangLuong
+                BangLuongDAO.luuBangLuong(maNV, luong, phuCap, ngayTraLuong);
+
+                // Thông báo lưu thành công
+                MessageBox.Show("Lưu thông tin lương thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Tải lại bảng lương để hiển thị thông tin mới
+                loadBangLuong();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một nhân viên!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void loadNhanVien()
@@ -49,6 +71,9 @@ namespace QL_CaPhe.GUI
 
         private void loadNhanVienDetails(string maNV)
         {
+            string tongLuong = BangLuongDAO.layTongLuong(maNV);
+            lbTienLuong.Text = tongLuong;
+
             string phuCap = BangLuongDAO.layTongPhuCap(maNV);
             lbPhuCap.Text = phuCap;
 

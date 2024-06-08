@@ -1275,26 +1275,31 @@ SELECT @Phucap AS Phucap;
 GO
 
 CREATE PROCEDURE PROC_TinhTongLuongNhanVien
-    @MaNhanVien VARCHAR(10)
+    @MaNhanVien VARCHAR(10),
+    @Luong INT OUTPUT
 AS
 BEGIN
+    DECLARE @TongGioLam INT = 0;
+    DECLARE @LuongCoBan INT = 0;
+    DECLARE @PhuCap INT = 0;
+    DECLARE @TongLuong INT = 0;
 
-    DECLARE @TongGioLam	INT;
-    DECLARE @LuongCoBan	INT;
-    DECLARE @TongLuong	INT;
-	DECLARE @PhuCap	INT;
     EXEC PROC_TINHTONGSOGIOLAM @MaNhanVien, @TongGioLam OUTPUT;
-	EXEC PROC_TINHPHUCAP_THEOGIOLAM @MaNhanVien, @Phucap OUTPUT;
+    EXEC PROC_TINHPHUCAP_THEOGIOLAM @MaNhanVien, @PhuCap OUTPUT;
+
     SELECT @LuongCoBan = CV.LUONGCOBAN
     FROM NHANVIEN NV
     JOIN CHUCVU CV ON NV.MACHUCVU = CV.MACHUCVU
     WHERE NV.MANHANVIEN = @MaNhanVien;
 
     SET @TongLuong = @TongGioLam * @LuongCoBan + @PhuCap;
+    SET @Luong = @TongLuong;
 
     SELECT @MaNhanVien AS MANHANVIEN, @TongLuong AS TongLuong;
 END;
 
-EXEC PROC_TinhTongLuongNhanVien @MANHANVIEN = 'NV001'
+
+DECLARE @LuongNV INT;
+EXEC PROC_TinhTongLuongNhanVien @MANHANVIEN = 'NV001', @Luong = @LuongNV OUTPUT;
 
 DROP PROC PROC_TinhTongLuongNhanVien
