@@ -16,6 +16,20 @@ namespace QL_CaPhe.DAO
             return db.getTable(sql);
         }
 
+        public static String layTenNhanVien(String maNV)
+        {
+            DBConnect db = new DBConnect();
+            string sql = "SELECT TenNhanVien FROM NhanVien WHERE MaNhanVien = '" + maNV + "'";
+            return db.execScalar<string>(sql);
+        }
+
+        public static String layChucVu(String maNV)
+        {
+            DBConnect db = new DBConnect();
+            string sql = "SELECT TenChucVu FROM ChucVu CV, NhanVien NV WHERE CV.MaChucVu = NV.MaChucVu AND NV.MaNhanVien = '" + maNV + "'";
+            return db.execScalar<string>(sql);
+        }
+
         public static DataTable layDSNhanVienBH()
         {
             DBConnect db = new DBConnect();

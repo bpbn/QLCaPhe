@@ -24,7 +24,7 @@ namespace QL_CaPhe.GUI
 
         private void loadNCC()
         {
-            DataTable dt = NhaCungCapDAO.layDSNhaCungCap();
+            List<NhaCungCap> dt = NhaCungCap.LayDSNhaCungCap();
 
             cboNCC.DataSource = dt;
             cboNCC.DisplayMember = "TenNhaCungCap";
@@ -33,32 +33,29 @@ namespace QL_CaPhe.GUI
 
         private void loadNhanVien()
         {
-            DataTable dt = NhanVienDAO.layDSNhanVienKho();
+
+            List<NhanVien> dt = NhanVien.LayDanhSachNhanVienKho();
 
             cboNhanVienKho.DataSource = dt;
             cboNhanVienKho.DisplayMember = "TenNhanVien";
             cboNhanVienKho.ValueMember = "MaNhanVien";
         }
-
+        
         private void loadNguyenLieu()
         {
-            DataTable dt = NguyenLieuDAO.layDSNguyenLieu();
-
-            DataColumn[] key = new DataColumn[1];
-            key[0] = dt.Columns[0];
-            dt.PrimaryKey = key;
+            List<NguyenLieu> dt = NguyenLieu.LayDSNguyenLieu();
             dgvNguyenLieu.DataSource = dt;
         }
 
         private void txtNguyenLieu_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt = NguyenLieuDAO.timNguyenLieu(txtNguyenLieu.Text);
+            List<NguyenLieu> dt = NguyenLieu.TimNguyenLieu(txtNguyenLieu.Text);
             dgvNguyenLieu.DataSource = dt;
         }
 
         private void btnTimNL_Click(object sender, EventArgs e)
         {
-            DataTable dt = NguyenLieuDAO.timNguyenLieu(txtNguyenLieu.Text);
+            List<NguyenLieu> dt = NguyenLieu.TimNguyenLieu(txtNguyenLieu.Text);
             dgvNguyenLieu.DataSource = dt;
         }
 
@@ -208,11 +205,11 @@ namespace QL_CaPhe.GUI
             string maNV = cboNhanVienKho.SelectedValue.ToString();
             string maNCC = cboNCC.SelectedValue.ToString();
 
-            int isSaved = PhieuNhapDAO.luuPhieuNhap(maNCC,maNV);
+            bool isSaved = PhieuNhap.LuuPhieuNhap(maNCC, maNV);
 
-            if (isSaved > 0)
+            if (isSaved)
             {
-                string maPhieuNhap = ChiTietPhieuNhapDAO.layMaPhieuNhapMoiNhat().ToString();
+                string maPhieuNhap = ChiTietPhieuNhap.LayMaPhieuNhapMoiNhat().ToString();
                 luuChiTietPhieuNhap(maPhieuNhap);
             }
         }
@@ -225,7 +222,7 @@ namespace QL_CaPhe.GUI
                 int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
                 int giaNhap = Convert.ToInt32(row.Cells["Gia"].Value);
 
-                ChiTietPhieuNhapDAO.luuChiTietPhieuNhap(maPN, maNL, soLuong, giaNhap);
+                ChiTietPhieuNhap.LuuChiTietPhieuNhap(maPN, maNL, soLuong, giaNhap);
             }
         }
     }

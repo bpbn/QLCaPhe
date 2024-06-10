@@ -34,12 +34,17 @@
             this.lbPhuCap = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnThanhToan = new System.Windows.Forms.Button();
-            this.mtbDenNgay = new System.Windows.Forms.MaskedTextBox();
-            this.mtbTuNgay = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvTinhLuong = new System.Windows.Forms.DataGridView();
+            this.MaBangLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThoiGianTraLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhuCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvCaLam = new System.Windows.Forms.DataGridView();
+            this.MaCaLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboMaNV = new System.Windows.Forms.ComboBox();
             this.lbTenNV = new System.Windows.Forms.Label();
             this.lbChucVu = new System.Windows.Forms.Label();
@@ -48,13 +53,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.MaBangLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThoiGianTraLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhuCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaCaLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbTuNgay = new System.Windows.Forms.Label();
+            this.lbDenNgay = new System.Windows.Forms.Label();
             this.pnTinhLuong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTinhLuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCaLam)).BeginInit();
@@ -62,13 +62,13 @@
             // 
             // pnTinhLuong
             // 
+            this.pnTinhLuong.Controls.Add(this.lbDenNgay);
+            this.pnTinhLuong.Controls.Add(this.lbTuNgay);
             this.pnTinhLuong.Controls.Add(this.lbTienLuong);
             this.pnTinhLuong.Controls.Add(this.label8);
             this.pnTinhLuong.Controls.Add(this.lbPhuCap);
             this.pnTinhLuong.Controls.Add(this.label7);
             this.pnTinhLuong.Controls.Add(this.btnThanhToan);
-            this.pnTinhLuong.Controls.Add(this.mtbDenNgay);
-            this.pnTinhLuong.Controls.Add(this.mtbTuNgay);
             this.pnTinhLuong.Controls.Add(this.label6);
             this.pnTinhLuong.Controls.Add(this.label5);
             this.pnTinhLuong.Controls.Add(this.dgvTinhLuong);
@@ -109,7 +109,7 @@
             // lbPhuCap
             // 
             this.lbPhuCap.AutoSize = true;
-            this.lbPhuCap.Location = new System.Drawing.Point(201, 229);
+            this.lbPhuCap.Location = new System.Drawing.Point(207, 233);
             this.lbPhuCap.Name = "lbPhuCap";
             this.lbPhuCap.Size = new System.Drawing.Size(0, 19);
             this.lbPhuCap.TabIndex = 16;
@@ -132,20 +132,6 @@
             this.btnThanhToan.Text = "Thanh Toán";
             this.btnThanhToan.UseVisualStyleBackColor = true;
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
-            // 
-            // mtbDenNgay
-            // 
-            this.mtbDenNgay.Location = new System.Drawing.Point(201, 324);
-            this.mtbDenNgay.Name = "mtbDenNgay";
-            this.mtbDenNgay.Size = new System.Drawing.Size(217, 27);
-            this.mtbDenNgay.TabIndex = 13;
-            // 
-            // mtbTuNgay
-            // 
-            this.mtbTuNgay.Location = new System.Drawing.Point(201, 276);
-            this.mtbTuNgay.Name = "mtbTuNgay";
-            this.mtbTuNgay.Size = new System.Drawing.Size(217, 27);
-            this.mtbTuNgay.TabIndex = 12;
             // 
             // label6
             // 
@@ -184,6 +170,41 @@
             this.dgvTinhLuong.Size = new System.Drawing.Size(971, 150);
             this.dgvTinhLuong.TabIndex = 9;
             // 
+            // MaBangLuong
+            // 
+            this.MaBangLuong.DataPropertyName = "MaBangLuong";
+            this.MaBangLuong.HeaderText = "Mã bảng lương";
+            this.MaBangLuong.MinimumWidth = 6;
+            this.MaBangLuong.Name = "MaBangLuong";
+            // 
+            // MaNhanVien
+            // 
+            this.MaNhanVien.DataPropertyName = "MaNhanVien";
+            this.MaNhanVien.HeaderText = "Mã nhân viên";
+            this.MaNhanVien.MinimumWidth = 6;
+            this.MaNhanVien.Name = "MaNhanVien";
+            // 
+            // ThoiGianTraLuong
+            // 
+            this.ThoiGianTraLuong.DataPropertyName = "ThoiGianTraLuong";
+            this.ThoiGianTraLuong.HeaderText = "Thời gian trả lương";
+            this.ThoiGianTraLuong.MinimumWidth = 6;
+            this.ThoiGianTraLuong.Name = "ThoiGianTraLuong";
+            // 
+            // PhuCap
+            // 
+            this.PhuCap.DataPropertyName = "PhuCap";
+            this.PhuCap.HeaderText = "Tiền phụ cấp";
+            this.PhuCap.MinimumWidth = 6;
+            this.PhuCap.Name = "PhuCap";
+            // 
+            // Luong
+            // 
+            this.Luong.DataPropertyName = "Luong";
+            this.Luong.HeaderText = "Tiền lương";
+            this.Luong.MinimumWidth = 6;
+            this.Luong.Name = "Luong";
+            // 
             // dgvCaLam
             // 
             this.dgvCaLam.AllowUserToAddRows = false;
@@ -200,18 +221,33 @@
             this.dgvCaLam.Size = new System.Drawing.Size(460, 251);
             this.dgvCaLam.TabIndex = 8;
             // 
+            // MaCaLam
+            // 
+            this.MaCaLam.DataPropertyName = "MaCaLam";
+            this.MaCaLam.HeaderText = "Ca Làm";
+            this.MaCaLam.MinimumWidth = 6;
+            this.MaCaLam.Name = "MaCaLam";
+            // 
+            // NgayLam
+            // 
+            this.NgayLam.DataPropertyName = "NgayLam";
+            this.NgayLam.HeaderText = "Ngày làm việc";
+            this.NgayLam.MinimumWidth = 6;
+            this.NgayLam.Name = "NgayLam";
+            // 
             // cboMaNV
             // 
             this.cboMaNV.FormattingEnabled = true;
-            this.cboMaNV.Location = new System.Drawing.Point(201, 38);
+            this.cboMaNV.Location = new System.Drawing.Point(207, 37);
             this.cboMaNV.Name = "cboMaNV";
             this.cboMaNV.Size = new System.Drawing.Size(217, 27);
             this.cboMaNV.TabIndex = 7;
+            this.cboMaNV.SelectedIndexChanged += new System.EventHandler(this.cboMaNV_SelectedIndexChanged);
             // 
             // lbTenNV
             // 
             this.lbTenNV.AutoSize = true;
-            this.lbTenNV.Location = new System.Drawing.Point(201, 91);
+            this.lbTenNV.Location = new System.Drawing.Point(207, 92);
             this.lbTenNV.Name = "lbTenNV";
             this.lbTenNV.Size = new System.Drawing.Size(0, 19);
             this.lbTenNV.TabIndex = 6;
@@ -219,7 +255,7 @@
             // lbChucVu
             // 
             this.lbChucVu.AutoSize = true;
-            this.lbChucVu.Location = new System.Drawing.Point(201, 137);
+            this.lbChucVu.Location = new System.Drawing.Point(207, 139);
             this.lbChucVu.Name = "lbChucVu";
             this.lbChucVu.Size = new System.Drawing.Size(0, 19);
             this.lbChucVu.TabIndex = 5;
@@ -227,7 +263,7 @@
             // lbTongGio
             // 
             this.lbTongGio.AutoSize = true;
-            this.lbTongGio.Location = new System.Drawing.Point(201, 183);
+            this.lbTongGio.Location = new System.Drawing.Point(207, 186);
             this.lbTongGio.Name = "lbTongGio";
             this.lbTongGio.Size = new System.Drawing.Size(0, 19);
             this.lbTongGio.TabIndex = 4;
@@ -268,54 +304,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã nhân viên";
             // 
-            // MaBangLuong
+            // lbTuNgay
             // 
-            this.MaBangLuong.DataPropertyName = "MaBangLuong";
-            this.MaBangLuong.HeaderText = "Mã bảng lương";
-            this.MaBangLuong.MinimumWidth = 6;
-            this.MaBangLuong.Name = "MaBangLuong";
+            this.lbTuNgay.AutoSize = true;
+            this.lbTuNgay.Location = new System.Drawing.Point(207, 280);
+            this.lbTuNgay.Name = "lbTuNgay";
+            this.lbTuNgay.Size = new System.Drawing.Size(0, 19);
+            this.lbTuNgay.TabIndex = 19;
             // 
-            // MaNhanVien
+            // lbDenNgay
             // 
-            this.MaNhanVien.DataPropertyName = "MaNhanVien";
-            this.MaNhanVien.HeaderText = "Mã nhân viên";
-            this.MaNhanVien.MinimumWidth = 6;
-            this.MaNhanVien.Name = "MaNhanVien";
-            // 
-            // ThoiGianTraLuong
-            // 
-            this.ThoiGianTraLuong.DataPropertyName = "ThoiGianTraLuong";
-            this.ThoiGianTraLuong.HeaderText = "Thời gian trả lương";
-            this.ThoiGianTraLuong.MinimumWidth = 6;
-            this.ThoiGianTraLuong.Name = "ThoiGianTraLuong";
-            // 
-            // PhuCap
-            // 
-            this.PhuCap.DataPropertyName = "PhuCap";
-            this.PhuCap.HeaderText = "Tiền phụ cấp";
-            this.PhuCap.MinimumWidth = 6;
-            this.PhuCap.Name = "PhuCap";
-            // 
-            // Luong
-            // 
-            this.Luong.DataPropertyName = "Luong";
-            this.Luong.HeaderText = "Tiền lương";
-            this.Luong.MinimumWidth = 6;
-            this.Luong.Name = "Luong";
-            // 
-            // MaCaLam
-            // 
-            this.MaCaLam.DataPropertyName = "MaCaLam";
-            this.MaCaLam.HeaderText = "Ca Làm";
-            this.MaCaLam.MinimumWidth = 6;
-            this.MaCaLam.Name = "MaCaLam";
-            // 
-            // NgayLam
-            // 
-            this.NgayLam.DataPropertyName = "NgayLam";
-            this.NgayLam.HeaderText = "Ngày làm việc";
-            this.NgayLam.MinimumWidth = 6;
-            this.NgayLam.Name = "NgayLam";
+            this.lbDenNgay.AutoSize = true;
+            this.lbDenNgay.Location = new System.Drawing.Point(207, 327);
+            this.lbDenNgay.Name = "lbDenNgay";
+            this.lbDenNgay.Size = new System.Drawing.Size(0, 19);
+            this.lbDenNgay.TabIndex = 20;
             // 
             // frmTinhLuong
             // 
@@ -351,8 +354,6 @@
         private System.Windows.Forms.Label lbPhuCap;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnThanhToan;
-        private System.Windows.Forms.MaskedTextBox mtbDenNgay;
-        private System.Windows.Forms.MaskedTextBox mtbTuNgay;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lbTienLuong;
@@ -364,5 +365,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Luong;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCaLam;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayLam;
+        private System.Windows.Forms.Label lbDenNgay;
+        private System.Windows.Forms.Label lbTuNgay;
     }
 }

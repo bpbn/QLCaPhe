@@ -24,7 +24,7 @@ namespace QL_CaPhe.GUI
 
         private void loadNhanVien()
         {
-            DataTable dt = NhanVienDAO.layDSNhanVienBH();
+            List<NhanVien> dt = NhanVien.LayDanhSachNhanVien();
 
             cboNhanVien.DataSource = dt;
             cboNhanVien.DisplayMember = "TenNhanVien";
@@ -33,23 +33,24 @@ namespace QL_CaPhe.GUI
 
         private void loadSanPham()
         {
-            DataTable dt = SanPhamDAO.layDSSanPham();
-
-            DataColumn[] key = new DataColumn[1];
-            key[0] = dt.Columns[0];
-            dt.PrimaryKey = key;
-            dgvSanPham.DataSource = dt;
+            List<SanPham> dt = SanPham.LayDSSanPham();
+            var ds = dt.Select(sp => new
+            {
+                MaSanPham = sp.MaSanPham,
+                TenSanPham = sp.TenSanPham,
+                GiaBan = sp.GiaBan
+            }).ToList();
+            dgvSanPham.DataSource = ds;
         }
-
         private void btnTim_Click(object sender, EventArgs e)
         {
-            DataTable dt = SanPhamDAO.timSanPham(txtSanPham.Text);
+            List<SanPham> dt = SanPham.TimSanPham(txtSanPham.Text);
             dgvSanPham .DataSource = dt;
         }
 
         private void txtSanPham_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt = SanPhamDAO.timSanPham(txtSanPham.Text);
+            List<SanPham> dt = SanPham.TimSanPham(txtSanPham.Text);
             dgvSanPham.DataSource = dt;
         }
 
@@ -198,11 +199,11 @@ namespace QL_CaPhe.GUI
         {
             string maNV = cboNhanVien.SelectedValue.ToString();
 
-            int isSaved = DonHangDAO.luuDonHang(maNV);
+            bool isSaved = HoaDon.LuuHoaDon(maNV);
 
-            if (isSaved > 0)
+            if (isSaved)
             {
-                string maDonHang = ChiTietDonHangDAO.layMaDonHangMoiNhat().ToString();
+                string maDonHang = ChiTietHoaDon.LayMaHoaDonMoiNhat().ToString();
                 luuChiTietDonHang(maDonHang);
             }
         }
@@ -214,7 +215,7 @@ namespace QL_CaPhe.GUI
                 string maSP = row.Cells["MASP"].Value.ToString();
                 int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
 
-                ChiTietDonHangDAO.luuChiTietDonHang(maDonHang, maSP, soLuong);
+                ChiTietHoaDon.LuuChiTietHoaDon(maDonHang, maSP, soLuong);
             }
         }
     }

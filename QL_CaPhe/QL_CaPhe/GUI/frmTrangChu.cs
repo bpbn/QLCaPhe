@@ -93,6 +93,18 @@ namespace QL_CaPhe
             frmDanhMuc f = new frmDanhMuc();
             this.Hide();
             f.Show();
+
+        }
+        private void btnChamCong_Click(object sender, EventArgs e)
+        {
+            frmChamCong f = new frmChamCong();
+            f.TopLevel = false;
+            f.FormBorderStyle = FormBorderStyle.None;
+            f.Dock = DockStyle.Fill;
+            pn_TrangChu.Controls.Clear();
+            pn_TrangChu.Controls.Add(f);
+            f.BringToFront();
+            f.Show();
         }
     }
 }
