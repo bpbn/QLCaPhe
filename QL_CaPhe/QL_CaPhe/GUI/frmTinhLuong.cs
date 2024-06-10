@@ -61,7 +61,7 @@ namespace QL_CaPhe.GUI
 
         private void loadNhanVien()
         {
-            DataTable dt = NhanVienDAO.layDSNhanVien();
+            List<NhanVien> dt = NhanVien.LayDanhSachNhanVien();
 
             cboMaNV.DisplayMember = "MaNhanVien";
             cboMaNV.ValueMember = "MaNhanVien";
@@ -80,11 +80,11 @@ namespace QL_CaPhe.GUI
             string tongGioLam = BangLuongDAO.layTongGioLam(maNV);
             lbTongGio.Text = tongGioLam;
 
-            string tenNhanVien = NhanVienDAO.layTenNhanVien(maNV);
+            string tenNhanVien = NhanVien.LayTenNhanVien(maNV);
             lbTenNV.Text = tenNhanVien;
 
             // Lấy và hiển thị chức vụ
-            string chucVu = NhanVienDAO.layChucVu(maNV);
+            string chucVu = NhanVien.LayChucVu(maNV);
             lbChucVu.Text = chucVu;
 
             // Lấy và hiển thị ngày trả lương gần nhất
