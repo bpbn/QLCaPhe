@@ -87,5 +87,12 @@ namespace QL_CaPhe
             f.BringToFront();
             f.Show();
         }
+
+        private void btnQuanLi_Click(object sender, EventArgs e)
+        {
+            frmDanhMuc f = new frmDanhMuc();
+            this.Hide();
+            f.Show();
+        }
     }
 }
