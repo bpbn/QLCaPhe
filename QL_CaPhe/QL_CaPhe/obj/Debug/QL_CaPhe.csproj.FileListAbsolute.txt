@@ -83,3 +83,4 @@ D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.Properties.Resourc
 D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.csproj.CoreCompileInputs.cache
 D:\TH.PTTKTT\Doan\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmDanhMuc.resources
 D:\TH.PTTKTT\Doan\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmNguyenLieu.resources
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmChamCong.resources
