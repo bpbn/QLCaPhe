@@ -125,7 +125,7 @@
             this.btnQuanLi.TabIndex = 1;
             this.btnQuanLi.Text = "Quản lí";
             this.btnQuanLi.UseVisualStyleBackColor = true;
-            this.btnQuanLi.Click += new System.EventHandler(this.btnDangXuat_Click);
+            this.btnQuanLi.Click += new System.EventHandler(this.btnQuanLi_Click);
             // 
             // frmTrangChu
             // 

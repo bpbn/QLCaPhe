@@ -88,6 +88,13 @@ namespace QL_CaPhe
             f.Show();
         }
 
+        private void btnQuanLi_Click(object sender, EventArgs e)
+        {
+            frmDanhMuc f = new frmDanhMuc();
+            this.Hide();
+            f.Show();
+
+        }
         private void btnChamCong_Click(object sender, EventArgs e)
         {
             frmChamCong f = new frmChamCong();

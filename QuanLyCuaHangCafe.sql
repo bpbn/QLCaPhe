@@ -70,7 +70,7 @@ CREATE TABLE SanPham
 
 CREATE TABLE NhanVien
 (
-	MaNhanVien varchar(10) not null default 'SP000',
+	MaNhanVien varchar(10) not null default 'NV000',
 	TenNhanVien nvarchar(200),
 	NgaySinh Date,
 	GioiTinh bit,
@@ -956,6 +956,8 @@ INSERT INTO ChiTietHoaDon(MaHoaDon, MaSanPham, SoLuong) VALUES
 ('HD062','SP010',4),
 ('HD063','SP012',5),
 ('HD064','SP022',5),
+('HD065','SP030',2),
+('HD066','SP012',6),
 ('HD067','SP016',1),
 ('HD067','SP025',1),
 ('HD068','SP016',1),
