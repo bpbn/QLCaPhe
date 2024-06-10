@@ -71,13 +71,13 @@ namespace QL_CaPhe.GUI
 
         private void loadNhanVienDetails(string maNV)
         {
-            string tongLuong = BangLuongDAO.layTongLuong(maNV);
+            string tongLuong = ChiTietCaLamDAO.layTongLuong(maNV);
             lbTienLuong.Text = tongLuong;
 
-            string phuCap = BangLuongDAO.layTongPhuCap(maNV);
+            string phuCap = ChiTietCaLamDAO.layTongPhuCap(maNV);
             lbPhuCap.Text = phuCap;
 
-            string tongGioLam = BangLuongDAO.layTongGioLam(maNV);
+            string tongGioLam = ChiTietCaLamDAO.layTongGioLam(maNV);
             lbTongGio.Text = tongGioLam;
 
             string tenNhanVien = NhanVien.LayTenNhanVien(maNV);
@@ -88,7 +88,7 @@ namespace QL_CaPhe.GUI
             lbChucVu.Text = chucVu;
 
             // Lấy và hiển thị ngày trả lương gần nhất
-            DateTime ngayTraLuongGanNhat = BangLuongDAO.layNgayTraLuongGanNhat(maNV);
+            DateTime ngayTraLuongGanNhat = BangLuong.LayNgayTraLuongGanNhat(maNV);
             lbTuNgay.Text = ngayTraLuongGanNhat.ToString("dd-MM-yyyy");
 
             // Lấy và hiển thị ngày hiện tại
@@ -106,7 +106,7 @@ namespace QL_CaPhe.GUI
 
         private void loadBangLuong()
         {
-            DataTable dt = BangLuongDAO.layDSBangLuong();
+            List<BangLuong> dt = BangLuong.LayDSBangLuong();
 
             dgvTinhLuong.DataSource = dt;
         }

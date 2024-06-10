@@ -15,7 +15,7 @@ namespace QL_CaPhe.GUI
 {
     public partial class frmDN_DK : Form
     {
-        private TaiKhoanDAO tk = new TaiKhoanDAO();
+        private TaiKhoan tk = new TaiKhoan();
 
         public frmDN_DK()
         {
@@ -23,7 +23,7 @@ namespace QL_CaPhe.GUI
         }
 
         DBConnect db = new DBConnect();
-
+        
         private void LoadData()
         {
             txt_TenTK.Text = Properties.Settings.Default.Username;
@@ -41,7 +41,7 @@ namespace QL_CaPhe.GUI
             panel2.Visible = false;
         }
 
-        private bool checkInfoDangNhap()
+        private bool kiemTraThongTinDayDu()
         {
             if (txt_TenTK.Text == string.Empty || txt_Password.Text == string.Empty)
                 return false;
@@ -51,19 +51,19 @@ namespace QL_CaPhe.GUI
 
         private void btn_Submit_Click(object sender, EventArgs e)
         {
-            if (!checkInfoDangNhap())
+            if (!kiemTraThongTinDayDu())
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (!tk.CheckPrimaryKey(txt_TenTK.Text))
+            if (!tk.KiemTraTaiKhoanTonTai(txt_TenTK.Text))
             {
                 MessageBox.Show("Tài khoản không tồn tại!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if(tk.checkDangNhapHople(txt_TenTK.Text, txt_Password.Text))
+            if(tk.KiemTraDangNhap(txt_TenTK.Text, txt_Password.Text))
             {
                 this.Hide();
                 frmTrangChu f = new frmTrangChu();
@@ -78,7 +78,7 @@ namespace QL_CaPhe.GUI
 
         private void ck_RememberMe_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkInfoDangNhap())
+            if (kiemTraThongTinDayDu())
             {
                 if (ck_RememberMe.Checked)
                 {
