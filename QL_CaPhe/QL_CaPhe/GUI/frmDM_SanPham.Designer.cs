@@ -133,6 +133,7 @@
             // 
             // cboTrangThai
             // 
+            this.cboTrangThai.DisplayMember = "Đang bán";
             this.cboTrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTrangThai.FormattingEnabled = true;
             this.cboTrangThai.Items.AddRange(new object[] {
@@ -254,7 +255,7 @@
             this.ClientSize = new System.Drawing.Size(1254, 737);
             this.Controls.Add(this.pnSanPham);
             this.Name = "frmDM_SanPham";
-            this.Text = "frmDM_SanPham";
+            this.Text = "Danh sách Sản Phẩm";
             this.Load += new System.EventHandler(this.frmDM_SanPham_Load);
             this.pnSanPham.ResumeLayout(false);
             this.pnSanPham.PerformLayout();

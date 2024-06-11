@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.pnHoaDon = new System.Windows.Forms.Panel();
+            this.btnLamMoi = new System.Windows.Forms.Button();
+            this.btnLoc = new System.Windows.Forms.Button();
             this.dtpNgayLap = new System.Windows.Forms.DateTimePicker();
             this.dgvCTHD = new System.Windows.Forms.DataGridView();
             this.dgvHoaDon = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnLoc = new System.Windows.Forms.Button();
-            this.btnLamMoi = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnHoaDon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCTHD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
@@ -54,6 +54,28 @@
             this.pnHoaDon.Name = "pnHoaDon";
             this.pnHoaDon.Size = new System.Drawing.Size(1229, 712);
             this.pnHoaDon.TabIndex = 1;
+            // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLamMoi.Location = new System.Drawing.Point(453, 4);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.Size = new System.Drawing.Size(121, 33);
+            this.btnLamMoi.TabIndex = 9;
+            this.btnLamMoi.Text = "Làm Mới";
+            this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
+            // 
+            // btnLoc
+            // 
+            this.btnLoc.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoc.Location = new System.Drawing.Point(314, 4);
+            this.btnLoc.Name = "btnLoc";
+            this.btnLoc.Size = new System.Drawing.Size(121, 33);
+            this.btnLoc.TabIndex = 9;
+            this.btnLoc.Text = "Lọc";
+            this.btnLoc.UseVisualStyleBackColor = true;
+            this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click);
             // 
             // dtpNgayLap
             // 
@@ -90,16 +112,6 @@
             this.dgvHoaDon.TabIndex = 6;
             this.dgvHoaDon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDon_CellClick);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 25);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Thời gian";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -111,27 +123,15 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Chi tiết hóa đơn:";
             // 
-            // btnLoc
+            // label2
             // 
-            this.btnLoc.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoc.Location = new System.Drawing.Point(314, 4);
-            this.btnLoc.Name = "btnLoc";
-            this.btnLoc.Size = new System.Drawing.Size(121, 33);
-            this.btnLoc.TabIndex = 9;
-            this.btnLoc.Text = "Lọc";
-            this.btnLoc.UseVisualStyleBackColor = true;
-            this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click);
-            // 
-            // btnLamMoi
-            // 
-            this.btnLamMoi.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLamMoi.Location = new System.Drawing.Point(453, 4);
-            this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(121, 33);
-            this.btnLamMoi.TabIndex = 9;
-            this.btnLamMoi.Text = "Làm Mới";
-            this.btnLamMoi.UseVisualStyleBackColor = true;
-            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(11, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 25);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Thời gian";
             // 
             // frmDM_HoaDonBan
             // 
@@ -140,7 +140,7 @@
             this.ClientSize = new System.Drawing.Size(1254, 737);
             this.Controls.Add(this.pnHoaDon);
             this.Name = "frmDM_HoaDonBan";
-            this.Text = "frmDM_HoaDon";
+            this.Text = "Danh sách Hóa đơn";
             this.Load += new System.EventHandler(this.frmDM_HoaDonBan_Load);
             this.pnHoaDon.ResumeLayout(false);
             this.pnHoaDon.PerformLayout();

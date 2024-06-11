@@ -35,16 +35,16 @@ namespace QL_CaPhe.GUI
             this.txt_TenTK = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ck_RememberMe = new System.Windows.Forms.CheckBox();
             this.txt_ConfirmPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,6 +123,18 @@ namespace QL_CaPhe.GUI
             this.panel1.Size = new System.Drawing.Size(440, 136);
             this.panel1.TabIndex = 30;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::QL_CaPhe.Properties.Resources.view;
+            this.pictureBox1.Location = new System.Drawing.Point(399, 101);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -178,18 +190,6 @@ namespace QL_CaPhe.GUI
             this.panel2.Size = new System.Drawing.Size(440, 75);
             this.panel2.TabIndex = 31;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::QL_CaPhe.Properties.Resources.view;
-            this.pictureBox1.Location = new System.Drawing.Point(399, 101);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::QL_CaPhe.Properties.Resources._9f79aae2c21daae7fdff49873ee838_unscreen1;
@@ -212,13 +212,13 @@ namespace QL_CaPhe.GUI
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox2);
             this.Name = "frmDN_DK";
-            this.Text = "frmDN_DK";
+            this.Text = "Đăng nhập";
             this.Load += new System.EventHandler(this.From_DN_DK_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -31,12 +31,13 @@
             this.pn_TrangChu = new System.Windows.Forms.Panel();
             this.btnThongKe = new System.Windows.Forms.Button();
             this.btnDangXuat = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnTinhLuong = new System.Windows.Forms.Button();
             this.btnKho = new System.Windows.Forms.Button();
             this.btnBanHang = new System.Windows.Forms.Button();
             this.btnChamCong = new System.Windows.Forms.Button();
             this.btnQuanLi = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pn_TrangChu
@@ -65,16 +66,6 @@
             this.btnDangXuat.Text = "Đăng xuất";
             this.btnDangXuat.UseVisualStyleBackColor = true;
             this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 31);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Lazy Coffee";
             // 
             // btnTinhLuong
             // 
@@ -127,14 +118,24 @@
             this.btnQuanLi.UseVisualStyleBackColor = true;
             this.btnQuanLi.Click += new System.EventHandler(this.btnQuanLi_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::QL_CaPhe.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(210, 106);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmTrangChu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1265, 613);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnChamCong);
             this.Controls.Add(this.btnTinhLuong);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnQuanLi);
             this.Controls.Add(this.btnDangXuat);
             this.Controls.Add(this.btnThongKe);
@@ -146,8 +147,8 @@
             this.Name = "frmTrangChu";
             this.Text = "Trang chủ";
             this.Load += new System.EventHandler(this.frmTrangChu_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -156,12 +157,12 @@
         private System.Windows.Forms.Panel pn_TrangChu;
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Button btnDangXuat;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTinhLuong;
         private System.Windows.Forms.Button btnKho;
         private System.Windows.Forms.Button btnBanHang;
         private System.Windows.Forms.Button btnChamCong;
         private System.Windows.Forms.Button btnQuanLi;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
