@@ -68,6 +68,23 @@ D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmNhapHang.resources
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmDanhMuc.resources
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmNguyenLieu.resources
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\GUI\frmKho.resx
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\GUI\frmKho.cs
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\GUI\frmKho.Designer.cs
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\QL_CaPhe.exe.config
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\QL_CaPhe.exe
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\bin\Debug\QL_CaPhe.pdb
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmDanhMuc.resources
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmDN_DK.resources
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmKho.resources
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmNguyenLieu.resources
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmNhapHang.resources
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.Properties.Resources.resources
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.csproj.CoreCompileInputs.cache
+D:\TH.PTTKTT\Doan\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmDanhMuc.resources
+D:\TH.PTTKTT\Doan\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmNguyenLieu.resources
+D:\Projects\PTTK\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmChamCong.resources
+D:\TH.PTTKTT\Doan\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmChamCong.resources
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmDM_SanPham.resources
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmDM_HoaDonBan.resources
 D:\STUDY\Project Group\TH PTTKHTTT\QLCaPhe\QL_CaPhe\QL_CaPhe\obj\Debug\QL_CaPhe.GUI.frmDM_NhanVien.resources

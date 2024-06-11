@@ -52,6 +52,7 @@
     <Compile Include="BLL\NguyenLieu.cs" />
     <Compile Include="BLL\NhanVien.cs" />
     <Compile Include="BLL\PhieuNhap.cs" />
+    <Compile Include="BLL\TaiKhoan.cs" />
     <Compile Include="DAO\BangLuongDAO.cs" />
     <Compile Include="DAO\CaLamDAO.cs" />
     <Compile Include="DAO\ChiTietCaLamDAO.cs" />
