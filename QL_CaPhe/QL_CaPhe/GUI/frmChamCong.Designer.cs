@@ -46,7 +46,7 @@ namespace QL_CaPhe.GUI
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.cboNhanVien);
             this.panel1.Location = new System.Drawing.Point(16, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1367, 699);
             this.panel1.TabIndex = 0;
@@ -55,7 +55,7 @@ namespace QL_CaPhe.GUI
             // 
             this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.Location = new System.Drawing.Point(643, 388);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(4);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(144, 44);
             this.btnLuu.TabIndex = 4;
@@ -68,7 +68,7 @@ namespace QL_CaPhe.GUI
             this.cboMaCL.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaCL.FormattingEnabled = true;
             this.cboMaCL.Location = new System.Drawing.Point(293, 217);
-            this.cboMaCL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboMaCL.Margin = new System.Windows.Forms.Padding(4);
             this.cboMaCL.Name = "cboMaCL";
             this.cboMaCL.Size = new System.Drawing.Size(359, 35);
             this.cboMaCL.TabIndex = 3;
@@ -100,7 +100,7 @@ namespace QL_CaPhe.GUI
             this.cboNhanVien.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboNhanVien.FormattingEnabled = true;
             this.cboNhanVien.Location = new System.Drawing.Point(293, 86);
-            this.cboNhanVien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboNhanVien.Margin = new System.Windows.Forms.Padding(4);
             this.cboNhanVien.Name = "cboNhanVien";
             this.cboNhanVien.Size = new System.Drawing.Size(359, 35);
             this.cboNhanVien.TabIndex = 0;
@@ -111,9 +111,9 @@ namespace QL_CaPhe.GUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1399, 727);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmChamCong";
-            this.Text = "frmChamCong";
+            this.Text = "Chấm Công";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

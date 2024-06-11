@@ -237,6 +237,7 @@
   <ItemGroup>
     <Content Include="Resources\9f79aae2c21daae7fdff49873ee838-unscreen.gif" />
     <Content Include="Resources\hide.png" />
+    <None Include="Resources\logo.png" />
     <Content Include="Resources\view.png" />
   </ItemGroup>
   <ItemGroup>

@@ -140,7 +140,7 @@
             this.ClientSize = new System.Drawing.Size(1254, 737);
             this.Controls.Add(this.pnPhieuNhap);
             this.Name = "frmDM_HoaDonNhap";
-            this.Text = "frmDM_HoaDonNhap";
+            this.Text = "Danh sách Phiếu nhập";
             this.Load += new System.EventHandler(this.frmDM_HoaDonNhap_Load);
             this.pnPhieuNhap.ResumeLayout(false);
             this.pnPhieuNhap.PerformLayout();

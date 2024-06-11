@@ -173,9 +173,7 @@ namespace QL_CaPhe.GUI
 
         private void ptc_Back_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmTrangChu f = new frmTrangChu();
-            f.Show();
+            this.Close();
         }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnNhanVien = new System.Windows.Forms.Panel();
+            this.cbNghiLam = new System.Windows.Forms.CheckBox();
             this.pnNghiLam = new System.Windows.Forms.Panel();
             this.dtpNgayNghiLam = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbNghiLam = new System.Windows.Forms.CheckBox();
             this.pnNhanVien.SuspendLayout();
             this.pnNghiLam.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
@@ -88,6 +88,18 @@
             this.pnNhanVien.Name = "pnNhanVien";
             this.pnNhanVien.Size = new System.Drawing.Size(1229, 712);
             this.pnNhanVien.TabIndex = 1;
+            // 
+            // cbNghiLam
+            // 
+            this.cbNghiLam.AutoSize = true;
+            this.cbNghiLam.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNghiLam.Location = new System.Drawing.Point(973, 74);
+            this.cbNghiLam.Name = "cbNghiLam";
+            this.cbNghiLam.Size = new System.Drawing.Size(140, 29);
+            this.cbNghiLam.TabIndex = 10;
+            this.cbNghiLam.Text = "Đã nghỉ làm";
+            this.cbNghiLam.UseVisualStyleBackColor = true;
+            this.cbNghiLam.CheckedChanged += new System.EventHandler(this.cbNghiLam_CheckedChanged);
             // 
             // pnNghiLam
             // 
@@ -335,18 +347,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Mã nhân viên";
             // 
-            // cbNghiLam
-            // 
-            this.cbNghiLam.AutoSize = true;
-            this.cbNghiLam.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbNghiLam.Location = new System.Drawing.Point(973, 74);
-            this.cbNghiLam.Name = "cbNghiLam";
-            this.cbNghiLam.Size = new System.Drawing.Size(148, 30);
-            this.cbNghiLam.TabIndex = 10;
-            this.cbNghiLam.Text = "Đã nghỉ làm";
-            this.cbNghiLam.UseVisualStyleBackColor = true;
-            this.cbNghiLam.CheckedChanged += new System.EventHandler(this.cbNghiLam_CheckedChanged);
-            // 
             // frmDM_NhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -354,7 +354,7 @@
             this.ClientSize = new System.Drawing.Size(1254, 737);
             this.Controls.Add(this.pnNhanVien);
             this.Name = "frmDM_NhanVien";
-            this.Text = "frmDM_NhanVien";
+            this.Text = "Danh sách Nhân viên";
             this.Load += new System.EventHandler(this.frmDM_NhanVien_Load);
             this.pnNhanVien.ResumeLayout(false);
             this.pnNhanVien.PerformLayout();

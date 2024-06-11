@@ -248,7 +248,7 @@
             this.ClientSize = new System.Drawing.Size(1254, 737);
             this.Controls.Add(this.pnNhaCungCap);
             this.Name = "frmDM_NCC";
-            this.Text = "frmDM_NCC";
+            this.Text = "Danh sách Nhà cung cấp";
             this.Load += new System.EventHandler(this.frmDM_NCC_Load);
             this.pnNhaCungCap.ResumeLayout(false);
             this.pnNhaCungCap.PerformLayout();
