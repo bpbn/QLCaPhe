@@ -613,42 +613,40 @@ INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('27/05/2024', '
 INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('27/05/2024', 'NCC003','NV004');
 INSERT INTO PhieuNhap(NgayNhap, MaNhaCungCap, MaNhanVien) VALUES('27/05/2024', 'NCC004','NV004');
 
-INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu)
-VALUES
-('PN001', 'NL001', 15, 120000, null),
-('PN001', 'NL002', 10, 96000, null),
-('PN002', 'NL003', 3, 119000, null),
-('PN002', 'NL004', 3, 29000, null),
-('PN003', 'NL005', 10, 100000, null),
-('PN003', 'NL006', 5, 100000, null),
-('PN004', 'NL007', 4, 110000, null),
-('PN004', 'NL008', 4, 44000, null),
-('PN005', 'NL001', 15, 120000, null),
-('PN005', 'NL002', 10, 96000, null),
-('PN006', 'NL003', 3, 119000, null),
-('PN006', 'NL004', 3, 29000, null),
-('PN007', 'NL005', 10, 100000, null),
-('PN007', 'NL006', 5, 100000, null),
-('PN008', 'NL007', 4, 110000, null),
-('PN008', 'NL008', 4, 44000, null),
-('PN009', 'NL001', 15, 120000, null),
-('PN009', 'NL002', 10, 96000, null),
-('PN010', 'NL003', 3, 119000, null),
-('PN010', 'NL004', 3, 29000, null),
-('PN011', 'NL005', 10, 100000, null),
-('PN011', 'NL006', 5, 100000, null),
-('PN012', 'NL007', 4, 110000, null),
-('PN012', 'NL008', 4, 44000, null),
-('PN013', 'NL001', 15, 120000, null),
-('PN013', 'NL002', 10, 96000, null),
-('PN014', 'NL003', 3, 119000, null),
-('PN014', 'NL004', 3, 29000, null),
-('PN015', 'NL005', 10, 100000, null),
-('PN015', 'NL006', 5, 100000, null),
-('PN016', 'NL007', 4, 110000, null),
-('PN016', 'NL008', 4, 44000, null),
-('PN017', 'NL001', 15, 120000, null),
-('PN017', 'NL002', 10, 96000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN001', 'NL001', 15, 120000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN001', 'NL002', 10, 96000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN002', 'NL003', 3, 119000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN002', 'NL004', 3, 29000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN003', 'NL005', 10, 100000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN003', 'NL006', 5, 100000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN004', 'NL007', 4, 110000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN004', 'NL008', 4, 44000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN005', 'NL001', 15, 120000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN005', 'NL002', 10, 96000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN006', 'NL003', 3, 119000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN006', 'NL004', 3, 29000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN007', 'NL005', 10, 100000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN007', 'NL006', 5, 100000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN008', 'NL007', 4, 110000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN008', 'NL008', 4, 44000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN009', 'NL001', 15, 120000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN009', 'NL002', 10, 96000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN010', 'NL003', 3, 119000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN010', 'NL004', 3, 29000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES('PN011', 'NL005', 10, 100000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN011', 'NL006', 5, 100000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN012', 'NL007', 4, 110000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN012', 'NL008', 4, 44000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN013', 'NL001', 15, 120000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN013', 'NL002', 10, 96000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN014', 'NL003', 3, 119000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN014', 'NL004', 3, 29000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN015', 'NL005', 10, 100000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN015', 'NL006', 5, 100000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN016', 'NL007', 4, 110000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN016', 'NL008', 4, 44000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN017', 'NL001', 15, 120000, null);
+INSERT INTO ChiTietPhieuNhap(MaPhieuNhap, MaNguyenLieu, SoLuong, DonGia, GhiChu) VALUES ('PN017', 'NL002', 10, 96000, null);
 
 INSERT INTO LoaiSanPham
 VALUES
@@ -660,47 +658,47 @@ VALUES
 ('MilkTea',N'Trà sữa')
 
 
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà ô long dừa',55000,'Tea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Nhãn đá xay',65000,'Cold');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà ô long mãng cầu',55000,'Tea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Hồng trà chanh',55000,'Tea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà sữa matcha',55000,'MilkTea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Hồng trà đào sữa',55000,'MilkTea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Chanh đá xay',65000,'Cold');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Matcha đá xay',65000,'Cold');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Oreo cà phê sữa đá xay',65000,'Cold');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Cà phê đá xay',65000,'Cold');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà sữa berry berry',55000,'MilkTea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà đào đá xay',65000,'Cold');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Sữa chua phúc bồn tử đác cam',65000,'Cold');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Sữa chua xoài đác thơm',65000,'Cold');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Cappuchino',45000,'Coffee');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Hồng trà đá cam đá xay',55000,'Tea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Hoa tuyết Berry Berry',55000,'MilkTea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Latte',45000,'Coffee');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Kafo de lakto',45000,'Coffee');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà lài đác thơm',55000,'Tea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà nhãn sen',55000,'Tea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà vải lài',55000,'Tea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Lucky tea',55000,'Tea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Hồng trà sữa',55000,'MilkTea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Vanilla latte',45000,'Coffee');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Hồng trà đào',55000,'Tea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà sữa phúc long',55000,'MilkTea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Trà ô long dâu',55000,'Tea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'trà ô long sữa',55000,'MilkTea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Phin choco',45000,'Coffee');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Bạc xĩu',45000,'Coffee');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Caramel macchiato',45000,'Coffee');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Matcha đậu đỏ',55000,'MilkTea');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Phindi hạnh nhân',55000,'PhinDi');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Freeze kem sữa',55000,'PhinDi');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Mocha macchiato',45000,'Coffee');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Bánh mì pate',35000,'Cake');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Bánh phô mai chanh dây',35000,'Cake');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Phin đen đá',55000,'PhinDi');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Phin sữa đá',55000,'PhinDi');
-INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai) VALUES(N'Bánh mouse đào',35000,'Cake');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Trà ô long dừa',55000,'Tea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Nhãn đá xay',65000,'Cold', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Trà ô long mãng cầu',55000,'Tea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Hồng trà chanh',55000,'Tea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Trà sữa matcha',55000,'MilkTea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Hồng trà đào sữa',55000,'MilkTea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Chanh đá xay',65000,'Cold', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Matcha đá xay',65000,'Cold', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Oreo cà phê sữa đá xay',65000,'Cold', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Cà phê đá xay',65000,'Cold', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Trà sữa berry berry',55000,'MilkTea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Trà đào đá xay',65000,'Cold', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Sữa chua phúc bồn tử đác cam',65000,'Cold', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Sữa chua xoài đác thơm',65000,'Cold', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Cappuchino',45000,'Coffee', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Hồng trà đá cam đá xay',55000,'Tea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Hoa tuyết Berry Berry',55000,'MilkTea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Latte',45000,'Coffee', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Kafo de lakto',45000,'Coffee', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Trà lài đác thơm',55000,'Tea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Trà nhãn sen',55000,'Tea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Trà vải lài',55000,'Tea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Lucky tea',55000,'Tea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Hồng trà sữa',55000,'MilkTea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Vanilla latte',45000,'Coffee', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Hồng trà đào',55000,'Tea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Trà sữa phúc long',55000,'MilkTea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Trà ô long dâu',55000,'Tea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'trà ô long sữa',55000,'MilkTea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Phin choco',45000,'Coffee', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Bạc xĩu',45000,'Coffee', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Caramel macchiato',45000,'Coffee', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Matcha đậu đỏ',55000,'MilkTea', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Phindi hạnh nhân',55000,'PhinDi', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Freeze kem sữa',55000,'PhinDi', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Mocha macchiato',45000,'Coffee', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Bánh mì pate',35000,'Cake', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Bánh phô mai chanh dây',35000,'Cake', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Phin đen đá',55000,'PhinDi', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Phin sữa đá',55000,'PhinDi', N'Đang bán');
+INSERT INTO SanPham(TenSanPham, GiaBan, MaLoai, TrangThai) VALUES(N'Bánh mouse đào',35000,'Cake', N'Đang bán');
 
 INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('03/04/2024 12:11:56', 'NV001');
 INSERT INTO HoaDon(ThoiGianLap, MaNhanVien) VALUES('03/04/2024 13:10:25', 'NV001');
