@@ -45,6 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BangLuong.cs" />
+    <Compile Include="BLL\ChiTietHoaDon.cs" />
+    <Compile Include="BLL\ChiTietPhieuNhap.cs" />
+    <Compile Include="BLL\HoaDon.cs" />
+    <Compile Include="BLL\NguyenLieu.cs" />
+    <Compile Include="BLL\NhanVien.cs" />
+    <Compile Include="BLL\PhieuNhap.cs" />
+    <Compile Include="BLL\TaiKhoan.cs" />
     <Compile Include="DAO\BangLuongDAO.cs" />
     <Compile Include="DAO\CaLamDAO.cs" />
     <Compile Include="DAO\ChiTietCaLamDAO.cs" />
@@ -82,6 +90,36 @@
     </Compile>
     <Compile Include="GUI\frmDashboard.Designer.cs">
       <DependentUpon>frmDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmDM_HoaDonBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmDM_HoaDonBan.Designer.cs">
+      <DependentUpon>frmDM_HoaDonBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmDM_HoaDonNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmDM_HoaDonNhap.Designer.cs">
+      <DependentUpon>frmDM_HoaDonNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmDM_NCC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmDM_NCC.Designer.cs">
+      <DependentUpon>frmDM_NCC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmDM_NhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmDM_NhanVien.Designer.cs">
+      <DependentUpon>frmDM_NhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmDM_SanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmDM_SanPham.Designer.cs">
+      <DependentUpon>frmDM_SanPham.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\frmDN_DK.cs">
       <SubType>Form</SubType>
@@ -121,9 +159,9 @@
     <Compile Include="GUI\frmTrangChu.Designer.cs">
       <DependentUpon>frmTrangChu.cs</DependentUpon>
     </Compile>
-    <Compile Include="POJO\Dashboard.cs" />
-    <Compile Include="POJO\NhaCungCap.cs" />
-    <Compile Include="POJO\SanPham.cs" />
+    <Compile Include="BLL\Dashboard.cs" />
+    <Compile Include="BLL\NhaCungCap.cs" />
+    <Compile Include="BLL\SanPham.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\frmBanHang.resx">
@@ -138,6 +176,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmDM_HoaDonBan.resx">
+      <DependentUpon>frmDM_HoaDonBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmDM_HoaDonNhap.resx">
+      <DependentUpon>frmDM_HoaDonNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmDM_NCC.resx">
+      <DependentUpon>frmDM_NCC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmDM_NhanVien.resx">
+      <DependentUpon>frmDM_NhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmDM_SanPham.resx">
+      <DependentUpon>frmDM_SanPham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmDN_DK.resx">
       <DependentUpon>frmDN_DK.cs</DependentUpon>

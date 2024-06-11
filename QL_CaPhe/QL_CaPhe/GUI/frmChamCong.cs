@@ -23,7 +23,7 @@ namespace QL_CaPhe.GUI
 
         private void loadNhanVien()
         {
-            DataTable dt = NhanVienDAO.layDSNhanVien();
+            List<NhanVien> dt = NhanVien.LayDanhSachNhanVien();
 
             cboNhanVien.DataSource = dt;
             cboNhanVien.DisplayMember = "TenNhanVien";

@@ -30,11 +30,11 @@ namespace QL_CaPhe.GUI
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLuu = new System.Windows.Forms.Button();
             this.cboMaCL = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cboNhanVien = new System.Windows.Forms.ComboBox();
-            this.btnLuu = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,27 +45,42 @@ namespace QL_CaPhe.GUI
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.cboNhanVien);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(16, 15);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1025, 568);
+            this.panel1.Size = new System.Drawing.Size(1367, 699);
             this.panel1.TabIndex = 0;
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLuu.Location = new System.Drawing.Point(643, 388);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(144, 44);
+            this.btnLuu.TabIndex = 4;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // cboMaCL
             // 
             this.cboMaCL.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaCL.FormattingEnabled = true;
-            this.cboMaCL.Location = new System.Drawing.Point(220, 176);
+            this.cboMaCL.Location = new System.Drawing.Point(293, 217);
+            this.cboMaCL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboMaCL.Name = "cboMaCL";
-            this.cboMaCL.Size = new System.Drawing.Size(270, 29);
+            this.cboMaCL.Size = new System.Drawing.Size(359, 35);
             this.cboMaCL.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(68, 176);
+            this.label2.Location = new System.Drawing.Point(91, 217);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 21);
+            this.label2.Size = new System.Drawing.Size(113, 27);
             this.label2.TabIndex = 2;
             this.label2.Text = "Mã ca làm";
             // 
@@ -73,38 +88,30 @@ namespace QL_CaPhe.GUI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(68, 75);
+            this.label1.Location = new System.Drawing.Point(91, 92);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 21);
+            this.label1.Size = new System.Drawing.Size(149, 27);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Mã nhân viên";
+            this.label1.Text = "Tên nhân viên";
             // 
             // cboNhanVien
             // 
             this.cboNhanVien.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboNhanVien.FormattingEnabled = true;
-            this.cboNhanVien.Location = new System.Drawing.Point(220, 70);
+            this.cboNhanVien.Location = new System.Drawing.Point(293, 86);
+            this.cboNhanVien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboNhanVien.Name = "cboNhanVien";
-            this.cboNhanVien.Size = new System.Drawing.Size(270, 29);
+            this.cboNhanVien.Size = new System.Drawing.Size(359, 35);
             this.cboNhanVien.TabIndex = 0;
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.Location = new System.Drawing.Point(482, 315);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(108, 36);
-            this.btnLuu.TabIndex = 4;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // frmChamCong
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 591);
+            this.ClientSize = new System.Drawing.Size(1399, 727);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmChamCong";
             this.Text = "frmChamCong";
             this.panel1.ResumeLayout(false);

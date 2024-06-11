@@ -12,7 +12,7 @@ namespace QL_CaPhe.DAO
         public static DataTable layDSSanPham()
         {
             DBConnect db = new DBConnect();
-            string sql = "SELECT MaSanPham, TenSanPham, GiaBan FROM SanPham";
+            string sql = "SELECT * FROM SanPham";
             return db.getTable(sql);
         }
 
